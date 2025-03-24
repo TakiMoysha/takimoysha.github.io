@@ -3,6 +3,7 @@ import { getCollection, defineCollection } from "astro:content";
 
 const tags = ["<language>en-us</language>", "<language>ru</language>"];
 
+
 export async function GET(context) {
   const content = await getCollection("content");
   return rss({
