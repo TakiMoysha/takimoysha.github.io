@@ -1,5 +1,4 @@
 ---
-layout: ../layouts/Layout.astro
 title: SQL
 date: 202109151046
 tags: [dml, ddl]

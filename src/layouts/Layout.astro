@@ -2,7 +2,7 @@
 interface Props {
 	title: string;
 	description: string;
-	publishDate: string;
+	date: string;
 }
 
 const page = Astro.props;
@@ -24,7 +24,9 @@ import "../style/global.css";
 	</head>
 	<body>
 		<header>
-			<p>Published on { page.publishDate }</p>
+			<p>{ page.title }</p>
+			<p>Created at { page.date }</p>
+			<p>{ page.description }</p>
 		</header>
 		<slot />
 	</body>
