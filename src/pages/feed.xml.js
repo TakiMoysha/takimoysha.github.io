@@ -3,9 +3,11 @@ import { getCollection, defineCollection } from "astro:content";
 
 const tags = ["<language>en-us</language>", "<language>ru</language>"];
 
-
 export async function GET(context) {
-  const content = await getCollection("content");
+  const content = [
+    // ...(await getCollection("notes")),
+    ...(await getCollection("devlog")),
+  ];
   return rss({
     title: "TakiMoysha | Feed",
     description: "Blog, notes and reports about development.",

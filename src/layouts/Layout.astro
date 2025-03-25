@@ -1,7 +1,7 @@
 ---
 interface Props {
 	title: string;
-	description: string;
+	description: string | undefined;
 	date: string;
 }
 
@@ -23,11 +23,6 @@ import "../style/global.css";
 		<title>{ page.title } | TakiMoysha </title>
 	</head>
 	<body>
-		<header>
-			<p>{ page.title } | </p>
-			<p>Created at { page.date } | </p>
-			<p>{ page.description } | </p>
-		</header>
 		<slot />
 	</body>
 </html>

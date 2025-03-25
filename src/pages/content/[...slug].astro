@@ -1,0 +1,32 @@
+---
+import Layout from "@/layouts/Layout.astro";
+// import PostMetadata from "@/components/PostMetadata.astro";
+// import ScrollUpButton from "@/components/ScrollUpButton.astro";
+
+import { CollectionEntry, getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("devlog");
+  return posts.map((post) => ({    
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+interface Props {
+  entry: CollectionEntry<"devlog">;
+}
+
+const page = Astro.props;
+const { Content } = await render(page.entry);
+---
+
+<Layout title={page.entry.data.title}>
+  <div class="text-3xl font-bold underline">
+    {page.entry.data.title}
+  </div>
+  <!-- <PostMetadata date={page.entry.data.date} tags={page.entry.data.tags}/> -->
+  <Content/>
+  <!-- <ScrollUpButton client:load /> -->
+</Layout>
+
