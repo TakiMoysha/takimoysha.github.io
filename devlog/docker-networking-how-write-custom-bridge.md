@@ -62,23 +62,22 @@ networks:
 graph TD;
 	subgraph containers [ ]
 		direction TB
-		swag["swag<br/>172.17.0.4"]:::container
-		speedtest["speedtest<br/>172.17.0.3"]:::container
-		speedtest_db["speedtest-db<br/>172.17.0.2"]:::container
+		swag["swag"]:::container
+		speedtest["speedtest"]:::container
+		speedtest_db["speedtest-db"]:::container
 	end
 
 	net_speedtest["172.17.0.0/24<br/>net-speedtest"]:::net_speedtest
 	internal["172.17.1.0/29<br/>Internal"]:::internal
 
-	internal <-->|172.17.1.0/29| speedtest
-	internal <-->|172.17.1.0/29| speedtest_db
+	internal <-->|172.17.1.3/29| speedtest
+	internal <-->|172.17.1.2/29| speedtest_db
 
-	net_speedtest <-->|172.17.0.0/24| speedtest
-	net_speedtest <-->|172.17.0.0/24| swag
+	net_speedtest <-->|172.17.0.3/24| speedtest
+	net_speedtest <-->|172.17.0.4/24| swag
 
-  classDef container fill:#f8c8d4,stroke:#333,stroke-width:2px;
-  classDef internal fill:#c4f8c8,stroke:#333,stroke-width:2px;
-  classDef net_speedtest fill:#c8c8c8c,stroke:#333,stroke-width:2px;
+
+    classDef container fill:#f8c8d4,stroke:#333,stroke-width:2px;
+    classDef internal fill:#c4f8c8,stroke:#333,stroke-width:2px;
+    classDef net_speedtest fill:#c8c8c8c,stroke:#333,stroke-width:2px;
 ```
-
-
