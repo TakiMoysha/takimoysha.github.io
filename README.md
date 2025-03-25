@@ -3,6 +3,7 @@
 ## TODO
 
 - [ ] some stuff about rss - https://docs.astro.build/en/recipes/rss/
+- [ ] mermaid diagrams support
 
 # Bibliography
 
