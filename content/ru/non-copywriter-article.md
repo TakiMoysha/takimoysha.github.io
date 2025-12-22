@@ -1,5 +1,5 @@
 ---
-title: Написание не копирайтерской статьи
+title: Non-copywriter article
 date: 20220819
 tags: [blogging]
 ---

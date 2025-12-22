@@ -9,9 +9,10 @@ const docsMetaSchema = z.object({
 });
 
 const devlogCollection = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "devlog" }),
+  loader: glob({ pattern: "data/**/*.md", base: "worklog" }),
   schema: docsMetaSchema,
 });
+
 // const notesCollection = defineCollection({
 //   loader: glob({ pattern: "**/*.md", base: "notes" }),
 //   schema: docsMetaSchema,
