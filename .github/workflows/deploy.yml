@@ -12,10 +12,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      - name: Install, build, and upload
-        uses: withastro/action@v3
+      - name: Checkout your repository using git
+        uses: actions/checkout@v6
+      - name: Install, build, and upload your site output
+        uses: withastro/action@v5
+
 
   deploy:
     needs: build
