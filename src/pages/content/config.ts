@@ -20,11 +20,11 @@ const docsMetaSchema = z.object({
 
 export type DocsMeta = z.infer<typeof docsMetaSchema>;
 
-const devlogCollection = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "devlog" }),
+const blogCollection = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "blog" }),
   schema: docsMetaSchema,
 });
 
 export const collections = {
-  devlog: devlogCollection,
+  blog: blogCollection,
 };

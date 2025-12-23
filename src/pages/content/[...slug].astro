@@ -3,22 +3,24 @@ import Layout from "@/layouts/Layout.astro";
 // import PostMetadata from "@/components/PostMetadata.astro";
 // import ScrollUpButton from "@/components/ScrollUpButton.astro";
 
-import { CollectionEntry, getCollection, render } from "astro:content";
+import { getCollection, render } from "astro:content";
 
 export async function getStaticPaths() {
-  const posts = await getCollection("devlog");
+  const posts = await getCollection("blog");
   return posts.map((post) => ({    
     params: { slug: post.id },
     props: { post },
   }));
 }
 
-interface Props {
-  entry: CollectionEntry<"devlog">;
-}
+// interface Props {
+//   entry: CollectionEntry<"devlog">;
+// }
 
+const { lang, slug} = Astro.params;
 const page = Astro.props;
-const { Content } = await render(page.entry);
+const formattedDate = page.data.date.toLocaleString(lang);
+const { Content } = await render(page);
 ---
 
 <Layout title={page.entry.data.title}>

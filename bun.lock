@@ -1,13 +1,14 @@
 {
   "lockfileVersion": 1,
+  "configVersion": 0,
   "workspaces": {
     "": {
       "name": "takimoysha.github.io",
       "dependencies": {
-        "@astrojs/rss": "^4.0.11",
-        "@tailwindcss/vite": "^4.0.15",
-        "astro": "^5.5.4",
-        "tailwindcss": "^4.0.15",
+        "@astrojs/rss": "^4.0.14",
+        "@tailwindcss/vite": "^4.1.18",
+        "astro": "^5.16.6",
+        "tailwindcss": "^4.1.18",
       },
     },
   },
