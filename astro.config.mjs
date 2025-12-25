@@ -37,6 +37,6 @@ export default defineConfig({
   },
   output: "static",
   devToolbar: {
-    enabled: false
+    enabled: true
   }
 });

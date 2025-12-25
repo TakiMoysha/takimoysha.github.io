@@ -1,0 +1,131 @@
+---
+import Hr from "./Hr.astro";
+import IconX from "@/assets/icons/SocialsX.svg";
+import IconMoon from "@/assets/icons/Moon.svg";
+import IconSearch from "@/assets/icons/Search.svg";
+import IconRSS from "@/assets/icons/RSS.svg";
+import IconArchive from "@/assets/icons/Archive.svg";
+import IconSunHigh from "@/assets/icons/SunHigh.svg";
+import IconMenuDeep from "@/assets/icons/MenuDeep.svg";
+import LinkButton from "./LinkButton.astro";
+
+const SITE = {
+  title: "SITENAME",
+  description: "Blog, notes and reports about development.",
+  defaultLanguage: "en-us",
+  lightAndDarkMode: true,
+}
+
+
+const { pathname } = Astro.url;
+
+// Remove trailing slash from current pathname if exists
+const currentPath =
+  pathname.endsWith("/") && pathname !== "/" ? pathname.slice(0, -1) : pathname;
+
+const isActive = (path: string) => {
+  const currentPathArray = currentPath.split("/").filter(p => p.trim());
+  const pathArray = path.split("/").filter(p => p.trim());
+
+  return currentPath === path || currentPathArray[0] === pathArray[0];
+};
+---
+
+<script>
+  function toggleNav() {
+    const menuBtn = document.querySelector("#menu-btn");
+    const menuItems = document.querySelector("#menu-items");
+    const menuIcon = document.querySelector("#menu-icon");
+    const closeIcon = document.querySelector("#close-icon");
+
+    if (!menuBtn || !menuItems || !menuIcon || !closeIcon) return;
+
+    menuBtn.addEventListener("click", () => {
+      const openMenu = menuBtn.getAttribute("aria-expanded") === "true";
+
+      menuBtn.setAttribute("aria-expanded", openMenu ? "false" : "true");
+      menuBtn.setAttribute("aria-label", openMenu ? "Open Menu" : "Close Menu");
+
+      menuItems.classList.toggle("hidden");
+      menuIcon.classList.toggle("hidden");
+      closeIcon.classList.toggle("hidden");
+    });
+  }
+
+  toggleNav();
+
+  // Runs on view transitions navigation
+  document.addEventListener("astro:after-swap", toggleNav);
+</script>
+
+<header class="dark:bg-gray-900" >
+  <!-- accessibility -->
+  <a
+    id="skip-to-content"
+    href="#main-content"
+    aria-label="Skip to main content"
+    aria-hidden="true"
+    class="absolute start-8 -top-full z-50 bg-background px-3 py-2 text-accent backdrop-blur-lg transition-all focus:top-4"
+  >
+    Skip to content
+  </a>
+  
+  <!-- TODO: added theme -->
+  <div class="max-w-6xl mx-auto px-4 py-4">
+    <div class="flex items-center justify-between">
+        <div class="flex-shrink-0 flex items-center gap-3">
+            <a href="/">
+              <img src="/favicon.svg" alt="Logo" class="h-[34px] w-[34px]">
+            </a>
+        </div>
+        <!---->
+        <nav class="hidden md:flex gap-6">
+          <a href="/blog" class:list={{ "active-nav": isActive("/blog") }} class="transition-colors ">Blog</a>
+          <a href="/demo" class:list={{ "active-nav": isActive("/demo") }} class="transition-colors ">Demo</a>
+        </nav>
+        <!---->
+        <ul>
+          <li>
+            <LinkButton
+              href="/feed.xml"
+              class:list={[
+                "focus-outline flex justify-center p-3 sm:p-1",
+                {
+                  "active-nav [&>svg]:stroke-accent": isActive("/feed.xml"),
+                },
+              ]}
+              ariaLabel="RSS Feed"
+              title="RSS Feed"
+            >
+              <!-- <IconArchive class="hidden sm:inline-block" /> -->
+              <IconMenuDeep class="hover:fill-gray-100"/>
+              <span class="sm:sr-only">RSS feed</span>
+            </LinkButton>
+          </li>
+          <li>
+        </ul>
+      </div>
+      <!---->
+    <div></div>
+  </div>
+
+</header> 
+
+
+  <!-- <div id='nav-container' class="flex items-center justify-between "> -->
+  <!--   <div class="relative flex w-full items-baseline justify-between"> -->
+  <!--     <a href="/" class="absolute">{ SITE.title }</a> -->
+  <!--   </div> -->
+  <!---->
+  <!--   <nav class="flex items-center justify-between"> -->
+      <!-- <button id="menu-but" class="focus-outline self-end p-2 sm:hidden"> -->
+      <!--   <IconX id="close-icon" class="hidden"/> -->
+      <!--   <IconMenuDeep /> -->
+      <!-- </button> -->
+  <!--     <ul id="menu-items" class:list={[ -->
+  <!--       "place-content-center mt-4 grid w-40", -->
+  <!--     ]}> -->
+  <!--     </ul> -->
+  <!--   </nav -->
+  <!-- </div> -->
+  <!-- <Hr/> -->

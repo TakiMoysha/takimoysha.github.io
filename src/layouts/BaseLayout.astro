@@ -3,7 +3,6 @@
 // import "@fontsource/ibm-plex-mono";
 // import "../styles/global.css";
 
-
 interface Props {
 	title: string;
 	description: string | undefined;
@@ -16,10 +15,10 @@ const {
 	url = new URL(Astro.url.pathname, Astro.site).href,
 } = Astro.props;
 
-import Seo from "../components/Seo.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import "../styles/global.css";
+import Seo from "@/components/RootSeo.astro";
+import Header from "@/components/RootHeader.astro";
+import Footer from "@/components/RootFooter.astro";
+import "@/styles/global.css";
 ---
 
 <!doctype html>

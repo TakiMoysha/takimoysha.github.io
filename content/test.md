@@ -1,6 +1,7 @@
 ---
-title: SQL
+title: SQL (Test)
 slug: demo-slug-for-sql-file
+description: Test file for testing markdown syntax and website design
 date: 202109151046
 tags: [dml, ddl]
 ---

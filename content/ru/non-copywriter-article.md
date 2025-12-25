@@ -1,5 +1,6 @@
 ---
 title: Non-copywriter article
+description: Rewrite articles and notes about copywriting.
 date: 20220819
 tags: [blogging]
 ---
