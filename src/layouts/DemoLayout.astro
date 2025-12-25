@@ -1,0 +1,27 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+const { title, description } = Astro.props;
+// TODO: test canonicalUrl 
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
+---
+<BaseLayout
+  title={title}
+  description={description}
+  url={canonicalUrl}
+>
+<!-- <BaseLayout {title} {description} {url} {date}> -->
+  <div class="w-screen min-h-svh grid grid-cols-1 lg:grid-cols-12 gap-0">
+    <section class="lg:col-span-9 xl:col-span-10 min-h-svh">
+      <div class="w-full h-full">
+        <slot />
+      </div>
+    </section>
+
+    <aside class="hidden lg:block lg:col-span-3 xl:col-span-2 border-l border-border/50 bg-muted/20">
+      <div class="sticky top-0 max-h-svh overflow-y-auto p-4">
+        <slot name="sidebar" />
+      </div>
+    </aside>
+  </div>
+</BaseLayout>

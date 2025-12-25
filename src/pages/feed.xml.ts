@@ -1,13 +1,16 @@
-import rss, { rssSchema } from "@astrojs/rss";
-import { getCollection, defineCollection } from "astro:content";
-import { blogCollectionName } from "../vars";
+import rss from "@astrojs/rss";
+import type { BlogDocType } from "@/content.config";
+import { getBlogCollection } from "@/utils/content";
 
-const tags = ["<language>en-us</language>", "<language>ru</language>"];
+const tags = [
+  "<language>en-us</language>",
+  "<language>ru-RU</language>"
+];
 
-export async function GET(context) {
-  const content = [
+export async function GET(context: any) {
+  const content: BlogDocType[] = [
     // ...(await getCollection("notes")),
-    ...(await getCollection(blogCollectionName)),
+    ...(await getBlogCollection()),
   ];
   return rss({
     title: "TakiMoysha | Feed",

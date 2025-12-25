@@ -1,0 +1,26 @@
+---
+import ProgressBar from "../components/ProgressBar.astro";
+import BaseLayout from "./BaseLayout.astro";
+
+ 
+const { title, description } = Astro.props;
+// TODO: test canonicalUrl 
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  url={canonicalUrl}
+>
+  <ProgressBar client:idle />
+  <article>
+    <div class="center">
+      <!-- <Title frontmatter={frontmatter} /> -->
+      <!-- TODO: maybe set mdx, how working with astrojs/content extension -->
+      <section class="markdown">
+        <slot />
+      </section>
+    </div>
+  </article>
+</BaseLayout>

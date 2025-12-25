@@ -1,0 +1,41 @@
+
+---
+// !TODO: WIP, DEBUG
+// let scrollPercent = 0;
+//
+// const script = `
+//   window.addEventListener("scroll", updateScrollProgress);
+//   window.addEventListener("resize", updateScrollProgress);
+//   updateScrollProgress();
+// `;
+---
+
+<div id="scroll-progress-bar" class="fixed top-0 left-0 z-3 w-full"/>
+
+<script is:inline>
+  const updateScrollProgress = () => {
+    const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+    scrollPercent = (scrollTop / (scrollHeight - clientHeight)) * 100;
+    const progressBar = document.getElementById("scroll-progress-bar");
+    if (!progressBar) return;
+    progressBar.style.width = `${scrollPercent}%`;
+  }
+
+  updateScrollProgress();
+  window.addEventListener("scroll", updateScrollProgress, { passive: true });
+</script>
+
+<style>
+
+  #scroll-progress-bar {
+    /* @apply fixed top-0 left-0 z-3 w-full bg-accent h-1 transition-[width] duration-0 ease-linear; */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 1px;
+    background: var(--accent);
+    transition: width 0.1s ease;
+    z-index: 9999;
+  }
+</style>

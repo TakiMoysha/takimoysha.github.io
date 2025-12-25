@@ -1,0 +1,55 @@
+---
+// import "@fontsource-variable/space-grotesk";
+// import "@fontsource/ibm-plex-mono";
+// import "../styles/global.css";
+
+
+interface Props {
+	title: string;
+	description: string | undefined;
+  url?: string;
+}
+
+const {
+	title,
+	description,
+	url = new URL(Astro.url.pathname, Astro.site).href,
+} = Astro.props;
+
+import Seo from "../components/Seo.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
+---
+
+<!doctype html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="robots" content="index, follow" />
+		<meta name="description" property="og:description" content={description} />
+
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <Seo {title} {description} {url} />
+
+    <script is:inline>
+      const saved = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      document.documentElement.classList.add(
+        saved || (prefersDark ? "dark" : "light"),
+      );
+    </script>
+
+	</head>
+
+  <body class="body-margin flex min-h-screen flex-col">
+		<Header />
+		<main id="main-content" class="main-margin bg-background relative z-[1] flex-1">
+    	<slot />
+  	</main>
+		<Footer />
+	</body>
+</html>
