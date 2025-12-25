@@ -73,59 +73,40 @@ const isActive = (path: string) => {
   <!-- TODO: added theme -->
   <div class="max-w-6xl mx-auto px-4 py-4">
     <div class="flex items-center justify-between">
-        <div class="flex-shrink-0 flex items-center gap-3">
-            <a href="/">
-              <img src="/favicon.svg" alt="Logo" class="h-[34px] w-[34px]">
-            </a>
-        </div>
-        <!---->
-        <nav class="hidden md:flex gap-6">
-          <a href="/blog" class:list={{ "active-nav": isActive("/blog") }} class="transition-colors ">Blog</a>
-          <a href="/demo" class:list={{ "active-nav": isActive("/demo") }} class="transition-colors ">Demo</a>
-        </nav>
-        <!---->
-        <ul>
-          <li>
-            <LinkButton
-              href="/feed.xml"
-              class:list={[
-                "focus-outline flex justify-center p-3 sm:p-1",
-                {
-                  "active-nav [&>svg]:stroke-accent": isActive("/feed.xml"),
-                },
-              ]}
-              ariaLabel="RSS Feed"
-              title="RSS Feed"
-            >
-              <!-- <IconArchive class="hidden sm:inline-block" /> -->
-              <IconMenuDeep class="hover:fill-gray-100"/>
-              <span class="sm:sr-only">RSS feed</span>
-            </LinkButton>
-          </li>
-          <li>
-        </ul>
+
+      <div class="flex-shrink-0 flex items-center gap-3">
+        <a href="/">
+          <img src="/favicon.svg" alt="Logo" class="h-[34px] w-[34px]">
+        </a>
       </div>
-      <!---->
-    <div></div>
+
+      <nav class="hidden md:flex gap-6">
+        <a href="/blog" class:list={{ "active-nav": isActive("/blog") }} class="transition-colors ">Blog</a>
+        <a href="/demo" class:list={{ "active-nav": isActive("/demo") }} class="transition-colors ">Demo</a>
+      </nav>
+
+      <ul id="menu-items" class:list={[
+        "place-content-center mt-4 grid w-40",
+      ]}>
+        <li>
+          <LinkButton
+            href="/feed.xml"
+            class:list={[
+              "focus-outline flex justify-center p-3 sm:p-1",
+              {
+                "active-nav [&>svg]:stroke-accent": isActive("/feed.xml"),
+              },
+            ]}
+            ariaLabel="RSS Feed"
+            title="RSS Feed"
+          >
+            <IconArchive class="hidden sm:inline-block" />
+            <IconMenuDeep class="hover:fill-gray-100"/>
+            <span class="sm:sr-only">RSS feed</span>
+          </LinkButton>
+        </li>
+      </ul>
+
+    </div>
   </div>
-
 </header> 
-
-
-  <!-- <div id='nav-container' class="flex items-center justify-between "> -->
-  <!--   <div class="relative flex w-full items-baseline justify-between"> -->
-  <!--     <a href="/" class="absolute">{ SITE.title }</a> -->
-  <!--   </div> -->
-  <!---->
-  <!--   <nav class="flex items-center justify-between"> -->
-      <!-- <button id="menu-but" class="focus-outline self-end p-2 sm:hidden"> -->
-      <!--   <IconX id="close-icon" class="hidden"/> -->
-      <!--   <IconMenuDeep /> -->
-      <!-- </button> -->
-  <!--     <ul id="menu-items" class:list={[ -->
-  <!--       "place-content-center mt-4 grid w-40", -->
-  <!--     ]}> -->
-  <!--     </ul> -->
-  <!--   </nav -->
-  <!-- </div> -->
-  <!-- <Hr/> -->
