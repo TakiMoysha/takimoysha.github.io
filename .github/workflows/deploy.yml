@@ -16,6 +16,9 @@ jobs:
         uses: actions/checkout@v6
       - name: Install, build, and upload your site output
         uses: withastro/action@v5
+        env:
+          PUBLIC_GOOGLE_SITE_VERIFICATION: ${{ vars.PUBLIC_GOOGLE_SITE_VERIFICATION }}
+          PUBLIC_BING_SITE_VERIFICATION: ${{ vars.PUBLIC_BING_SITE_VERIFICATION }}
 
 
   deploy:
