@@ -9,14 +9,33 @@ export interface Props {
   imageURL?: string;
 }
 
+const { author } = Astro.props;
+
 // rewrite semantic core
 const {
   lang = "en",
   title = "TakiMoysha's",
   description = "Static site for worklogs, notes and demo cases .",
-  author = "TakiMoysha",
   canonicalURL = Astro.url
 } = Astro.props;
+
+const ld_json = JSON.stringify(
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": author,
+    "url": Astro.site,
+    "sameAs": [
+      "https://github.com/takimoysha",
+      "https://linkedin.com/in/takimoysha",
+    ],
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": Astro.site + "/blog/search?q={search_string}",
+      "query-input": "required query=search_string"
+    }
+  }
+)
 ---
 
 <!-- general -->
@@ -73,21 +92,4 @@ const {
 <meta name="msvalidate.01" content={import.meta.env.PUBLIC_BING_SITE_VERIFICATION} />
 
 <!-- https://schema.org/docs/gs.html -->
-<script is:inline type="application/ld+json">
-{JSON.stringify({
-  "@context": "https://schema.org",
-  "@owner": "Person",
-  "@type": "Person",
-  "name": author,
-  "url": Astro.site,
-  "sameAs": [
-    "https://github.com/takimoysha",
-    "https://linkedin.com/in/takimoysha",
-  ],
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": {Astro.site + "/search?q={search_string}"},
-    "query-input": "required query=search_string"
-  }
-})}
-</script>
+<script is:inline type="application/ld+json" set:html={ld_json}></script>
