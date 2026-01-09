@@ -10,18 +10,20 @@
 * */
 /* @custom-variant dark (&:where(.dark, .dark *)); */
 
-.dark {
-  --background: var(--color-zinc-800);
-  --foreground: var(--color-zinc-200);
-  --accent: var(--color-yellow-500);
-  /* --muted: var(--color-zinc-700); */
-  /* --muted-foreground: var(--color-zinc-500); */
-  /* @apply bg-gray-900 text-white; */
-  /**/
-  /* @variants dark { */
-  /*   @apply bg-gray-900 text-white; */
-  /* } */
-}
+/* .dark { */
+/*   --background: var(--color-zinc-800); */
+/*   --foreground: var(--color-zinc-200); */
+/*   --accent: var(--color-yellow-500); */
+/**/
+/*   --muted: var(--color-zinc-700); */
+/*   --muted-foreground: var(--color-zinc-500); */
+/**/
+/*   @apply bg-gray-900 text-white; */
+/**/
+/*   @variants dark { */
+/*     @apply bg-gray-900 text-white; */
+/*   } */
+/* } */
 
 
 /* 'color-1': '#fee2e2', */
@@ -33,64 +35,80 @@
 /** Custom theme
 *
 * */
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-accent: var(--accent);
+@theme {
+  /* --color-background: var(--background); */
+  /* --color-foreground: var(--foreground); */
+  /* --color-accent: var(--accent); */
 
-  --color-sunset-orage: #fbbf24;
-  --color-yellow-500: #facc15;
-  --color-zinc-800: #1f2937;
-  /* --color-zinc-200: #f3f4f6; */
-  --color-zinc-700: #374151;
+  --color-sunset-orange: #ff6f61;
+  --color-sunset-orange-100: #fff1f0;
+  --color-sunset-orange-500: #ff6f61;
+  --color-sunset-orange-900: #c94c43;
 
+  --color-sunset-purple: #6b728e;
+  --color-sunset-dark: #2d3748;
+
+  /* --color-base: */
+  --color-primary: "#fee2e2",
+  --color-secondary: "#9f1239",
+  --color-accent: "#ffedd5",
+  --color-tm-dark: "#431407",
+  --color-tm-light: "#cffafe",
   /* --font-sans: "Space Grotesk Variable"; */
   /* --font-mono: "IBM Plex Mono"; */
 }
 
-/** */
-@layer base {
-  html {
-    @apply bg-background text-foreground selection:bg-accent selection:text-background overflow-y-scroll scroll-smooth antialiased;
-  }
-  body {
-    --z-old: 1;
-    --z-new: 2;
-  }
-  .dark {
-    --z-old: 2;
-    --z-new: 1;
+@layer theme {
+  @medi (prefers-color-scheme: dark) {
+    :root {
+      --color-fill-ground: var(--color-black)
+    }
   }
 }
+
+/** */
+/* @layer base { */
+/*   html { */
+/*     @apply bg-background text-foreground selection:bg-accent selection:text-background overflow-y-scroll scroll-smooth antialiased; */
+/*   } */
+/*   body { */
+/*     --z-old: 1; */
+/*     --z-new: 2; */
+/*   } */
+/*   .dark { */
+/*     --z-old: 2; */
+/*     --z-new: 1; */
+/*   } */
+/* } */
 
 /** Custom scroll bar for reading */
-@layer base {
-  /* scrollbar-width thin; */
-  /* scrollbar-color var(--color-foreground) transparent; */
-
-  ::-webkit-scrollbar {
-    width: 6px;
-  }
-  ::-webkit-scrollbar-track {
-    background-color: transparent;
-  }
-  ::-webkit-scrollbar-thumb {
-    background-color: var(--color-foreground);
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background-color: var(--color-accent);
-  }
-}
-
-/** Theme Switch Transition */
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation: none;
-  mix-blend-mode: normal;
-}
-::vertical-view-transition-old(root) {
-  z-index: var(--z-old);
-}
-::vertical-view-transition-new(root) {
-  z-index: var(--z-new);
-}
+/* @layer base { */
+/*   /* scrollbar-width thin; */ */
+/*   /* scrollbar-color var(--color-foreground) transparent; */ */
+/**/
+/*   ::-webkit-scrollbar { */
+/*     width: 6px; */
+/*   } */
+/*   ::-webkit-scrollbar-track { */
+/*     background-color: transparent; */
+/*   } */
+/*   ::-webkit-scrollbar-thumb { */
+/*     background-color: var(--color-foreground); */
+/*   } */
+/*   ::-webkit-scrollbar-thumb:hover { */
+/*     background-color: var(--color-accent); */
+/*   } */
+/* } */
+/**/
+/* /** Theme Switch Transition */ */
+/* ::view-transition-old(root), */
+/* ::view-transition-new(root) { */
+/*   animation: none; */
+/*   mix-blend-mode: normal; */
+/* } */
+/* ::vertical-view-transition-old(root) { */
+/*   z-index: var(--z-old); */
+/* } */
+/* ::vertical-view-transition-new(root) { */
+/*   z-index: var(--z-new); */
+/* } */
