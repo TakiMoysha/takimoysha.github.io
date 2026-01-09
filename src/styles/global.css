@@ -23,6 +23,13 @@
   /* } */
 }
 
+
+/* 'color-1': '#fee2e2', */
+/* 'color-2': '#9f1239', */
+/* 'color-3': '#ffedd5', */
+/* 'color-4': '#431407', */
+/* 'color-5': '#cffafe', */
+
 /** Custom theme
 *
 * */
@@ -30,6 +37,12 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-accent: var(--accent);
+
+  --color-sunset-orage: #fbbf24;
+  --color-yellow-500: #facc15;
+  --color-zinc-800: #1f2937;
+  /* --color-zinc-200: #f3f4f6; */
+  --color-zinc-700: #374151;
 
   /* --font-sans: "Space Grotesk Variable"; */
   /* --font-mono: "IBM Plex Mono"; */
