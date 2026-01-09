@@ -10,6 +10,16 @@
 - pagefind: maybe;
 - shiki: styling;
 
+## ULP
+
+#### tailwind color schemes
+
+> [!note] working with tailwindcss v4+
+
+- why 5 colors
+- working with **color palette**, adobe color wheel;
+-
+
 # Resources
 
 - [Google Search Console / search.google.com](https://search.google.com/search-console/welcome)
@@ -19,3 +29,4 @@
 - [Reference / Utilitarizm, but not style / microwebstacks.github.io](https://microwebstacks.github.io/astro-big-doc/)
 - [Reference / Simple and Cozy / github.com](https://github.com/nemanjam/nemanjam.github.io)
 - [Reference / Simple and Dark / github.com](https://github.com/tomcomtang/astro-multiplepage-portfolio)
+- [TailwindCSS Tools / tailwindcolor.tools](tailwindcolor.tools)

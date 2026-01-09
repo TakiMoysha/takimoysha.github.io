@@ -6,6 +6,8 @@ import sitemap from "@astrojs/sitemap";
 
 import ToolbarExIntegration from "./toolbar-ex/src/integration.ts";
 
+import mdx from "@astrojs/mdx";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://takimoysha.github.io",
@@ -13,6 +15,7 @@ export default defineConfig({
   integrations: [
     ToolbarExIntegration,
     compress(),
+    mdx(),
     sitemap({
       // filter: (page) => page.match('/private/*') === null,
       i18n: {
@@ -37,6 +40,6 @@ export default defineConfig({
   },
   output: "static",
   devToolbar: {
-    enabled: true
-  }
+    enabled: true,
+  },
 });
