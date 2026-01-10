@@ -9,12 +9,12 @@ const { title, description, icon } = Astro.props;
 
 <div class="rounded-xl p-6 m-2 shadow-md hover:shadow-lg transition bg-gray-600 shadow-neutral-800">
   <div class="flex items-center">
-    <div class="w-12 h-12 bg-accent-100 rounded-full flex items-center justify-center mb-6">
+    <div class="w-12 h-12 rounded-full flex items-center justify-center mb-6">
       <div set:html={icon}></div>
     </div>
     <h4 class="text-xl font-semibold text-gray-200 mb-4">{ title }</h4>
   </div>
-  <p class="text-gray-400">{ description }</p>
+  <p class="">{ description }</p>
 </div>
 
 <!-- <div class="@container"> -->

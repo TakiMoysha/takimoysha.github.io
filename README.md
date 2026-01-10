@@ -5,6 +5,7 @@
 - rss feed: https://docs.astro.build/en/recipes/rss/
 - markdown support: mermaid|plantuml diagraph
 - mdx with jsx support
+- tailwindcss: typography
 
 - seo: article ld+json schema;
 

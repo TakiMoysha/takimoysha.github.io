@@ -15,10 +15,10 @@
     "@tailwindcss/vite": "^4.1.18",
     "astro": "^5.16.8",
     "astro-compress": "^2.3.8",
-    "slugify": "^1.6.6",
-    "tailwindcss": "^4.1.18"
+    "slugify": "^1.6.6"
   },
   "devDependencies": {
+    "tailwindcss": "^4.1.18",
     "@tailwindcss/typography": "^0.5.19"
   }
 }
