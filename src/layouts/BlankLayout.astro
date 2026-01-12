@@ -92,34 +92,35 @@ const testimonials: Array<{ username: string; role: string; avatar_url: string; 
 	</head>
 
   <script is:inline>
-    const THEME_KEY = 'theme';
-
-    const button = document.getElementById('theme-toggle-btn');
-    if (!button) console.warn('Theme toggle button not found');
-
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-    const applyTheme = (theme) => {
-      const isDark = theme === 'dark';
-      document.documentElement.classList.toggle('dark', isDark);
-      document.documentElement.classList.toggle('light', !isDark);
-      if (button) button.textContent = isDark ? '🌜' : '🌞';
-      localStorage.setItem(THEME_KEY, theme);
-    };
-
-    const themeProxy = new Proxy(
-      { value: localStorage.getItem(THEME_KEY) || (prefersDark ? 'dark' : 'light') },
-      {
-        set(target, prop, value) {
-          target[prop] = value;
-          applyTheme(value);
-          return true;
-        },
-      }
-    );
-
     document.addEventListener("DOMContentLoaded", () => {
+      const THEME_KEY = 'theme';
+
+      const button = document.getElementById('theme-toggle-btn');
+      if (!button) console.warn('Theme toggle button not found');
+
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+      const applyTheme = (theme) => {
+        const isDark = theme === 'dark';
+        document.documentElement.classList.toggle('dark', isDark);
+        document.documentElement.classList.toggle('light', !isDark);
+        if (button) button.textContent = isDark ? '🌜' : '🌞';
+        localStorage.setItem(THEME_KEY, theme);
+      };
+
+      const themeProxy = new Proxy(
+        { value: localStorage.getItem(THEME_KEY) || (prefersDark ? 'dark' : 'light') },
+        {
+          set(target, prop, value) {
+            target[prop] = value;
+            applyTheme(value);
+            return true;
+          },
+        }
+      );
+
       applyTheme(themeProxy.value);
+
       document.getElementById('theme-toggle-btn')?.addEventListener('click', () => {
         themeProxy.value = themeProxy.value === 'dark' ? 'light' : 'dark';
       });
