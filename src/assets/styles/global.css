@@ -32,6 +32,7 @@
   --color-sunset-orange-500: #ff6f61;
   --color-sunset-orange-900: #c94c43;
 
+  --color-brand: var(--color-emerald-500);
   --color-primary: #fee2e2,
   --color-secondary: #9f1239,
   --color-accent: #431407,
