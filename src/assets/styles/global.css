@@ -1,13 +1,19 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
-@import "./light.css" layer(theme);
-@import "./dark.css" layer(theme);
+:root {
+  --background: var(--color-zinc-50);
+  --foreground: var(--color-zinc-900);
+  --accent: var(--color-amber-300);
+
+  --muted: var(--color-zinc-700);
+  --muted-foreground: var(--color-zinc-500);
+}
 
 .dark {
   --background: var(--color-zinc-800);
   --foreground: var(--color-zinc-400);
-  --accent: var(--color-yellow-500);
+  --accent: var(--color-amber-300);
 
   --muted: var(--color-zinc-700);
   --muted-foreground: var(--color-zinc-500);
@@ -24,31 +30,31 @@
   --color-foreground: var(--foreground);
   --color-accent: var(--accent);
 
-  --color-sunset-purple: #6b728e;
-  --color-sunset-dark: #2d3748;
-
-  --color-sunset-orange: #ff6f61;
-  --color-sunset-orange-100: #fff1f0;
-  --color-sunset-orange-500: #ff6f61;
-  --color-sunset-orange-900: #c94c43;
+  --color-sunset: oklch(0.7151 0.1785 27.97);
 
   --color-brand: var(--color-emerald-500);
-  --color-primary: #fee2e2,
-  --color-secondary: #9f1239,
-  --color-accent: #431407,
 
-  /* --color-tm-dark: #431407, */
-  /* --color-tm-light: #cffafe, */
+  --color-primary: oklch(0.9356 0.0309 17.72);
+  --color-secondary: oklch(0.4546 0.1713 13.7);
+  --color-accent-foreground: oklch(0.2659 0.0762 36.26);
+  --color-accent-background: oklch(0.9563 0.0443 203.39);
 
-  --font-sans: "Space Grotesk Variable";
-  --font-mono: "IBM Plex Mono";
+  --color-onlight-text: var(--color-zinc-300);
+  --color-ondark-text: var(--color-zinc-400);
+
+  --color-success: var(--color-green-500);
+  --color-warning: var(--color-orange-500);
+  --color-error: var(--color--500);
+
+  --font-sans: "Inter", sans-serif;
+  --font-mono: "Fira Code", monospace;
 }
 
 /* Dark mode */
 @layer theme {
   @media (prefers-color-scheme: dark) {
     :root {
-      --color-fill-ground: var(--color-black)
+      --color-fill-ground: var(--color-black);
     }
   }
 }
