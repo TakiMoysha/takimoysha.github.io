@@ -1,33 +1,26 @@
 ---
-import Hr from "./Hr.astro";
-import IconX from "@/assets/icons/SocialsX.svg";
-import IconMoon from "@/assets/icons/Moon.svg";
-import IconSearch from "@/assets/icons/Search.svg";
 import IconRSS from "@/assets/icons/RSS.svg";
-import IconArchive from "@/assets/icons/Archive.svg";
-import IconSunHigh from "@/assets/icons/SunHigh.svg";
 import IconMenuDeep from "@/assets/icons/MenuDeep.svg";
 import LinkButton from "./LinkButton.astro";
 
 const SITE = {
-  title: "SITENAME",
-  description: "Blog, notes and reports about development.",
-  defaultLanguage: "en-us",
-  lightAndDarkMode: true,
-}
-
+	title: "SITENAME",
+	description: "Blog, notes and reports about development.",
+	defaultLanguage: "en-us",
+	lightAndDarkMode: true,
+};
 
 const { pathname } = Astro.url;
 
 // Remove trailing slash from current pathname if exists
 const currentPath =
-  pathname.endsWith("/") && pathname !== "/" ? pathname.slice(0, -1) : pathname;
+	pathname.endsWith("/") && pathname !== "/" ? pathname.slice(0, -1) : pathname;
 
 const isActive = (path: string) => {
-  const currentPathArray = currentPath.split("/").filter(p => p.trim());
-  const pathArray = path.split("/").filter(p => p.trim());
+	const currentPathArray = currentPath.split("/").filter((p) => p.trim());
+	const pathArray = path.split("/").filter((p) => p.trim());
 
-  return currentPath === path || currentPathArray[0] === pathArray[0];
+	return currentPath === path || currentPathArray[0] === pathArray[0];
 };
 ---
 
@@ -65,7 +58,7 @@ const isActive = (path: string) => {
     href="#main-content"
     aria-label="Skip to main content"
     aria-hidden="true"
-    class="absolute start-8 -top-full z-50 bg-background px-3 py-2 text-accent backdrop-blur-lg transition-all focus:top-4"
+    class="absolute start-8 -top-full z-50 bg-background px-3 py-2 text-accent transition-all focus:top-4"
   >
     Skip to content
   </a>
@@ -76,36 +69,26 @@ const isActive = (path: string) => {
 
       <div class="flex-shrink-0 flex items-center gap-3">
         <a href="/">
-          <img src="/favicon.svg" alt="Logo" class="h-[34px] w-[34px]">
+          <img src="/favicon.svg" alt="Logo" class="h-10 w-10">
         </a>
       </div>
 
       <nav class="hidden md:flex gap-6">
-        <a href="/blog" class:list={{ "active-nav": isActive("/blog") }} class="transition-colors ">Blog</a>
-        <a href="/demo" class:list={{ "active-nav": isActive("/demo") }} class="transition-colors ">Demo</a>
+        <a href="/blog" class:list={{ "text-accent": isActive("/blog") }} class="hover:text-sunset transition-colors">Archive</a>
+        <a href="/cycles" class:list={{ "text-accent": isActive("/cycles") }} class="hover:text-sunset transition-colors">Cycles</a>
+        <a href="/projects" class:list={{ "text-accent": isActive("/projects") }} class="hover:text-sunset transition-colors">Projects</a>
       </nav>
 
-      <ul id="menu-items" class:list={[
-        "place-content-center mt-4 grid w-40",
-      ]}>
-        <li>
-          <LinkButton
-            href="/feed.xml"
-            class:list={[
-              "focus-outline flex justify-center p-3 sm:p-1",
-              {
-                "active-nav [&>svg]:stroke-accent": isActive("/feed.xml"),
-              },
-            ]}
-            ariaLabel="RSS Feed"
-            title="RSS Feed"
-          >
-            <IconArchive class="hidden sm:inline-block" />
-            <IconMenuDeep class="hover:fill-gray-100"/>
-            <span class="sm:sr-only">RSS feed</span>
-          </LinkButton>
-        </li>
-      </ul>
+      <div class="flex items-center gap-6">
+        <LinkButton href="/feed.xml" title="RSS Feed">
+          <span class="h-[1hl]"><IconRSS/></span>
+          <span class="hidden md:sr-only">RSS feed</span>
+        </LinkButton>
+        <button class="md:hidden inline-block hover:text-accent">
+          <span class="h-[1hl]"><IconMenuDeep/></span>
+          <span class="hidden md:sr-only">Archive</span>
+        </button>
+      </div>
 
     </div>
   </div>

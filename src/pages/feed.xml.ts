@@ -20,7 +20,7 @@ export async function GET(context: any) {
       title: doc.data.title,
       date: doc.data.date,
       tags: doc.data.tags,
-      link: `/content/${doc.slug}`,
+      link: `/content/${doc.id}`,
     })),
     customData: tags.join(""),
   });

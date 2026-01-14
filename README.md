@@ -31,4 +31,7 @@
 - [Reference / Utilitarizm, but not style / microwebstacks.github.io](https://microwebstacks.github.io/astro-big-doc/)
 - [Reference / Simple and Cozy / github.com](https://github.com/nemanjam/nemanjam.github.io)
 - [Reference / Simple and Dark / github.com](https://github.com/tomcomtang/astro-multiplepage-portfolio)
+- [Reference / Header / github.com](https://roe.dev/blog/nuxt-server-components/)
+
 - [TailwindCSS Tools / tailwindcolor.tools](tailwindcolor.tools)
+
