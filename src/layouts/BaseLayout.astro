@@ -1,8 +1,14 @@
 ---
+import Footer from "@/components/RootFooter.astro";
+import Header from "@/components/RootHeader.astro";
+import Seo from "@/components/RootSeo.astro";
+import "@/assets/styles/global.css";
+import "@/assets/styles/icons.css";
+
 interface Props {
 	title: string;
 	description: string | undefined;
-  url?: string;
+	url?: string;
 }
 
 const {
@@ -10,15 +16,10 @@ const {
 	description,
 	url = new URL(Astro.url.pathname, Astro.site).href,
 } = Astro.props;
-
-import Seo from "@/components/RootSeo.astro";
-import Header from "@/components/RootHeader.astro";
-import Footer from "@/components/RootFooter.astro";
-import "@/assets/styles/global.css";
 ---
 
 <!doctype html>
-<html lang="en" dir="ltr" data-theme="night">
+<html lang="en" dir="ltr" data-theme="dark">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="generator" content={Astro.generator} />
@@ -29,12 +30,11 @@ import "@/assets/styles/global.css";
 		<link rel="icon" type="image/svg+xml" href="/favicon.png" />
 
     <Seo {title} {description} {url} />
-
 	</head>
 
   <body class="body-margin flex min-h-screen flex-col bg-neutral">
 		<Header />
-		<main id="main-content" class="main-margin relative z-[1] flex-1">
+		<main id="main-content" class="main-margin relative z-1 flex-1">
 		  <slot />
 		</main>
 		<Footer />

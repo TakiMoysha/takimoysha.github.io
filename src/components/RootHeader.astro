@@ -1,6 +1,7 @@
 ---
 import IconRSS from "@/assets/icons/RSS.svg";
-import LinkButton from "./LinkButton.astro";
+import LinkButton from "@/components/LinkButton.astro";
+
 import { SITE } from "@/consts";
 
 const { pathname } = Astro.url;
@@ -59,9 +60,9 @@ const isActive = (path: string) => {
   <div class="max-w-6xl mx-auto px-4 py-4">
     <div class="flex items-center justify-between">
 
-      <div class="flex-shrink-0 flex items-center gap-3">
+      <div class="shrink-0 flex items-center gap-3">
         <a href="/">
-          <div class="h-[1lh] text-brand" >
+          <div class="h-lh text-brand" >
 		        <h1 class="footer-title font-bold bg-linear-to-r from-[#06b6d4] to-[#3b82f6] bg-clip-text text-transparent">{ SITE.title }</h1>
           </div>
         </a>

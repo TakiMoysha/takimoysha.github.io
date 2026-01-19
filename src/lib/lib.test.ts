@@ -1,5 +1,5 @@
 import { expect, test, describe } from "bun:test";
-import { parseDate } from "./superfile";
+import { parseDate } from "./content.ts";
 
 describe("document parsing", () => {
 	test("should parse string to date", () => {
