@@ -1,10 +1,11 @@
 ---
 import IconRSS from "@/assets/icons/RSS.svg";
-import IconMenuDeep from "@/assets/icons/MenuDeep.svg";
+// import IconMenuDeep from "@/assets/icons/MenuDeep.svg";
 import LinkButton from "./LinkButton.astro";
+// import ThemeSwitcherButton from "./ThemeSwitcher.astro";
 
 const SITE = {
-	title: "SITENAME",
+	title: "Digital Decay",
 	description: "Blog, notes and reports about development.",
 	defaultLanguage: "en-us",
 	lightAndDarkMode: true,
@@ -51,7 +52,7 @@ const isActive = (path: string) => {
   document.addEventListener("astro:after-swap", toggleNav);
 </script>
 
-<header class="dark:bg-primary-900" >
+<header>
   <!-- accessibility -->
   <a
     id="skip-to-content"
@@ -63,13 +64,14 @@ const isActive = (path: string) => {
     Skip to content
   </a>
   
-  <!-- TODO: added theme -->
   <div class="max-w-6xl mx-auto px-4 py-4">
     <div class="flex items-center justify-between">
 
       <div class="flex-shrink-0 flex items-center gap-3">
         <a href="/">
-          <img src="/favicon.svg" alt="Logo" class="h-10 w-10">
+          <div class="h-[1lh] text-brand" >
+		        <h1 class="footer-title font-bold bg-linear-to-r from-[#06b6d4] to-[#3b82f6] bg-clip-text text-transparent">{ SITE.title }</h1>
+          </div>
         </a>
       </div>
 
@@ -84,10 +86,11 @@ const isActive = (path: string) => {
           <span class="h-[1hl]"><IconRSS/></span>
           <span class="hidden md:sr-only">RSS feed</span>
         </LinkButton>
-        <button class="md:hidden inline-block hover:text-accent">
-          <span class="h-[1hl]"><IconMenuDeep/></span>
-          <span class="hidden md:sr-only">Archive</span>
-        </button>
+        <!-- <button class="md:hidden inline-block hover:text-accent"> -->
+        <!--   <span class="h-[1hl]"><IconMenuDeep/></span> -->
+        <!--   <span class="hidden md:sr-only">Archive</span> -->
+        <!-- </button> -->
+        <!-- <ThemeSwitcherButton/> -->
       </div>
 
     </div>

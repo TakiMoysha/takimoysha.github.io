@@ -1,0 +1,26 @@
+---
+const availableThemes = "nord";
+---
+
+<script is:inline>
+if (localStorage.getItem("theme") === null) {
+  document.documentElement.setAttribute("data-theme", "nord");
+} else {
+  document.documentElement.setAttribute("data-theme", localStorage.getItem("theme"));
+}
+</script>
+
+<script>
+import { themeChange } from "theme-change";
+themeChange();
+</script>
+
+<div>
+	🌞
+	<div class="inline-block w-10">
+		<span data-toggle-theme={availableThemes} data-act-class="pl-4" class="border rounded-full border-brand flex items-center cursor-pointer w-10 transition-all duration-300">
+			<span class="rounded-full w-3 h-3 m-1 bg-brand transition-transform"/>
+		</span>
+	</div>
+	🌚
+</div>

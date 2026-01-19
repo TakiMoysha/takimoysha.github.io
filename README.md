@@ -32,6 +32,6 @@
 - [Reference / Simple and Cozy / github.com](https://github.com/nemanjam/nemanjam.github.io)
 - [Reference / Simple and Dark / github.com](https://github.com/tomcomtang/astro-multiplepage-portfolio)
 - [Reference / Header / github.com](https://roe.dev/blog/nuxt-server-components/)
+- [Semantic Interface Palette/ uxdesign.cc](https://uxdesign.cc/the-semantic-interface-palette-is-simple-09ef5349c0ca)
 
-- [TailwindCSS Tools / tailwindcolor.tools](tailwindcolor.tools)
-
+- [TailwindCSS Tools / tailwindcolor.tools](https://tailwindcolor.tools)
