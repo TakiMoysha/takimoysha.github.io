@@ -2,6 +2,8 @@
 import IconRSS from "@/assets/icons/RSS.svg";
 import LinkButton from "@/components/LinkButton.astro";
 
+import ToolThemeSwitcher from "./ToolThemeSwitcher.astro";
+
 import { SITE } from "@/consts";
 
 const { pathname } = Astro.url;
@@ -52,38 +54,36 @@ const isActive = (path: string) => {
     href="#main-content"
     aria-label="Skip to main content"
     aria-hidden="true"
-    class="absolute start-8 -top-full z-50 bg-background px-3 py-2 text-accent transition-all focus:top-4"
-  >
-    Skip to content
-  </a>
+    class="absolute start-8 -top-full z-50 px-3 py-2 text-accent transition-all focus:top-4"
+  >Skip to content</a>
   
   <div class="max-w-6xl mx-auto px-4 py-4">
     <div class="flex items-center justify-between">
 
       <div class="shrink-0 flex items-center gap-3">
         <a href="/">
-          <div class="h-lh text-brand" >
+          <div class="h-lh text-primary" >
 		        <h1 class="footer-title font-bold bg-linear-to-r from-[#06b6d4] to-[#3b82f6] bg-clip-text text-transparent">{ SITE.title }</h1>
           </div>
         </a>
       </div>
 
       <nav class="hidden md:flex gap-6">
-        <a href="/blog" class:list={{ "text-accent": isActive("/blog") }} class="hover:text-sunset transition-colors">Archive</a>
-        <a href="/cycles" class:list={{ "text-accent": isActive("/cycles") }} class="hover:text-sunset transition-colors">Cycles</a>
-        <a href="/projects" class:list={{ "text-accent": isActive("/projects") }} class="hover:text-sunset transition-colors">Projects</a>
+        <a href="/blog" class:list={{ "text-accent": isActive("/blog") }} class="hover:text-base-accent/70 transition-colors">Archive</a>
+        <a href="/cycles" class:list={{ "text-accent": isActive("/cycles") }} class="hover:text-base-accent/70 transition-colors">Cycles</a>
+        <a href="/projects" class:list={{ "text-accent": isActive("/projects") }} class="hover:text-base-accent/70 transition-colors">Projects</a>
       </nav>
 
       <div class="flex items-center gap-6">
         <LinkButton href="/feed.xml" title="RSS Feed">
-          <span class="h-[1hl]"><IconRSS/></span>
+          <span class="h-1hl"><IconRSS/></span>
           <span class="hidden md:sr-only">RSS feed</span>
         </LinkButton>
         <!-- <button class="md:hidden inline-block hover:text-accent"> -->
         <!--   <span class="h-[1hl]"><IconMenuDeep/></span> -->
         <!--   <span class="hidden md:sr-only">Archive</span> -->
         <!-- </button> -->
-        <!-- <ThemeSwitcherButton/> -->
+        <ToolThemeSwitcher/>
       </div>
 
     </div>
