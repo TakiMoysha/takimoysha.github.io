@@ -1,4 +1,6 @@
 ---
+import { SITE } from "@/consts";
+
 export interface Props {
   title: string;
   lang?: "en" | "ru";
@@ -14,8 +16,8 @@ const { author } = Astro.props;
 // rewrite semantic core
 const {
   lang = "en",
-  title = "TakiMoysha's",
-  description = "Static site for worklogs, notes and demo cases .",
+  title = SITE.title,
+  description = SITE.description || "",
   canonicalURL = Astro.url
 } = Astro.props;
 

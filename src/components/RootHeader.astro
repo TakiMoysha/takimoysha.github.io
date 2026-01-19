@@ -1,15 +1,7 @@
 ---
 import IconRSS from "@/assets/icons/RSS.svg";
-// import IconMenuDeep from "@/assets/icons/MenuDeep.svg";
 import LinkButton from "./LinkButton.astro";
-// import ThemeSwitcherButton from "./ThemeSwitcher.astro";
-
-const SITE = {
-	title: "Digital Decay",
-	description: "Blog, notes and reports about development.",
-	defaultLanguage: "en-us",
-	lightAndDarkMode: true,
-};
+import { SITE } from "@/consts";
 
 const { pathname } = Astro.url;
 
