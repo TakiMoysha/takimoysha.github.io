@@ -1,6 +1,6 @@
 import rss from "@astrojs/rss";
 import type { BlogDocType } from "@/content.config";
-import { getBlogCollection } from "@/utils/content";
+import { getBlogCollection } from "@/lib/content";
 
 const tags = [
   "<language>en-us</language>",
