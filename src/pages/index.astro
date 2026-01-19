@@ -1,7 +1,6 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
 import { getBlogCollection } from "@/utils/content";
-
 
 const posts = (await getBlogCollection())
   .filter((post) => {
