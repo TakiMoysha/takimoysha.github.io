@@ -1,8 +1,9 @@
 ---
-import IconRSS from "@/assets/icons/RSS.svg";
 import LinkButton from "@/components/LinkButton.astro";
+import IconRSS from "@/assets/icons/RSS.svg";
 
-import ToolThemeSwitcher from "./ToolThemeSwitcher.astro";
+import ToolThemeSwitcher from "@/components/ToolThemeSwitcher.astro";
+import ToolNavigator from "@/components/ToolNavigator.astro"
 
 import { SITE } from "@/consts";
 
@@ -57,26 +58,29 @@ const isActive = (path: string) => {
     class="absolute start-8 -top-full z-50 px-3 py-2 text-accent transition-all focus:top-4"
   >Skip to content</a>
   
-  <div class="max-w-6xl mx-auto px-4 py-4">
-    <div class="flex items-center justify-between">
-
+  <div class="navbar bg-base-100 shadow-sm">
+    <div class="navbar-start">
       <div class="shrink-0 flex items-center gap-3">
-        <a href="/">
+         <a href="/">
           <div class="h-lh text-primary" >
-		        <h1 class="footer-title font-bold bg-linear-to-r from-[#06b6d4] to-[#3b82f6] bg-clip-text text-transparent">{ SITE.title }</h1>
+		        <h1 class="uppercase font-bold bg-linear-to-r from-[#06b6d4] to-[#3b82f6] bg-clip-text text-transparent">{ SITE.title }</h1>
           </div>
         </a>
       </div>
+    </div>
 
+    <div class="navbar-center">
       <nav class="hidden md:flex gap-6">
         <a href="/blog" class:list={{ "text-accent": isActive("/blog") }} class="hover:text-base-accent/70 transition-colors">Archive</a>
         <a href="/cycles" class:list={{ "text-accent": isActive("/cycles") }} class="hover:text-base-accent/70 transition-colors">Cycles</a>
         <a href="/projects" class:list={{ "text-accent": isActive("/projects") }} class="hover:text-base-accent/70 transition-colors">Projects</a>
       </nav>
+    </div>
 
+    <div class="navbar-end">
       <div class="flex items-center gap-6">
         <LinkButton href="/feed.xml" title="RSS Feed">
-          <span class="h-1hl"><IconRSS/></span>
+          <span class="h-hl"><IconRSS/></span>
           <span class="hidden md:sr-only">RSS feed</span>
         </LinkButton>
         <!-- <button class="md:hidden inline-block hover:text-accent"> -->
@@ -84,8 +88,8 @@ const isActive = (path: string) => {
         <!--   <span class="hidden md:sr-only">Archive</span> -->
         <!-- </button> -->
         <ToolThemeSwitcher/>
+        <ToolNavigator />
       </div>
-
     </div>
   </div>
 </header> 

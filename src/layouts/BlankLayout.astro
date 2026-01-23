@@ -1,9 +1,10 @@
 ---
-import "@/assets/styles/icons.css";
 import "@/assets/styles/global.css";
+import "@/assets/styles/icons.css";
 
 import CardInfo from "@/components/draft/CardInfo.astro";
-import ThemeSwitcher from "@/components/ToolThemeSwitcher.astro";
+import ToolNavigator from "@/components/ToolNavigator.astro"
+import ToolThemeSwitcher from "@/components/ToolThemeSwitcher.astro";
 
 interface Props {
 	title?: string;
@@ -106,41 +107,68 @@ const testimonials: Array<{
 		<link rel="icon" type="image/svg+xml" href="/favicon.png" />
 	</head>
 
-  <body class="body-margin flex min-h-screen flex-col bg-base">
-		<header class="">
-		  <div class="flex items-center justify-between max-w-6xl mx-auto p-4">
-		    <h1 class="text-2xl font-bold bg-linear-to-r from-[#06b6d4] to-[#3b82f6] bg-clip-text text-transparent">Blank Layout</h1>
-		    <nav class="hidden md:flex space-x-6">
-		      <a href="#" class="text-onlight-text hover:text-accent transition">Home</a>
-		      <a href="#" class="text-onlight-text hover:text-accent transition">Projects</a>
-		      <a href="#" class="text-onlight-text hover:text-accent transition">Links</a>
-		      <a href="#" class="text-onlight-text hover:text-accent transition">About</a>
+<!--   <div class="flex-none"> -->
+<!--     <ul class="menu menu-horizontal px-1"> -->
+<!--       <li><a>Link</a></li> -->
+<!--       <li> -->
+<!--         <details> -->
+<!--           <summary>Parent</summary> -->
+<!--           <ul class="bg-base-100 rounded-t-none p-2"> -->
+<!--             <li><a>Link 1</a></li> -->
+<!--             <li><a>Link 2</a></li> -->
+<!--           </ul> -->
+<!--         </details> -->
+<!--       </li> -->
+<!--     </ul> -->
+<!--   </div> -->
 
+
+    <!-- margin-bottom: calc(0.25rem * 2); -->
+    <!-- text-transform: uppercase; -->
+    <!-- opacity: 60%; -->
+    <!-- font-weight: 600; -->
+
+  <body class="flex min-h-screen flex-col bg-base">
+		<header class="shadow-sm">
+		  <div class="flex items-center justify-around justify-items-center max-w-6xl mx-auto p-4">
+				<div class="">
+					<a href="/" class="text-2xl font-bold">
+		    		<h1 class="uppercase font-semibold bg-linear-to-r from-[#06b6d4] to-[#3b82f6] bg-clip-text text-transparent">Blank Layout</h1>
+					</a>
+				</div>
+
+		    <nav class="hidden md:flex space-x-6">
+		      <a href="#" class="prose-headings text-onlight-text hover:text-accent transition">Home</a>
+		      <a href="#" class="prose-headings text-onlight-text hover:text-accent transition">Projects</a>
+		      <a href="#" class="prose-headings text-onlight-text hover:text-accent transition">Links</a>
+		      <a href="#" class="prose-headings text-onlight-text hover:text-accent transition">About</a>
 		    </nav>
-        <ThemeSwitcher/>
+
+				<div class="flex">
+        	<ToolThemeSwitcher/>
+					<ToolNavigator />
+				</div>
 		  </div>
 		</header>
 
     <main id="main-content">
 		  <!-- hero section -->
-  	  <section class="py-8 bg-linear-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90%">
-  	    <div class="container mx-auto px-6 text-center">
-          <h2 class="text-4xl md:text-6xl font-bold text-gray-200 mb-6">
-            Welcome to <span class="font-mono text-amber-400">Blank Landing Layout</span>
-          </h2>
-          <p class="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto mb-8">Simple langind for see, how it look.</p>
-          <div class="pb-4">
-            <button class="btn btn-info border-0 hover:bg-auto text-info-content font-semibold py-3 px-8 shadow-lg transform hover:scale-105 transition">Left</button>
-            <button class="btn btn-info border-0 hover:bg-auto text-info-content font-semibold py-3 px-8 shadow-lg transform hover:scale-105 transition">Right</button>
-          </div>
+  	  <section class="">
+  	  		<div class="py-8 bg-linear-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90%">
+  	    	<div class="px-6 text-center">
+          	<h2 class="text-4xl md:text-6xl font-bold text-primary-content mb-6">
+            	Welcome to <span class="font-mono text-amber-400">Blank Layout</span>
+          	</h2>
+          	<p class="text-lg md:text-xl text-primary-content mb-8">Simple langind for see, how it look.</p>
+  	    	</div>
   	    </div>
   	  </section>
 
       <!-- grid section -->
-  	  <section class="py-16">
+  	  <section class="max-auto py-16 mx-auto max-w-6xl">
   	    <div class="container mx-auto px-6">
   	      <h3 class="text-3xl font-bold text-center text-headings mb-12">Some Wisdom</h3>
-  	      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+  	      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
 
             <!-- cards -->
             {
@@ -157,14 +185,14 @@ const testimonials: Array<{
         <div class="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,var(--color-primary),transparent)] opacity-10"></div>
         <div class="absolute inset-y-0 right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-gray-900 dark:bg-slate-400 shadow-xl ring-1 shadow-indigo-500/5 ring-white/5 sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center"></div>
 
-        <div class="container mx-auto px-6">
+        <div class="container mx-auto max-w-6xl px-6">
           <h2 class="text-3xl md:text-4xl font-bold text-center text-shadow-lg mb-12 text-primary-content">Testimonials</h2>
           <div></div>
         </div>
   	  </section>
 
       <!-- palette -->
-  	  <section class="flex flex-col px-8 bg-background container mx-auto">
+  	  <section class="flex flex-col bg-background mx-auto max-w-6xl p-6">
         <h4 class="mt-4 text-2xl">Base</h4>
         <div class="palette-block text-primary-content bg-primary">text-primary-content + bg-primary</div>
         <div class="palette-block text-secondary-content bg-secondary">text-secondary-content + bg-secondary</div>
