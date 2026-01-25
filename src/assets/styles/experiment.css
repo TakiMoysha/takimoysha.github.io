@@ -1,0 +1,273 @@
+@import "tailwindcss";
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+@layer them {
+	:root {
+		/* Biopunk Dark Theme */
+		--background: 160 30% 4%;
+		--foreground: 165 40% 90%;
+
+		--card: 160 25% 8%;
+		--card-foreground: 165 40% 90%;
+
+		--popover: 160 25% 8%;
+		--popover-foreground: 165 40% 90%;
+
+		/* Bioluminescent Cyan */
+		--primary: 175 80% 45%;
+		--primary-foreground: 160 30% 4%;
+
+		/* Organic Purple */
+		--secondary: 280 60% 50%;
+		--secondary-foreground: 165 40% 90%;
+
+		/* Muted organic tones */
+		--muted: 160 20% 15%;
+		--muted-foreground: 165 30% 60%;
+
+		/* Toxic Green Accent */
+		--accent: 120 100% 50%;
+		--accent-foreground: 160 30% 4%;
+
+		--destructive: 0 84% 60%;
+		--destructive-foreground: 210 40% 98%;
+
+		--border: 160 30% 20%;
+		--input: 160 30% 15%;
+		--ring: 175 80% 45%;
+
+		--radius: 0.75rem;
+
+		/* Biopunk Custom Colors */
+		--glow-cyan: 175 100% 50%;
+		--glow-purple: 280 100% 60%;
+		--glow-green: 120 100% 45%;
+		--bio-dark: 160 40% 6%;
+		--neural-line: 175 60% 30%;
+
+		/* Sidebar */
+		--sidebar-background: 160 30% 6%;
+		--sidebar-foreground: 165 40% 90%;
+		--sidebar-primary: 175 80% 45%;
+		--sidebar-primary-foreground: 160 30% 4%;
+		--sidebar-accent: 160 25% 12%;
+		--sidebar-accent-foreground: 165 40% 90%;
+		--sidebar-border: 160 30% 20%;
+		--sidebar-ring: 175 80% 45%;
+	}
+}
+
+@layer base {
+	* {
+		@apply border-border;
+	}
+
+	body {
+		@apply bg-background text-foreground font-body antialiased;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply font-display;
+	}
+}
+
+@layer utilities {
+	.glow-cyan {
+		box-shadow:
+			0 0 20px hsl(var(--glow-cyan) / 0.4),
+			0 0 40px hsl(var(--glow-cyan) / 0.2),
+			0 0 60px hsl(var(--glow-cyan) / 0.1);
+	}
+
+	.glow-purple {
+		box-shadow:
+			0 0 20px hsl(var(--glow-purple) / 0.4),
+			0 0 40px hsl(var(--glow-purple) / 0.2),
+			0 0 60px hsl(var(--glow-purple) / 0.1);
+	}
+
+	.glow-green {
+		box-shadow:
+			0 0 20px hsl(var(--glow-green) / 0.4),
+			0 0 40px hsl(var(--glow-green) / 0.2),
+			0 0 60px hsl(var(--glow-green) / 0.1);
+	}
+
+	.text-glow-cyan {
+		text-shadow:
+			0 0 10px hsl(var(--glow-cyan) / 0.8),
+			0 0 20px hsl(var(--glow-cyan) / 0.5),
+			0 0 30px hsl(var(--glow-cyan) / 0.3);
+	}
+
+	.text-glow-purple {
+		text-shadow:
+			0 0 10px hsl(var(--glow-purple) / 0.8),
+			0 0 20px hsl(var(--glow-purple) / 0.5),
+			0 0 30px hsl(var(--glow-purple) / 0.3);
+	}
+
+	.bio-gradient {
+		background: linear-gradient(
+			135deg,
+			hsl(var(--primary)) 0%,
+			hsl(var(--secondary)) 50%,
+			hsl(var(--accent)) 100%
+		);
+	}
+
+	.bio-gradient-text {
+		background: linear-gradient(
+			135deg,
+			hsl(var(--primary)) 0%,
+			hsl(var(--secondary)) 50%,
+			hsl(var(--accent)) 100%
+		);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+
+	.neural-border {
+		border: 1px solid hsl(var(--neural-line));
+		position: relative;
+	}
+
+	.neural-border::before {
+		content: "";
+		position: absolute;
+		inset: -1px;
+		background: linear-gradient(
+			45deg,
+			hsl(var(--primary) / 0.5),
+			transparent 40%,
+			transparent 60%,
+			hsl(var(--secondary) / 0.5)
+		);
+		border-radius: inherit;
+		z-index: -1;
+		opacity: 0;
+		transition: opacity 0.3s ease;
+	}
+
+	.neural-border:hover::before {
+		opacity: 1;
+	}
+
+	.organic-card {
+		background: linear-gradient(
+			145deg,
+			hsl(var(--card)) 0%,
+			hsl(var(--bio-dark)) 100%
+		);
+		border: 1px solid hsl(var(--neural-line) / 0.5);
+		backdrop-filter: blur(10px);
+	}
+
+	.pulse-glow {
+		animation: pulseGlow 3s ease-in-out infinite;
+	}
+
+	@keyframes pulseGlow {
+		0%,
+		100% {
+			opacity: 0.4;
+			transform: scale(1);
+		}
+		50% {
+			opacity: 1;
+			transform: scale(1.05);
+		}
+	}
+
+	.float {
+		animation: float 6s ease-in-out infinite;
+	}
+
+	@keyframes float {
+		0%,
+		100% {
+			transform: translateY(0px);
+		}
+		50% {
+			transform: translateY(-20px);
+		}
+	}
+
+	.bio-scan {
+		position: relative;
+		overflow: hidden;
+	}
+
+	.bio-scan::after {
+		content: "";
+		position: absolute;
+		top: -100%;
+		left: 0;
+		right: 0;
+		height: 100%;
+		background: linear-gradient(
+			180deg,
+			transparent 0%,
+			hsl(var(--primary) / 0.1) 50%,
+			transparent 100%
+		);
+		animation: bioScan 4s ease-in-out infinite;
+	}
+
+	@keyframes bioScan {
+		0% {
+			top: -100%;
+		}
+		100% {
+			top: 200%;
+		}
+	}
+}

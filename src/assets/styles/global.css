@@ -1,17 +1,20 @@
 @import "tailwindcss";
 
+@import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap");
+
 @plugin "@tailwindcss/typography";
 
-/* @plugin "daisyui" { */
-/* 	themes: */
-/* 		capcake --default, */
-/* 		dark --prefersdark; */
-/**/
-/* } */
+@plugin "daisyui" {
+	themes:
+		nord --default,
+		dark --prefersdark;
+}
 
- @plugin "daisyui" {
-   themes: nord --default, dark --prefersdark;
- }
+@theme {
+	/* --font-sans: "Inter", sans-serif; */
+	/* --font-mono: "Fira Code", monospace; */
+	--font-digital: "Share Tech Mon", monospace;
+}
 
 /* :root { */
 /* 	--background: var(--color-zinc-50); */
