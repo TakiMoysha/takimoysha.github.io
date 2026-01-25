@@ -78,17 +78,12 @@ const isActive = (path: string) => {
     </div>
 
     <div class="navbar-end">
-      <div class="flex items-center gap-6">
+      <div class="flex items-center gap-4">
         <LinkButton href="/feed.xml" title="RSS Feed">
           <span class="h-hl"><IconRSS/></span>
           <span class="hidden md:sr-only">RSS feed</span>
         </LinkButton>
-        <!-- <button class="md:hidden inline-block hover:text-accent"> -->
-        <!--   <span class="h-[1hl]"><IconMenuDeep/></span> -->
-        <!--   <span class="hidden md:sr-only">Archive</span> -->
-        <!-- </button> -->
-        <ToolThemeSwitcher/>
-        <ToolNavigator />
+        <ToolNavigator class="flex sm:hidden"/>
       </div>
     </div>
   </div>
