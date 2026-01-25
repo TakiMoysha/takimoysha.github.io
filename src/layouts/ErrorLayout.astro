@@ -30,7 +30,6 @@ const error = ErrorMap.get(code) || defaultError;
 <BaseLayout
   title=`${error.text} | ${ SITE.title }`
   description=`${error.description}`
-  url={new URL(Astro.url.pathname, Astro.site).href}
 >
 
   <div class="min-h-screen flex items-center justify-center text-white p-4">

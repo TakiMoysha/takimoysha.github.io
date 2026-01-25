@@ -1,9 +1,9 @@
 import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
 import slugify from "slugify";
-import { parseDate } from "./lib/content";
+import { parseDate } from "@/lib/content";
 
-const CONTENT_FILE_PATTERN = "**/[^_]*.{md,mdx,html}";
+const CONTENT_FILE_PATTERN = "./src/content/**/[^_]*.{md,mdx,html}";
 
 const slugOptions = { lower: true, strict: true, trim: true } as const;
 

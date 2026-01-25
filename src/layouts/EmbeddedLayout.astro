@@ -2,13 +2,10 @@
 import BaseLayout from "./BaseLayout.astro";
 
 const { title, description } = Astro.props;
-// TODO: test canonicalUrl 
-const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
 ---
 <BaseLayout
   title={title}
   description={description}
-  url={canonicalUrl}
 >
 <!-- <BaseLayout {title} {description} {url} {date}> -->
   <div class="w-screen min-h-svh grid grid-cols-1 lg:grid-cols-12 gap-0">

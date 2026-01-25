@@ -1,16 +1,18 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
+import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getBlogCollection } from "@/lib/content";
 
 const posts = (await getBlogCollection())
-  .filter((post) => {
-    const tags = Array.isArray(post.data.tags) ? post.data.tags : [];
-    const isDraft = tags.includes("draft") || post.data.draft === true;
-    const isHidden = Boolean(post.data.meta?.hidden);
-    return !isDraft && !isHidden;
-  })
-  .sort((a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf())
-  .slice(0, 5);
+	.filter((post) => {
+		const tags = Array.isArray(post.data.tags) ? post.data.tags : [];
+		const isDraft = tags.includes("draft") || post.data.draft === true;
+		const isHidden = Boolean(post.data.meta?.hidden);
+		return !isDraft && !isHidden;
+	})
+	.sort(
+		(a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf(),
+	)
+	.slice(0, 5);
 
 const { title, description, url, date } = Astro.props;
 ---

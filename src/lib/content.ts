@@ -2,8 +2,13 @@ import { BLOG_COLLECTION_NAME } from "@/consts";
 import type { BlogDocType } from "@/content.config";
 import { getCollection } from "astro:content";
 
+interface IOptions {
+  sort?: boolean;
+}
+const DefaultOptions = { sort: true };
+
 export async function getBlogCollection(
-  opts: { sort?: boolean } = { sort: true },
+  opts: IOptions = DefaultOptions,
 ): Promise<BlogDocType[]> {
   const data: BlogDocType[] = await getCollection(BLOG_COLLECTION_NAME);
 

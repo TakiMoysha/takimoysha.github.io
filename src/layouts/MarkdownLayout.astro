@@ -3,14 +3,11 @@ import ProgressBar from "@/components/ArticleProgressBar.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 
 const { title, description } = Astro.props;
-// TODO: test canonicalUrl
-const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
 ---
 
 <BaseLayout
   title={title}
   description={description}
-  url={canonicalUrl}
 >
   <ProgressBar client:idle />
   <article class="prose prose-slate mx-auto max-w-2xl p-6 dark:prose-invert">
