@@ -61,6 +61,7 @@ const isActive = (path: string) => {
   <div class="navbar bg-base-100 shadow-sm">
     <div class="navbar-start">
       <div class="shrink-0 flex items-center gap-3">
+        <ToolNavigator class="sm:hidden"/>
          <a href="/">
           <div class="h-lh text-primary" >
 		        <h1 class="uppercase font-bold bg-linear-to-r from-[#06b6d4] to-[#3b82f6] bg-clip-text text-transparent">{ SITE.title }</h1>
@@ -83,7 +84,6 @@ const isActive = (path: string) => {
           <span class="h-hl"><IconRSS/></span>
           <span class="hidden md:sr-only">RSS feed</span>
         </LinkButton>
-        <ToolNavigator class="flex sm:hidden"/>
       </div>
     </div>
   </div>
