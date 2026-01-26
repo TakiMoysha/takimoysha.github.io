@@ -1,5 +1,5 @@
 import { BLOG_COLLECTION_NAME } from "@/consts";
-import type { BlogDocType } from "@/content.config";
+import type { ArchiveDocumentType } from "@/content.config";
 import { getCollection } from "astro:content";
 
 interface IOptions {
@@ -9,16 +9,16 @@ const DefaultOptions = { sort: true };
 
 export async function getBlogCollection(
 	opts: IOptions = DefaultOptions,
-): Promise<BlogDocType[]> {
-	const data: BlogDocType[] = await getCollection(BLOG_COLLECTION_NAME);
+): Promise<ArchiveDocumentType[]> {
+	const data: ArchiveDocumentType[] = await getCollection(BLOG_COLLECTION_NAME);
 
-	let result: BlogDocType[] = data.filter(
-		(doc: BlogDocType) => !doc.data.draft,
+	let result: ArchiveDocumentType[] = data.filter(
+		(doc: ArchiveDocumentType) => !doc.data.draft,
 	);
 
 	if (opts.sort === true) {
 		result = result.sort(
-			(a: BlogDocType, b: BlogDocType) =>
+			(a: ArchiveDocumentType, b: ArchiveDocumentType) =>
 				b.data.date.getTime() - a.data.date.getTime(),
 		);
 	}

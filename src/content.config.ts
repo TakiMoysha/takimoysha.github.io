@@ -3,7 +3,6 @@ import { glob } from "astro/loaders";
 import slugify from "slugify";
 import { parseDate } from "@/lib/content";
 
-
 const slugOptions = { lower: true, strict: true, trim: true } as const;
 
 const normalizeSlug = (value?: string | undefined) => {
@@ -60,7 +59,7 @@ const cycles = defineCollection({
 	schema: docsMetaSchema,
 });
 
-
 export const collections = { archive, projects, cycles };
 
-export type ArchiveDocumentType = import("astro:content").CollectionEntry<"archive">;
+export type ArchiveDocumentType =
+	import("astro:content").CollectionEntry<"archive">;

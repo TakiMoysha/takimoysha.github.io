@@ -5,19 +5,24 @@ import { getBlogCollection } from "@/lib/content";
 const pageTitle = "Archive";
 const pageDescription = "All notes and blog posts.";
 
-const blogCollection = (await getBlogCollection({ sort: true })).filter((post) => {
-	const tags = Array.isArray(post.data.tags) ? post.data.tags : [];
-	const isDraft = tags.includes("draft") || post.data.draft === true;
-	const isHidden = Boolean(post.data.meta?.hidden);
-	return !isDraft && !isHidden;
-});
+const blogCollection = (await getBlogCollection({ sort: true })).filter(
+	(post) => {
+		const tags = Array.isArray(post.data.tags) ? post.data.tags : [];
+		const isDraft = tags.includes("draft") || post.data.draft === true;
+		const isHidden = post.data.draft || false;
+		return !isDraft && !isHidden;
+	},
+);
 
 type Year = number;
-const postsByYear = blogCollection.reduce<Record<Year, typeof blogCollection>>((acc, post) => {
-	const year = post.data.date.getFullYear();
-	acc[year] = acc[year] ? [...acc[year], post] : [post];
-	return acc;
-}, {});
+const postsByYear = blogCollection.reduce<Record<Year, typeof blogCollection>>(
+	(acc, post) => {
+		const year = post.data.date.getFullYear();
+		acc[year] = acc[year] ? [...acc[year], post] : [post];
+		return acc;
+	},
+	{},
+);
 
 const years = Object.keys(postsByYear)
 	.map((year) => Number(year))
@@ -37,7 +42,6 @@ const formatter = new Intl.DateTimeFormat("en-US", {
       <p class="text-lg text-gray-600 dark:text-gray-400">{pageDescription}</p>
     </header>
 
-    { JSON.stringify(blogCollection) }
 
     <div class="space-y-12">
       {years.map((year) => (
@@ -49,7 +53,7 @@ const formatter = new Intl.DateTimeFormat("en-US", {
           <div class="space-y-6">
             {postsByYear[year].map((post) => (
               <article class="group border-l-2 border-transparent pl-4 transition hover:border-blue-500">
-                <a href={`/blog/${post.slug ?? post.id}`} class="block">
+                <a href={`/blog/${post.id}`} class="block">
                   <header class="flex flex-wrap items-baseline gap-2 mb-2">
                     <time class="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wide">
                       {formatter.format(post.data.date)}
