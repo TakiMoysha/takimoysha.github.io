@@ -1,9 +1,7 @@
 ---
-import LinkButton from "@/components/LinkButton.astro";
 import IconRSS from "@/assets/icons/RSS.svg";
-
-import ToolThemeSwitcher from "@/components/ToolThemeSwitcher.astro";
-import ToolNavigator from "@/components/ToolNavigator.astro"
+import LinkButton from "@/components/LinkButton.astro";
+import ToolNavigator from "@/components/ToolNavigator.astro";
 
 import { SITE } from "@/consts";
 
@@ -49,7 +47,6 @@ const isActive = (path: string) => {
 </script>
 
 <header>
-  <!-- accessibility -->
   <a
     id="skip-to-content"
     href="#main-content"
@@ -72,7 +69,7 @@ const isActive = (path: string) => {
 
     <div class="navbar-center">
       <nav class="hidden md:flex gap-6">
-        <a href="/blog" class:list={{ "text-accent": isActive("/blog") }} class="hover:text-base-accent/70 transition-colors">Archive</a>
+        <a href="/blog" class:list={{ "text-accent": isActive("/acrhive") }} class="hover:text-base-accent/70 transition-colors">Archive</a>
         <a href="/cycles" class:list={{ "text-accent": isActive("/cycles") }} class="hover:text-base-accent/70 transition-colors">Cycles</a>
         <a href="/projects" class:list={{ "text-accent": isActive("/projects") }} class="hover:text-base-accent/70 transition-colors">Projects</a>
       </nav>
