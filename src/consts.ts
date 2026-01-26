@@ -1,4 +1,4 @@
-export const BLOG_COLLECTION_NAME = "blog";
+export const BLOG_COLLECTION_NAME = "archive";
 
 export const SITE: {
   title: string;

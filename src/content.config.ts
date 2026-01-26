@@ -3,7 +3,6 @@ import { glob } from "astro/loaders";
 import slugify from "slugify";
 import { parseDate } from "@/lib/content";
 
-const CONTENT_FILE_PATTERN = "./src/content/**/[^_]*.{md,mdx,html}";
 
 const slugOptions = { lower: true, strict: true, trim: true } as const;
 
@@ -44,11 +43,24 @@ const docsMetaSchema = z.object({
 
 export type DocsMeta = z.infer<typeof docsMetaSchema>;
 
-const blog = defineCollection({
-	loader: glob({ pattern: CONTENT_FILE_PATTERN, base: "content" }),
+const ALL_CONTENT_FILE = "./**/[^_]*.{md,mdx,html}";
+const ROOT_CONTENT_FILES = "./[^_]*.{md,mdx,html}";
+
+const archive = defineCollection({
+	loader: glob({ pattern: ALL_CONTENT_FILE, base: "content/archive" }),
+	schema: docsMetaSchema,
+});
+const projects = defineCollection({
+	loader: glob({ pattern: ALL_CONTENT_FILE, base: "content/projects" }),
 	schema: docsMetaSchema,
 });
 
-export const collections = { blog };
+const cycles = defineCollection({
+	loader: glob({ pattern: ROOT_CONTENT_FILES, base: "content/cycles" }),
+	schema: docsMetaSchema,
+});
 
-export type BlogDocType = import("astro:content").CollectionEntry<"blog">;
+
+export const collections = { archive, projects, cycles };
+
+export type ArchiveDocumentType = import("astro:content").CollectionEntry<"archive">;
