@@ -1,5 +1,9 @@
 # Blog & Documentation
 
+- __archive__: it's like blog and notes;
+- __cycles__ (review): like book about theme;
+- __projects__: my projects;
+
 ## Milestones
 
 - rss feed: https://docs.astro.build/en/recipes/rss/
@@ -13,6 +17,8 @@
 - shiki: styling;
 
 ## ULP
+
+## Migration to Nuxt+RsStack
 
 #### tailwind color schemes
 

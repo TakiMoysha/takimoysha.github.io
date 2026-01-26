@@ -13,9 +13,9 @@ const pageDescription = "All notes, articles and blog posts.";
 const blogCollection = (await getBlogCollection({ sort: true })).filter(
 	(post) => {
 		const tags = Array.isArray(post.data.tags) ? post.data.tags : [];
-		const isDraft = tags.includes("draft") || post.data.draft === true;
+		const isPrivate = tags.includes("private");
 		const isHidden = post.data.draft || false;
-		return !isDraft && !isHidden;
+		return !isPrivate && !isHidden;
 	},
 );
 

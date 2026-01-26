@@ -1,5 +1,5 @@
 export const BLOG_COLLECTION_NAME = "archive";
-
+export const DEFAULT_LOCALE = "en";
 export const SITE: {
   title: string;
   description: string;

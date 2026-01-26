@@ -1,9 +1,8 @@
-import { BLOG_COLLECTION_NAME } from "@/consts";
+import { BLOG_COLLECTION_NAME, DEFAULT_LOCALE } from "@/consts";
 import type { ArchiveDocumentType } from "@/content.config";
 import { getCollection } from "astro:content";
 
 export const LOCALE_PATTERN = /\.([a-z]{2})$/i;
-export const DEFAULT_LOCALE = "en";
 
 export async function getBlogCollection(
 	opts: { sort: boolean } = { sort: true },
@@ -40,9 +39,9 @@ export function parseDate(numdate: Number | String): Date | null {
 	return null;
 }
 
+
 /**
- * Логическая группа для документа,
- * объединяет информацию из разных файлов.
+ * Logical group for document, merge information from different files
  */
 export interface ArchiveEntryGroup {
 	slug: string;

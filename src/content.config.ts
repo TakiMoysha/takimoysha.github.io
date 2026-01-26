@@ -1,15 +1,7 @@
+import slugify from "slugify";
 import { defineCollection, z } from "astro:content";
 import { file, glob } from "astro/loaders";
-import slugify from "slugify";
 import { parseDate } from "@/lib/content";
-
-const slugOptions = { lower: true, strict: true, trim: true } as const;
-
-const normalizeSlug = (value?: string | undefined) => {
-	if (!value) return undefined;
-	const trimmed = value.trim();
-	return trimmed.length > 0 ? slugify(trimmed, slugOptions) : undefined;
-};
 
 const docsMetaSchema = z.object({
 	title: z.string(),
@@ -30,10 +22,12 @@ const docsMetaSchema = z.object({
 		.string()
 		.optional()
 		.transform((val, ctx) => {
-			return (
-				normalizeSlug(val ?? undefined) ??
-				slugify(String(ctx.path), slugOptions)
-			);
+			if (val) return val;
+			return slugify(String(ctx.path), {
+				lower: true,
+				strict: true,
+				trim: true,
+			});
 		}),
 	description: z.string().optional(),
 	tags: z.array(z.string()).default([]),
@@ -42,13 +36,13 @@ const docsMetaSchema = z.object({
 
 export type DocsMeta = z.infer<typeof docsMetaSchema>;
 
-const ALL_CONTENT_FILE = "**/*.{md,mdx,html}";
+const ALL_CONTENT_FILE = "**/*.{md,mdx}";
 
-const archive = defineCollection({
+export const archiveCollection = defineCollection({
 	loader: glob({ pattern: ALL_CONTENT_FILE, base: "content/archive" }),
 	schema: docsMetaSchema,
 });
-const projects = defineCollection({
+export const projectsCollection = defineCollection({
 	loader: glob({ pattern: ALL_CONTENT_FILE, base: "content/projects" }),
 	schema: docsMetaSchema,
 });
@@ -59,11 +53,16 @@ const projects = defineCollection({
 // 	schema: docsMetaSchema,
 // });
 
-const hytaleCycle = defineCollection({
+export const hytaleCollection = defineCollection({
 	loader: file("content/cycles/hytale.json"),
 });
 
-export const collections = { archive, projects, hytaleCycle };
+export const collections = {
+	archive: archiveCollection,
+	projects: projectsCollection,
+};
 
-export type ArchiveDocumentEntry =
+export type ArchiveDocumentType =
 	import("astro:content").CollectionEntry<"archive">;
+export type ProjectDocumentType =
+	import("astro:content").CollectionEntry<"projects">;

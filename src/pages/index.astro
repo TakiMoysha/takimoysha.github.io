@@ -6,7 +6,7 @@ const posts = (await getBlogCollection())
 	.filter((post) => {
 		const tags = Array.isArray(post.data.tags) ? post.data.tags : [];
 		const isDraft = tags.includes("draft") || post.data.draft === true;
-		const isHidden = Boolean(post.data.meta?.hidden);
+		const isHidden = post.data.draft;
 		return !isDraft && !isHidden;
 	})
 	.sort(
