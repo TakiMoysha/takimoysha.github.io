@@ -1,0 +1,155 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import type { ArchiveEntryGroup } from "@/lib/content";
+import {
+	DEFAULT_LOCALE,
+	getBlogCollection,
+	groupArchiveEntries,
+} from "@/lib/content";
+
+export async function getStaticPaths() {
+	const entries = await getBlogCollection({ sort: true });
+	const groups = groupArchiveEntries(entries);
+
+	return groups.map((group) => ({
+		params: { slug: group.slug },
+		props: { group },
+	}));
+}
+
+interface PageProps {
+	group: ArchiveEntryGroup;
+}
+
+const { group } = Astro.props as PageProps;
+const locales = Object.keys(group.locales).sort();
+const fallbackLocale = group.locales[DEFAULT_LOCALE]
+	? DEFAULT_LOCALE
+	: locales[0];
+const fallbackEntry = group.locales[fallbackLocale];
+
+const activeLocale = fallbackLocale;
+
+const renderedLocales = await Promise.all(
+	locales.map(async (locale) => {
+		const entry = group.locales[locale];
+		const rendered = await entry.render();
+		return { locale, entry, Content: rendered.Content };
+	}),
+);
+
+const pageTitle = `${fallbackEntry.data.title} | Archive`;
+const pageDescription = fallbackEntry.data.description;
+const canonical = Astro.site
+	? new URL(`/archive/${group.slug}`, Astro.site).toString()
+	: Astro.url.origin + `/archive/${group.slug}`;
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} url={canonical}>
+  <div class="mx-auto max-w-4xl px-4 py-12">
+    <header class="mb-10">
+      <h1 class="mb-2 text-3xl font-semibold text-gray-900 dark:text-gray-100">
+        {fallbackEntry.data.title}
+      </h1>
+      {fallbackEntry.data.description && (
+        <p class="text-lg text-gray-600 dark:text-gray-400">
+          {fallbackEntry.data.description}
+        </p>
+      )}
+      <div class="mt-6 flex flex-wrap items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+        <span class="font-semibold uppercase tracking-wide">Languages:</span>
+        <ul class="flex flex-wrap gap-2">
+          {locales.map((locale) => (
+            <li>
+              <a
+                href={`?lang=${locale}`}
+                data-locale-link={locale}
+                class={`rounded-full border border-transparent px-3 py-1 font-semibold uppercase tracking-wide transition hover:border-blue-500 hover:text-blue-600 dark:border-gray-700 ${
+                  locale === activeLocale
+                    ? "bg-blue-600 text-white"
+                    : "text-gray-700 dark:text-gray-200"
+                }`}
+              >
+                {locale}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </header>
+
+    <div
+      data-locale-root
+      data-fallback-locale={fallbackLocale}
+      data-active-locale={activeLocale}
+      class="prose dark:prose-invert max-w-none"
+    >
+      {renderedLocales.map(({ locale, entry, Content }) => (
+        <article
+          data-locale={locale}
+          hidden={locale !== activeLocale}
+          aria-hidden={locale !== activeLocale}
+        >
+          <header class="mb-8 border-b border-gray-200 pb-4 dark:border-gray-700">
+            <time class="text-sm uppercase tracking-wide text-gray-500 dark:text-gray-400">
+              {entry.data.date.toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
+            </time>
+            <h2 class="mt-2 text-2xl font-semibold text-gray-900 dark:text-gray-100">
+              {entry.data.title}
+            </h2>
+          </header>
+
+          <Content />
+        </article>
+      ))}
+    </div>
+  </div>
+
+  <script is:inline>
+    (() => {
+      const container = document.querySelector(
+        "[data-locale-root]"
+      ) as HTMLElement | null;
+      if (!container) return;
+
+      const searchParams = new URLSearchParams(window.location.search);
+      const requested = (searchParams.get("lang") || "").toLowerCase();
+      const fallback = container.getAttribute("data-fallback-locale") || "";
+      const locales = Array.from(
+        container.querySelectorAll<HTMLElement>("[data-locale]")
+      ).map((node) => node.getAttribute("data-locale") || "");
+
+      const target = locales.includes(requested) ? requested : fallback;
+
+      const setActive = (locale) => {
+        locales.forEach((code) => {
+          const node = container.querySelector<HTMLElement>(
+            `[data-locale="${code}"]`
+          );
+          if (!node) return;
+          const hidden = code !== locale;
+          node.toggleAttribute("hidden", hidden);
+          node.setAttribute("aria-hidden", String(hidden));
+        });
+
+        document.documentElement.lang = locale || document.documentElement.lang;
+
+        const links = document.querySelectorAll<HTMLElement>(
+          "[data-locale-link]"
+        );
+        links.forEach((link) => {
+          const code = link.getAttribute("data-locale-link");
+          const isActive = code === locale;
+          link.classList.toggle("bg-blue-600", isActive);
+          link.classList.toggle("text-white", isActive);
+        });
+      };
+
+      setActive(target);
+    })();
+  </script>
+</BaseLayout>

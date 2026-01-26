@@ -43,7 +43,6 @@ const docsMetaSchema = z.object({
 export type DocsMeta = z.infer<typeof docsMetaSchema>;
 
 const ALL_CONTENT_FILE = "./**/[^_]*.{md,mdx,html}";
-const ROOT_CONTENT_FILES = "./[^_]*.{md,mdx,html}";
 
 const archive = defineCollection({
 	loader: glob({ pattern: ALL_CONTENT_FILE, base: "content/archive" }),
@@ -54,12 +53,14 @@ const projects = defineCollection({
 	schema: docsMetaSchema,
 });
 
-const cycles = defineCollection({
-	loader: glob({ pattern: ROOT_CONTENT_FILES, base: "content/cycles" }),
-	schema: docsMetaSchema,
-});
 
-export const collections = { archive, projects, cycles };
+// const ROOT_CONTENT_FILES = "/**/index.{md,mdx,html}";
+// const cycles = defineCollection({
+// 	loader: glob({ pattern: ROOT_CONTENT_FILES, base: "content/cycles" }),
+// 	schema: docsMetaSchema,
+// });
+
+export const collections = { archive, projects };
 
 export type ArchiveDocumentType =
 	import("astro:content").CollectionEntry<"archive">;

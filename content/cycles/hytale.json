@@ -1,0 +1,7 @@
+{
+	"extends": "astra/tsconfig/base",
+	"compilerOptions": {
+		"strictNullChecks": true,
+		"allowJs": true
+	}
+}
