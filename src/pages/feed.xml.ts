@@ -1,5 +1,5 @@
 import rss from "@astrojs/rss";
-import type { BlogDocType } from "@/content.config";
+import type { ArchiveDocumentEntry } from "@/content.config";
 import { getBlogCollection } from "@/lib/content";
 
 const tags = [
@@ -8,7 +8,7 @@ const tags = [
 ];
 
 export async function GET(context: any) {
-  const content: BlogDocType[] = [
+  const content: ArchiveDocumentEntry[] = [
     // ...(await getCollection("notes")),
     ...(await getBlogCollection()),
   ];

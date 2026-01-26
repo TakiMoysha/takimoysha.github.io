@@ -2,13 +2,11 @@ import { BLOG_COLLECTION_NAME } from "@/consts";
 import type { ArchiveDocumentType } from "@/content.config";
 import { getCollection } from "astro:content";
 
-interface IOptions {
-	sort?: boolean;
-}
-const DefaultOptions = { sort: true };
+export const LOCALE_PATTERN = /\.([a-z]{2})$/i;
+export const DEFAULT_LOCALE = "en";
 
 export async function getBlogCollection(
-	opts: IOptions = DefaultOptions,
+	opts: { sort: boolean } = { sort: true },
 ): Promise<ArchiveDocumentType[]> {
 	const data: ArchiveDocumentType[] = await getCollection(BLOG_COLLECTION_NAME);
 
@@ -42,10 +40,10 @@ export function parseDate(numdate: Number | String): Date | null {
 	return null;
 }
 
-const LOCALE_PATTERN = /\.([a-z]{2})$/i;
-
-export const DEFAULT_LOCALE = "en";
-
+/**
+ * Логическая группа для документа,
+ * объединяет информацию из разных файлов.
+ */
 export interface ArchiveEntryGroup {
 	slug: string;
 	locales: Record<string, ArchiveDocumentType>;

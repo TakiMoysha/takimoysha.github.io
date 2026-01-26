@@ -1,5 +1,5 @@
 ---
-title: Работа с сетью в docker
+title: Настройка сети для docker/podman
 date: 202503252255
 tags: [docker, networking]
 ---
@@ -56,7 +56,7 @@ networks:
 				- subnet: 172.17.1.0/29 # 172.17.1.1 - 172.20.1.6
 ```
 
-Сейчас топология сети выгляди так:
+Current network topology:
 
 ```mermaid
 graph TD;

@@ -1,5 +1,5 @@
 import { defineCollection, z } from "astro:content";
-import { glob } from "astro/loaders";
+import { file, glob } from "astro/loaders";
 import slugify from "slugify";
 import { parseDate } from "@/lib/content";
 
@@ -42,7 +42,7 @@ const docsMetaSchema = z.object({
 
 export type DocsMeta = z.infer<typeof docsMetaSchema>;
 
-const ALL_CONTENT_FILE = "./**/[^_]*.{md,mdx,html}";
+const ALL_CONTENT_FILE = "**/*.{md,mdx,html}";
 
 const archive = defineCollection({
 	loader: glob({ pattern: ALL_CONTENT_FILE, base: "content/archive" }),
@@ -53,14 +53,17 @@ const projects = defineCollection({
 	schema: docsMetaSchema,
 });
 
-
 // const ROOT_CONTENT_FILES = "/**/index.{md,mdx,html}";
 // const cycles = defineCollection({
 // 	loader: glob({ pattern: ROOT_CONTENT_FILES, base: "content/cycles" }),
 // 	schema: docsMetaSchema,
 // });
 
-export const collections = { archive, projects };
+const hytaleCycle = defineCollection({
+	loader: file("content/cycles/hytale.json"),
+});
 
-export type ArchiveDocumentType =
+export const collections = { archive, projects, hytaleCycle };
+
+export type ArchiveDocumentEntry =
 	import("astro:content").CollectionEntry<"archive">;

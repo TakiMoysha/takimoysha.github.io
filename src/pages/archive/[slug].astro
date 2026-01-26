@@ -22,6 +22,7 @@ interface PageProps {
 }
 
 const { group } = Astro.props as PageProps;
+
 const locales = Object.keys(group.locales).sort();
 const fallbackLocale = group.locales[DEFAULT_LOCALE]
 	? DEFAULT_LOCALE
@@ -31,12 +32,19 @@ const fallbackEntry = group.locales[fallbackLocale];
 const activeLocale = fallbackLocale;
 
 const renderedLocales = await Promise.all(
-	locales.map(async (locale) => {
-		const entry = group.locales[locale];
-		const rendered = await entry.render();
-		return { locale, entry, Content: rendered.Content };
-	}),
+  locales.map(async (locale) => {
+    const entry = group.locales[locale];
+    const content = "";
+    return { locale, entry, content }
+  })
 );
+// const renderedLocales = await Promise.all(
+// 	locales.map(async (locale) => {
+// 		const entry = group.locales[locale];
+// 		const content = entry.rendered;
+// 		return { locale, entry, Content: content };
+// 	}),
+// );
 
 const pageTitle = `${fallbackEntry.data.title} | Archive`;
 const pageDescription = fallbackEntry.data.description;
@@ -44,6 +52,8 @@ const canonical = Astro.site
 	? new URL(`/archive/${group.slug}`, Astro.site).toString()
 	: Astro.url.origin + `/archive/${group.slug}`;
 ---
+<!-- <MakrdownLayout title={pageTitle} description={pageDescription} url={canonical}> -->
+<!-- </MakrdownLayout> -->
 
 <BaseLayout title={pageTitle} description={pageDescription} url={canonical}>
   <div class="mx-auto max-w-4xl px-4 py-12">
@@ -84,28 +94,29 @@ const canonical = Astro.site
       data-active-locale={activeLocale}
       class="prose dark:prose-invert max-w-none"
     >
-      {renderedLocales.map(({ locale, entry, Content }) => (
-        <article
-          data-locale={locale}
-          hidden={locale !== activeLocale}
-          aria-hidden={locale !== activeLocale}
-        >
-          <header class="mb-8 border-b border-gray-200 pb-4 dark:border-gray-700">
-            <time class="text-sm uppercase tracking-wide text-gray-500 dark:text-gray-400">
-              {entry.data.date.toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}
-            </time>
-            <h2 class="mt-2 text-2xl font-semibold text-gray-900 dark:text-gray-100">
-              {entry.data.title}
-            </h2>
-          </header>
+      { renderedLocales.map((obj) => ( <div>{JSON.stringify(Object.keys( obj.entry ))}</div> ))}
+      <!-- {renderedLocales.map(({ locale, entry, Content }) => ( -->
+      <!--   <article -->
+      <!--     data-locale={locale} -->
+      <!--     hidden={locale !== activeLocale} -->
+      <!--     aria-hidden={locale !== activeLocale} -->
+      <!--   > -->
+      <!--     <header class="mb-8 border-b border-gray-200 pb-4 dark:border-gray-700"> -->
+      <!--       <time class="text-sm uppercase tracking-wide text-gray-500 dark:text-gray-400"> -->
+      <!--         {entry.data.date.toLocaleDateString("en-US", { -->
+      <!--           year: "numeric", -->
+      <!--           month: "long", -->
+      <!--           day: "numeric", -->
+      <!--         })} -->
+      <!--       </time> -->
+      <!--       <h2 class="mt-2 text-2xl font-semibold text-gray-900 dark:text-gray-100"> -->
+      <!--         {entry.data.title} -->
+      <!--       </h2> -->
+      <!--     </header> -->
 
-          <Content />
-        </article>
-      ))}
+      <!--     <Content /> -->
+      <!--   </article> -->
+      <!-- ))} -->
     </div>
   </div>
 
