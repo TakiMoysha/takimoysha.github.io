@@ -1,28 +1,37 @@
-import { BLOG_COLLECTION_NAME, DEFAULT_LOCALE } from "@/consts";
+import {
+	BLOG_COLLECTION_NAME,
+	DEFAULT_LOCALE,
+	REGEX_LOCALE_PATTERN,
+} from "@/consts";
 import type { ArchiveDocumentType } from "@/content.config";
 import { getCollection } from "astro:content";
-
-export const LOCALE_PATTERN = /\.([a-z]{2})$/i;
 
 export async function getBlogCollection(
 	opts: { sort: boolean } = { sort: true },
 ): Promise<ArchiveDocumentType[]> {
-	const data: ArchiveDocumentType[] = await getCollection(BLOG_COLLECTION_NAME);
-
-	let result: ArchiveDocumentType[] = data.filter(
-		(doc: ArchiveDocumentType) => !doc.data.draft,
+	let data: ArchiveDocumentType[] = await getCollection(
+		BLOG_COLLECTION_NAME,
+		({ data }) => !data?.draft,
 	);
 
 	if (opts.sort === true) {
-		result = result.sort(
+		data = data.sort(
 			(a: ArchiveDocumentType, b: ArchiveDocumentType) =>
 				b.data.date.getTime() - a.data.date.getTime(),
 		);
 	}
 
-	return result;
+	return data;
 }
 
+export async function getAllBlogCollectionTags(): Promise<string[]> {
+	return getCollection(BLOG_COLLECTION_NAME, ({ data }) => !data?.draft).then(
+		(collection) => collection.flatMap((post) => post.data.tags),
+	);
+}
+// ============================================================================================
+
+// ============================================================================================
 export function parseDate(numdate: Number | String): Date | null {
 	if (typeof numdate === "number") numdate = String(numdate);
 
@@ -39,7 +48,6 @@ export function parseDate(numdate: Number | String): Date | null {
 	return null;
 }
 
-
 /**
  * Logical group for document, merge information from different files
  */
@@ -49,12 +57,12 @@ export interface ArchiveEntryGroup {
 }
 
 export function getArchiveLocale(entry: ArchiveDocumentType): string {
-	const match = entry.id.match(LOCALE_PATTERN);
+	const match = entry.id.match(REGEX_LOCALE_PATTERN);
 	return match ? match[1].toLowerCase() : DEFAULT_LOCALE;
 }
 
 export function getArchiveBaseSlug(entry: ArchiveDocumentType): string {
-	return entry.id.replace(LOCALE_PATTERN, "");
+	return entry.id.replace(REGEX_LOCALE_PATTERN, "");
 }
 
 export function groupArchiveEntries(

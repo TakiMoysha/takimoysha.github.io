@@ -1,8 +1,8 @@
 # Blog & Documentation
 
-- __archive__: it's like blog and notes;
-- __cycles__ (review): like book about theme;
-- __projects__: my projects;
+- **archive**: it's like blog and notes;
+- **cycles** (review): like book about theme;
+- **projects**: my projects;
 
 ## Milestones
 
@@ -30,15 +30,20 @@
 
 # Resources
 
+- [Guide about content collections / inhaq.com](https://inhaq.com/blog/getting-started-with-astro-content-collections)
+
 - [Google Search Console / search.google.com](https://search.google.com/search-console/welcome)
 - [Microsoft Webmaster Tools / bing.com](https://www.bing.com/webmasters?siteUrl=https%3A%2F%2Ftakimoysha.github.io)
 - [Style and grid / inthistweet.app](https://inthistweet.app/)
-- [Reference / astro-paper.pages.dev](https://astro-paper.pages.dev/)
+- [Reference / templates / astro-paper.pages.dev](https://astro-paper.pages.dev/)
 - [Reference / Utilitarizm, but not style / microwebstacks.github.io](https://microwebstacks.github.io/astro-big-doc/)
 - [Reference / Simple and Cozy / github.com](https://github.com/nemanjam/nemanjam.github.io)
 - [Reference / Simple and Dark / github.com](https://github.com/tomcomtang/astro-multiplepage-portfolio)
 - [Reference / Header / github.com](https://roe.dev/blog/nuxt-server-components/)
 - [Reference / style / github.com](https://christianlempa.de)
-- [Semantic Interface Palette/ uxdesign.cc](https://uxdesign.cc/the-semantic-interface-palette-is-simple-09ef5349c0ca)
+- [Reference / functions / hackmd.io](https://hackmd.io)
+- [Reference / functions / fumadocs.dev](https://www.fumadocs.dev)
+
+- [Semantic Interface Palette / uxdesign.cc](https://uxdesign.cc/the-semantic-interface-palette-is-simple-09ef5349c0ca)
 
 - [TailwindCSS Tools / tailwindcolor.tools](https://tailwindcolor.tools)

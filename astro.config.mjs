@@ -6,6 +6,8 @@ import sitemap from "@astrojs/sitemap";
 
 import mdx from "@astrojs/mdx";
 
+import ToolbarDevContent from "./src/integrations/demo";
+
 // https://astro.build/config
 export default defineConfig({
 	site: "https://takimoysha.github.io",
@@ -14,7 +16,6 @@ export default defineConfig({
 		compress(),
 		mdx(),
 		sitemap({
-			// filter: (page) => page.match('/private/*') === null,
 			i18n: {
 				defaultLocale: "en",
 				locales: {
@@ -23,6 +24,7 @@ export default defineConfig({
 				},
 			},
 		}),
+		ToolbarDevContent,
 	],
 	vite: {
 		plugins: [tailwindcss()],
@@ -37,6 +39,6 @@ export default defineConfig({
 	},
 	output: "static",
 	devToolbar: {
-		enabled: false,
+		enabled: true,
 	},
 });

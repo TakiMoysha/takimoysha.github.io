@@ -1,9 +1,12 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
+
 import type { ArchiveEntryGroup } from "@/lib/content";
 import { getBlogCollection, groupArchiveEntries } from "@/lib/content";
 import { DEFAULT_LOCALE } from "@/consts";
 import { render } from "astro:content";
+
+import { Debug } from "astro:components";
 
 export async function getStaticPaths() {
 	const entries = await getBlogCollection({ sort: true });
@@ -14,6 +17,14 @@ export async function getStaticPaths() {
 		props: { group },
 	}));
 }
+const renderedLocales = await Promise.all(
+	locales.map(async (locale) => {
+		const entry = group.locales[locale];
+		const { Content, headings } = await render(entry);
+		return { locale, entry, Content, headings };
+	}),
+);
+
 
 interface PageProps {
 	group: ArchiveEntryGroup;
@@ -29,26 +40,11 @@ const fallbackEntry = group.locales[fallbackLocale];
 
 const activeLocale = fallbackLocale;
 
-// const renderedLocales = await Promise.all(
-//   locales.map(async (locale) => {
-//     const entry = group.locales[locale];
-//     const content = "";
-//     return { locale, entry, content }
-//   })
-// );
-const renderedLocales = await Promise.all(
-	locales.map(async (locale) => {
-		const entry = group.locales[locale];
-		const content = await render(entry);
-		return { locale, entry, Content: content };
-	}),
-);
-
 const pageTitle = `${fallbackEntry.data.title} | Archive`;
 const pageDescription = fallbackEntry.data.description;
 const canonical = Astro.site
 	? new URL(`/archive/${group.slug}`, Astro.site).toString()
-	: Astro.url.origin + `/archive/${group.slug}`;
+	: `${Astro.url.origin}/archive/${group.slug}`;
 ---
 <!-- <MakrdownLayout title={pageTitle} description={pageDescription} url={canonical}> -->
 <!-- </MakrdownLayout> -->
@@ -117,9 +113,7 @@ const canonical = Astro.site
 
   <script is:inline>
     (() => {
-      const container = document.querySelector(
-        "[data-locale-root]"
-      ) as HTMLElement | null;
+      const container = document.querySelector("[data-locale-root]");
       if (!container) return;
 
       const searchParams = new URLSearchParams(window.location.search);
