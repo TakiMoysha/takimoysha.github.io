@@ -1,38 +1,10 @@
-import {
-	BLOG_COLLECTION_NAME,
-	DEFAULT_LOCALE,
-	REGEX_LOCALE_PATTERN,
-} from "@/consts";
+import { DEFAULT_LOCALE, REGEX_LOCALE_PATTERN } from "@/consts";
 import type { ArchiveDocumentType } from "@/content.config";
-import { getCollection } from "astro:content";
 
-export async function getBlogCollection(
-	opts: { sort: boolean } = { sort: true },
-): Promise<ArchiveDocumentType[]> {
-	let data: ArchiveDocumentType[] = await getCollection(
-		BLOG_COLLECTION_NAME,
-		({ data }) => !data?.draft,
-	);
-
-	if (opts.sort === true) {
-		data = data.sort(
-			(a: ArchiveDocumentType, b: ArchiveDocumentType) =>
-				b.data.date.getTime() - a.data.date.getTime(),
-		);
-	}
-
-	return data;
-}
-
-export async function getAllBlogCollectionTags(): Promise<string[]> {
-	return getCollection(BLOG_COLLECTION_NAME, ({ data }) => !data?.draft).then(
-		(collection) => collection.flatMap((post) => post.data.tags),
-	);
-}
 // ============================================================================================
 
 // ============================================================================================
-export function parseDate(numdate: Number | String): Date | null {
+export function parseDate(numdate: number | string): Date | null {
 	if (typeof numdate === "number") numdate = String(numdate);
 
 	if (typeof numdate === "string") {
@@ -48,9 +20,12 @@ export function parseDate(numdate: Number | String): Date | null {
 	return null;
 }
 
+// ============================================================================================
 /**
  * Logical group for document, merge information from different files
  */
+// ============================================================================================
+
 export interface ArchiveEntryGroup {
 	slug: string;
 	locales: Record<string, ArchiveDocumentType>;
