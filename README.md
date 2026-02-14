@@ -20,6 +20,14 @@
 
 ## Migration to Nuxt+RsStack
 
+## Localization
+
+SaaS's:
+- Crowdin
+- Transifex
+- Lokalise
+
+
 #### tailwind color schemes
 
 > [!note] working with tailwindcss v4+
@@ -43,6 +51,9 @@
 - [Reference / style / github.com](https://christianlempa.de)
 - [Reference / functions / hackmd.io](https://hackmd.io)
 - [Reference / functions / fumadocs.dev](https://www.fumadocs.dev)
+- [Reference / full blog web site / github.com](https://github.com/NikaNats/Natspaper/tree/master)
+
+
 
 - [Semantic Interface Palette / uxdesign.cc](https://uxdesign.cc/the-semantic-interface-palette-is-simple-09ef5349c0ca)
 
