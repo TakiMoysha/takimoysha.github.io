@@ -33,7 +33,7 @@ const ld_json = JSON.stringify(
     ],
     "potentialAction": {
       "@type": "SearchAction",
-      "target": Astro.site + "/blog/search?q={search_string}",
+      "target": `${Astro.site}/blog/search?q={search_string}`,
       "query-input": "required query=search_string"
     }
   }

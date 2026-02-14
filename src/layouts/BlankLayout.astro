@@ -107,6 +107,12 @@ const testimonials: Array<{
 		<link rel="icon" type="image/svg+xml" href="/favicon.png" />
 	</head>
 
+	<script define:vars={{ properties, testimonials }}>
+		document.addEventListener("DOMContentLoaded", () => {
+			console.log("page-load", { properties, testimonials });
+		})
+	</script>
+
 <!--   <div class="flex-none"> -->
 <!--     <ul class="menu menu-horizontal px-1"> -->
 <!--       <li><a>Link</a></li> -->

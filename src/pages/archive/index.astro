@@ -1,23 +1,16 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import { getBlogCollection, groupArchiveEntries } from "@/lib/content";
+import { groupArchiveEntries } from "@/lib/content";
 import { DEFAULT_LOCALE } from "@/consts";
 import type { ArchiveEntryGroup } from "@/lib/content";
 
-
 import { Debug } from "astro:components";
+import { getBlogCollection } from "@/helpers";
 
 const pageTitle = "Archive";
 const pageDescription = "All notes, articles and blog posts.";
 
-const blogCollection = (await getBlogCollection({ sort: true })).filter(
-	(post) => {
-		const tags = Array.isArray(post.data.tags) ? post.data.tags : [];
-		const isPrivate = tags.includes("private");
-		const isHidden = post.data.draft || false;
-		return !isPrivate && !isHidden;
-	},
-);
+const blogCollection = await getBlogCollection({ sort: true });
 
 const entryGroups = groupArchiveEntries(blogCollection);
 
@@ -53,6 +46,9 @@ const formatter = new Intl.DateTimeFormat("en-US", {
 
 <BaseLayout title={pageTitle} description={pageDescription}>
   <div class="max-w-5xl mx-auto px-4 py-12">
+
+    <Debug blogCollection={blogCollection}/>
+
     <header class="mb-14">
       <h1 class="text-4xl font-bold text-base-content mb-3">{pageTitle}</h1>
       <p class="text-lg text-neutral-content">{pageDescription}</p>

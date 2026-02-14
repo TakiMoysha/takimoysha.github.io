@@ -20,17 +20,50 @@ export function parseDate(numdate: number | string): Date | null {
 	return null;
 }
 
-// ============================================================================================
 /**
  * Logical group for document, merge information from different files
+ * slug identifies a file, only the base menu is built.
+ * File extensions, locale and built-in parameters are metadata by which files are grouped.
  */
-// ============================================================================================
-
-export interface ArchiveEntryGroup {
+interface EntryGroup {
 	slug: string;
 	locales: Record<string, ArchiveDocumentType>;
 }
 
+export function parseCollectionIntoEntryGroup(docs: ArchiveDocumentType[]) {
+	const groups: Map<string, EntryGroup> = new Map();
+
+	const addEntryGroup = (group: EntryGroup) => {
+		const existing = groups.get(group.slug);
+		if (existing) {
+			existing.locales = {
+				...existing.locales,
+				...group.locales,
+			};
+		} else {
+			groups.set(group.slug, group);
+		}
+	};
+
+	filenames.forEach((fn) => {
+		// let locale = fn.match(REGEX_LOCALE_PATTERN);
+		const _filename = fn.split(".");
+
+		if (_filename.length === 3) {
+			const [slug, locale, ext] = _filename;
+			addEntryGroup({ slug, locales: { [locale]: { id: slug } } });
+		} else {
+			const [slug, ext] = _filename;
+			addEntryGroup({ slug, locales: { [DEFAULT_LOCALE]: { id: slug } } });
+		}
+
+		console.log(groups);
+	});
+}
+
+// ============================================================================================
+// ?TODO: REVIEW
+// ============================================================================================
 export function getArchiveLocale(entry: ArchiveDocumentType): string {
 	const match = entry.id.match(REGEX_LOCALE_PATTERN);
 	return match ? match[1].toLowerCase() : DEFAULT_LOCALE;

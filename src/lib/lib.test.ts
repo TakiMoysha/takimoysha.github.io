@@ -1,5 +1,7 @@
 import { expect, test, describe } from "bun:test";
 import { parseDate } from "./content.ts";
+import type { ArchiveDocumentType } from "@/content.config.ts";
+import { REGEX_LOCALE_PATTERN } from "@/consts.ts";
 
 describe("document parsing", () => {
 	test("should parse string to date", () => {
@@ -11,28 +13,54 @@ describe("document parsing", () => {
 	});
 });
 
+/**
+ * Logical group for document, merge information from different files
+ * slug identifies a file, only the base menu is built.
+ * File extensions, locale and built-in parameters are metadata by which files are grouped.
+ */
+interface EntryGroup {
+	slug: string;
+	locales: Record<string, ArchiveDocumentType>;
+}
 
-describe("content:loading", () => {
-	test("should group documents regardless of locales", () => {
-		let filenames = ["sql.en.mdx", "sql.ru.mdx"];
+describe("content:grouping", () => {
+	test("should loading files as EntryGroup", () => {
+		const filenames = ["sql.en.mdx", "sql.ru.mdx", "index.md", "index.mdx"];
 
-	})
-})
+		const groups: Map<string, EntryGroup> = new Map();
 
-// export interface ArchiveEntryGroup {
-// 	slug: string;
-// 	locales: Record<string, ArchiveDocumentType>;
-// }
-//
+		const addEntryGroup = (group: EntryGroup) => {
+			const existing = groups.get(group.slug);
+			if (existing) {
+				existing.locales = {
+					...existing.locales,
+					...group.locales,
+				};
+			} else {
+				groups.set(group.slug, group);
+			}
+		};
+
+		filenames.forEach((fn) => {
+			// let locale = fn.match(REGEX_LOCALE_PATTERN);
+			const _filename = fn.split(".");
+
+			// WARN: astro:content does not support tests
+
+			console.log(groups);
+		});
+	});
+});
+
 // export function getArchiveLocale(entry: ArchiveDocumentType): string {
 // 	const match = entry.id.match(REGEX_LOCALE_PATTERN);
 // 	return match ? match[1].toLowerCase() : DEFAULT_LOCALE;
 // }
-//
+
 // export function getArchiveBaseSlug(entry: ArchiveDocumentType): string {
 // 	return entry.id.replace(REGEX_LOCALE_PATTERN, "");
 // }
-//
+
 // export function groupArchiveEntries(
 // 	entries: readonly ArchiveDocumentType[],
 // ): ArchiveEntryGroup[] {

@@ -111,7 +111,7 @@ const canonical = Astro.site
     </div>
   </div>
 
-  <script is:inline>
+  <script>
     (() => {
       const container = document.querySelector("[data-locale-root]");
       if (!container) return;
@@ -125,7 +125,7 @@ const canonical = Astro.site
 
       const target = locales.includes(requested) ? requested : fallback;
 
-      const setActive = (locale) => {
+      const setActive = (locale: any) => {
         locales.forEach((code) => {
           const node = container.querySelector<HTMLElement>(
             `[data-locale="${code}"]`

@@ -2,7 +2,7 @@ export const BLOG_COLLECTION_NAME = "archive";
 export const DEFAULT_LOCALE = "en";
 export const SUPPORTED_LANGUAGES = ["en", "ru"];
 export const REGEX_LOCALE_PATTERN = new RegExp(
-  `\\.(${SUPPORTED_LANGUAGES.join("|")})$`,
+  `\\.(${SUPPORTED_LANGUAGES.join("|")}\\.)`,
   "i",
 );
 export const SITE: {

@@ -1,12 +1,12 @@
-import slugify from "slugify";
 import { defineCollection, z } from "astro:content";
 import { file, glob } from "astro/loaders";
+import slugify from "slugify";
 import { parseDate } from "@/lib/content";
 
 const docsMetaSchema = z.object({
 	title: z.string(),
 	date: z.number().transform((val, ctx) => {
-		let res = parseDate(val);
+		const res = parseDate(val);
 
 		if (res) return res;
 
