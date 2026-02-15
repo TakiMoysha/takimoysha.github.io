@@ -14,20 +14,20 @@ jobs:
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v6
-      - name: Install, build, and upload your site output
-        uses: withastro/action@v5
-        env:
-          PUBLIC_GOOGLE_SITE_VERIFICATION: ${{ vars.PUBLIC_GOOGLE_SITE_VERIFICATION }}
-          PUBLIC_BING_SITE_VERIFICATION: ${{ vars.PUBLIC_BING_SITE_VERIFICATION }}
+      # - name: Install, build, and upload your site output
+      #   uses: withastro/action@v5
+      #   env:
+      #     PUBLIC_GOOGLE_SITE_VERIFICATION: ${{ vars.PUBLIC_GOOGLE_SITE_VERIFICATION }}
+          # PUBLIC_BING_SITE_VERIFICATION: ${{ vars.PUBLIC_BING_SITE_VERIFICATION }}
 
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+  # deploy:
+  #   needs: build
+  #   runs-on: ubuntu-latest
+  #   environment:
+  #     name: github-pages
+  #     url: ${{ steps.deployment.outputs.page_url }}
+  #   steps:
+  #     - name: Deploy to GitHub Pages
+  #       id: deployment
+  #       uses: actions/deploy-pages@v4

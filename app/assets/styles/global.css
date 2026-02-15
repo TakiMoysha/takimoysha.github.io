@@ -1,0 +1,144 @@
+@import "tailwindcss";
+
+@plugin "@tailwindcss/typography";
+
+@plugin "daisyui" {
+	themes:
+		nord --default,
+		dark --prefersdark;
+}
+
+@theme {
+	/* --font-sans: "Inter", sans-serif; */
+	/* --font-mono: "Fira Code", monospace; */
+	--font-digital: "Share Tech Mon", monospace;
+}
+
+/* :root { */
+/* 	--background: var(--color-zinc-50); */
+/* 	--foreground: var(--color-zinc-800); */
+/* 	--accent: var(--color-amber-300); */
+/**/
+/* 	--muted: var(--color-zinc-700); */
+/* 	--muted-foreground: var(--color-zinc-500); */
+/* } */
+
+/* [data-theme="dark"] { */
+/* 	--background: "#431407"; */
+/* 	--foreground: "#fee2e2"; */
+/* 	--accent: "#9f1239"; */
+/* 	--accent-foreground: #ffedd5; */
+/**/
+/* 	--muted: var(--color-zinc-700); */
+/* 	--muted-foreground: var(--color-zinc-500); */
+/**/
+/* 	--color-brand: var(--color-emerald-500); */
+/* 	--color-primary: oklch(0.9356 0.0309 17.72); */
+/* 	--color-primary-hover: oklch(0.9356 0.0309 17.72); */
+/* 	--color-primary-200: oklch(0.9356 0.0309 17.72); */
+/* 	--color-primary-300: oklch(0.9356 0.0309 17.72); */
+/* 	--color-secondary: var(text-gray-500); */
+/* 	--color-secondary-hover: oklch(0.4546 0.1713 13.7); */
+/* 	--color-accent: oklch(0.9563 0.0443 203.39); */
+/* 	--color-accent-hover: oklch(0.2659 0.0762 36.26); */
+
+/* --color-onlight-text: var(--color-zinc-300); */
+/* --color-ondark-text: var(--color-zinc-400); */
+
+/* TODO: Semtantic theme, main tokens */
+/* titles, paragraphs, labesl, etc. */
+/* --color-content: oklch(0.9874 0.0315 17.72); */
+/* --color-headings: oklch(0.9556 0.0559 17.72); */
+/* --color-captions: oklch(0.8939 0.0479 17.72); */
+
+/* containers, icons, checkboxes, etc. */
+/* --color-fill: var(--background); */
+/* --color-fill-100: var(--background); */
+/* --color-fill-200: var(--background); */
+/* --color-fill-positive: var(--color-green-500); */
+/* --color-fill-negative: var(--color-orange-500); */
+/* --color-fill-attentiion: var(--color-red-500); */
+
+/* borders, dividers, etc */
+/* --color-stroke: var(--color-accent); */
+
+/* backgrounds, overlays etc. */
+/* --color-layer: var(--color-secondar); */
+/* --color-layer-100: var(--color-background); */
+/* --color-layer-200: var(--color-background); */
+/* --color-layer-overlay: var(--color-background); */
+
+/* shadows, touch feedback, etc */
+/* --color-effect: var(--color-accent-fg); */
+/* } */
+
+/* 'color-1': '#fee2e2', */
+/* 'color-2': '#9f1239', */
+/* 'color-3': '#ffedd5', */
+/* 'color-4': '#431407', */
+/* 'color-5': '#cffafe', */
+
+/* @theme { */
+/* --font-sans: "Inter", sans-serif; */
+/* --font-mono: "Fira Code", monospace; */
+
+/*   --color-zinc-50: #fafafa; */
+/*   --color-zinc-900: #111827; */
+/*   --color-amber-300: #fbbf24; */
+/*   --color-emerald-500: #059669; */
+/*   --color-red-500: #ef4444; */
+/*   --color-green-500: #10b981; */
+/*   --color-orange-500: #f97316; */
+/*   --color-cyan-500: #06b6d4; */
+/**/
+/*   --color-brand: var(--color-emerald-500); */
+/*   --color-primary: oklch(0.9356 0.0309 17.72); */
+/*   --color-primary-hover: oklch(0.9056 0.0289 17.72); */
+/*   --color-accent: oklch(0.9563 0.0443 203.39); */
+/*   --color-accent-hover: oklch(0.2659 0.0762 36.26); */
+/**/
+/*   --color-content: oklch(0.9874 0.0315 17.72); */
+/*   --color-headings: oklch(0.9556 0.0559 17.72); */
+/*   --color-captions: oklch(0.8939 0.0479 17.72); */
+/*   --color-fill-positive: var(--color-green-500); */
+/*   --color-fill-negative: var(--color-red-500); */
+/*   --color-fill-attention: var(--color-orange-500); */
+/*   --color-stroke: var(--color-accent); */
+/*   --color-layer-100: var(--color-zinc-50); */
+/*   --color-layer-200: var(--color-zinc-100); */
+/*   --color-effect: var(--color-accent-hover); */
+/* } */
+
+/* Dark mode */
+@layer theme {
+	@media (prefers-color-scheme: dark) {
+		:root {
+			--color-fill-ground: var(--color-black);
+		}
+	}
+}
+
+/* Custom scroll bar for reading  */
+@layer {
+	::-webkit-scrollbar {
+		width: 6px;
+	}
+	::-webkit-scrollbar-track {
+		background-color: transparent;
+	}
+	::-webkit-scrollbar-thumb {
+		background-color: var(--color-foreground);
+	}
+	::-webkit-scrollbar-thumb:hover {
+		background-color: var(--color-accent);
+	}
+}
+
+/** Theme Switch Transition */
+::view-transition-old(root),
+::view-transition-new(root) {
+	animation: none;
+	mix-blend-mode: normal;
+}
+
+
