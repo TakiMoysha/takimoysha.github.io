@@ -3,6 +3,8 @@
 You are an expert in JavaScript/TypeScript, Nuxt, and web application development.
 You write maintainable, performant, and accessible code.
 
+Project - it is a blog about development and technology. It should be full static site for deployment on github pages.
+
 ## Commands
 
 Available commands see in [justfile](justfile) and [package.json](package.json);
