@@ -3,8 +3,7 @@ import { defineEventHandler, getRequestURL } from 'h3';
 export default defineEventHandler(async (event) => {
   const siteUrl = getRequestURL(event).origin;
 
-  // For now, return a basic RSS feed
-  // In a production setup, you'd fetch from Nuxt Content API
+  // TODO: use nuxt content api
   const rssXml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>

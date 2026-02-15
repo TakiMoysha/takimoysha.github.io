@@ -1,34 +1,10 @@
 <template>
   <html :lang="lang" />
-  <Link rel="canonical" :href="canonicalURL" />
-  <Title>{{ title }}</Title>
-  <Meta name="description" :content="description" />
-
-  <!-- OpenGraph -->
-  <Meta property="og:title" :content="title" />
-  <Meta property="og:description" :content="description" />
-  <Meta property="og:url" :content="canonicalURL" />
-  <Meta property="og:locale" :content="lang" />
-  <Meta property="og:type" content="website" />
-  <Meta property="og:site_name" content="TakiMoysha" />
-  <template v-if="imageURL">
-    <Meta property="og:image" :content="imageURL" />
-    <Meta property="og:image:width" content="1200" />
-    <Meta property="og:image:height" content="630" />
-  </template>
-
-  <!-- Twitter / X -->
-  <template v-if="imageURL">
-    <Meta property="twitter:card" content="summary_large_image" />
-    <Meta property="twitter:image" :content="imageURL" />
-  </template>
-  <Meta property="twitter:url" :content="canonicalURL" />
-  <Meta property="twitter:title" :content="title" />
-  <Meta property="twitter:description" :content="description" />
+  <link rel="canonical" :href="canonicalURL" />
 
   <!-- Language alternates -->
-  <Link v-if="lang === 'en'" rel="alternate" hreflang="ru" :href="`${siteUrl}/ru/`" />
-  <Link v-if="lang === 'ru'" rel="alternate" hreflang="en" :href="`${siteUrl}/en/`" />
+  <link v-if="lang === 'en-US'" rel="alternate" hreflang="ru" :href="`${siteUrl}/ru/`" />
+  <link v-if="lang === 'ru-RU'" rel="alternate" hreflang="en" :href="`${siteUrl}/en/`" />
 
   <!-- Sitemap -->
   <Link rel="sitemap" href="/sitemap.xml" />
@@ -49,7 +25,7 @@ import { SITE } from '@/consts'
 
 interface Props {
   title: string
-  lang?: 'en' | 'ru'
+  lang?: 'en-US' | 'ru-RU'
   description?: string
   url?: string
   author?: string
@@ -71,7 +47,7 @@ const canonicalURL = computed(() => {
 })
 
 const googleSiteVerification = useRuntimeConfig().public.googleSiteVerification || ''
-const bingSiteVerification = useRuntimeConfig().public.bingSiteVerification || ''
+const bingSiteVerification = useAppConfig().public.bingSiteVerification || ''
 
 const ldJson = computed(() => {
   const json = {
@@ -92,14 +68,15 @@ const ldJson = computed(() => {
   return JSON.stringify(json)
 })
 
-// useSeoMeta({
-//   title: props.title,
-//   description: props.description,
-//   ogTitle: props.title,
-//   ogDescription: props.description,
-//   ogImage: props.imageURL,
-//   twitterTitle: props.title,
-//   twitterDescription: props.description,
-//   twitterImage: props.imageURL
-// })
+useSeoMeta({
+  title: props.title,
+  description: props.description,
+  ogTitle: props.title,
+  ogDescription: props.description,
+  ogImage: props.imageURL,
+  twitterTitle: props.title,
+  twitterDescription: props.description,
+  twitterImage: props.imageURL
+
+})
 </script>
