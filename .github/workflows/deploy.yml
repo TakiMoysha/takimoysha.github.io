@@ -37,6 +37,9 @@ jobs:
       - name: Install dependencies
         run: bun install
 
+      - name: Run Tests
+        run: bun run test
+
       - name: Static HTML export with Nuxt
         run: bun run generate
         env:
