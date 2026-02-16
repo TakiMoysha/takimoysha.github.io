@@ -38,11 +38,6 @@ SaaS's:
 
 # Resources
 
-- [Guide about content collections / inhaq.com](https://inhaq.com/blog/getting-started-with-astro-content-collections)
-
-- [Google Search Console / search.google.com](https://search.google.com/search-console/welcome)
-- [Microsoft Webmaster Tools / bing.com](https://www.bing.com/webmasters?siteUrl=https%3A%2F%2Ftakimoysha.github.io)
-- [Style and grid / inthistweet.app](https://inthistweet.app/)
 - [Reference / templates / astro-paper.pages.dev](https://astro-paper.pages.dev/)
 - [Reference / Utilitarizm, but not style / microwebstacks.github.io](https://microwebstacks.github.io/astro-big-doc/)
 - [Reference / Simple and Cozy / github.com](https://github.com/nemanjam/nemanjam.github.io)
@@ -53,7 +48,9 @@ SaaS's:
 - [Reference / functions / fumadocs.dev](https://www.fumadocs.dev)
 - [Reference / full blog web site / github.com](https://github.com/NikaNats/Natspaper/tree/master)
 
-
 - [Semantic Interface Palette / uxdesign.cc](https://uxdesign.cc/the-semantic-interface-palette-is-simple-09ef5349c0ca)
 
 - [TailwindCSS Tools / tailwindcolor.tools](https://tailwindcolor.tools)
+- [Google Search Console / SEO Info / search.google.com](https://search.google.com/search-console/welcome)
+- [Microsoft Webmaster Tools / SEO Info / bing.com](https://www.bing.com/webmasters?siteUrl=https%3A%2F%2Ftakimoysha.github.io)
+- [Style and grid / How looking in twitter / inthistweet.app](https://inthistweet.app/)
