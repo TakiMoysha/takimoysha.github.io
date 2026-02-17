@@ -10,6 +10,7 @@ export const SITE = {
   description: 'Blog, notes and reports about development and technology.' as string,
   defaultLanguage: 'en-US' as 'en-US' | 'ru-RU',
   themes: ['dark'] as Array<string>,
+  url: 'https://takimoysha.github.io',
 };
 
 export const SOCIALS = [
