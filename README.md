@@ -18,8 +18,6 @@
 
 ## ULP
 
-## Migration to Nuxt+RsStack
-
 ## Localization
 
 SaaS's:
@@ -36,17 +34,19 @@ SaaS's:
 - working with **color palette**, adobe color wheel;
 -
 
+> [?] migrate to unocss 
+
 # Resources
 
 - [Reference / templates / astro-paper.pages.dev](https://astro-paper.pages.dev/)
 - [Reference / Utilitarizm, but not style / microwebstacks.github.io](https://microwebstacks.github.io/astro-big-doc/)
 - [Reference / Simple and Cozy / github.com](https://github.com/nemanjam/nemanjam.github.io)
 - [Reference / Simple and Dark / github.com](https://github.com/tomcomtang/astro-multiplepage-portfolio)
-- [Reference / Header / github.com](https://roe.dev/blog/nuxt-server-components/)
 - [Reference / style / github.com](https://christianlempa.de)
 - [Reference / functions / hackmd.io](https://hackmd.io)
 - [Reference / functions / fumadocs.dev](https://www.fumadocs.dev)
 - [Reference / full blog web site / github.com](https://github.com/NikaNats/Natspaper/tree/master)
+- [Reference / Nuxt / Header / github.com](https://roe.dev/blog/nuxt-server-components/)
 
 - [Semantic Interface Palette / uxdesign.cc](https://uxdesign.cc/the-semantic-interface-palette-is-simple-09ef5349c0ca)
 

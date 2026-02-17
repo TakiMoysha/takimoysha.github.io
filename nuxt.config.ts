@@ -1,37 +1,90 @@
-// TODO: compress, mdx, sitemap
-import tailwindcss from '@tailwindcss/vite';
-
 const SITE_URL = 'https://takimoysha.github.io';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
-  modules: ['@nuxt/content', '@nuxtjs/i18n', '@nuxtjs/sitemap'],
+  modules: [
+    // 'nuxt-og-image',            // Автоматическая генерация OG-изображений для соцсетей
+    '@nuxtjs/sitemap',
+    '@nuxtjs/i18n',
+    // 'magic-regexp/nuxt',        // Улучшенные регулярки в Markdown
+    // '@nuxt/image',              // Оптимизация изображений (IPX, Cloudinary и др.)
+    '@nuxtjs/html-validator', // Validation of HTML for compliance with standards
+    '@unocss/nuxt', // faster then tailwindcss
+    '@nuxt/content', // static content md/mdx/json
+    // '@nuxt/fonts', // custom fonts (Google Fonts)
+    // '@nuxt/scripts', // scripts (Google Tag Manager, Meta Pixel etc.)
+    // '@nuxt/schema', // TODO: not working
+  ],
+
+  $development: {
+    modules: ['@nuxtjs/sanity'],
+  },
+  $production: {
+    modules: ['nuxt-security'],
+    experimental: {
+      noVueServer: true,
+    },
+  },
+  $test: {
+    modules: ['@nuxt/test-utils/module'],
+    experimental: {
+      componentIslands: true,
+    },
+  },
+
+  app: {
+    head: {
+      htmlAttrs: { lang: 'en-US' },
+      title: 'Digital Decay',
+    },
+    pageTransition: false,
+    layoutTransition: false,
+  },
+
   site: { url: SITE_URL },
   sitemap: {
     zeroRuntime: true, // when sitemap is generated on build
-    urls: [
-      {
-        loc: SITE_URL,
-        lastmod: new Date(),
-      },
-    ],
   },
   components: {
     dirs: [{ path: './app/components/', pathPrefix: false }],
   },
   vite: {
+    css: { lightningcss: {} },
+    build: { modulePreload: { polyfill: false } },
+    vue: { features: { optionsAPI: false } },
     clearScreen: true,
-    plugins: [
-      // @ts-expect-error type mismath between tailwindcss and vite
-      tailwindcss(),
-    ],
   },
 
-  ssr: false, // TODO: try with 
-  css: ['./app/assets/styles/global.css'],
+  runtimeConfig: {
+    sanity: { token: '' },
+    public: {
+      googleSiteVerification: '',
+      bingSiteVerification: '',
+    },
+  },
+
+  content: {
+    watch: { enabled: false },
+    build: {
+      markdown: {
+        highlight: { theme: 'tokyo-night', langs: ['js', 'json', 'python'] },
+      },
+    },
+  },
+
+  css: ['@unocss/reset/tailwind.css', '~/assets/styles/global.css'],
+  ssr: false, // for github pages
   nitro: {
+    experimental: { tasks: true },
+    future: { nativeSWR: true },
+    prerender: {
+      crawlLinks: true,
+      ignore: ['/__nuxt_content'],
+      routes: ['/'],
+    },
+    hooks: {},
     preset: 'static',
   },
 
@@ -41,5 +94,26 @@ export default defineNuxtConfig({
       { code: 'ru', iso: 'ru-RU', name: 'Русский' },
     ],
     defaultLocale: 'en',
+  },
+
+  htmlValidator: {
+    failOnError: true,
+  },
+
+  ogImage: {
+    zeroRuntime: true,
+  },
+
+  security: {
+    headers: {
+      crossOroginEmbedderPolicy: false,
+    },
+  },
+
+  social: {
+    networks: {
+      linkedin: { identifier: 'takimoysha.arpa' },
+      github: { identifier: 'takimoysha.arpa' },
+    },
   },
 });

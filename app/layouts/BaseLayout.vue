@@ -1,5 +1,6 @@
 <template>
   <Html lang="en" dir="ltr" data-theme="dark" />
+
   <Head>
     <Meta charset="UTF-8" />
     <Meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -32,8 +33,7 @@ interface Props {
 const props = defineProps<Props>();
 
 const route = useRoute();
-const siteUrl =
-  useRuntimeConfig().public.siteUrl || 'https://takimoysha.github.io';
+const siteUrl = useRuntimeConfig().public.siteUrl;
 
 const url = computed(() => {
   return props.url || `${siteUrl}${route.path}`;

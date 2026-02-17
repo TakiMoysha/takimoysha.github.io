@@ -1,23 +1,22 @@
-import { DEFAULT_LOCALE, REGEX_LOCALE_PATTERN } from "@/consts";
-import type { ArchiveDocumentType } from "@/content.config";
+import { DEFAULT_LOCALE, REGEX_LOCALE_PATTERN } from '@/consts';
 
 // ============================================================================================
 
 // ============================================================================================
 export function parseDate(numdate: number | string): Date | null {
-	if (typeof numdate === "number") numdate = String(numdate);
+  if (typeof numdate === 'number') numdate = String(numdate);
 
-	if (typeof numdate === "string") {
-		let date = `${numdate.slice(0, 4)}-${numdate.slice(4, 6)}-${numdate.slice(6, 8)}`;
+  if (typeof numdate === 'string') {
+    let date = `${numdate.slice(0, 4)}-${numdate.slice(4, 6)}-${numdate.slice(6, 8)}`;
 
-		if (numdate.length === 12) {
-			date += `T${numdate.slice(8, 10)}:${numdate.slice(10, 12)}`;
-		}
+    if (numdate.length === 12) {
+      date += `T${numdate.slice(8, 10)}:${numdate.slice(10, 12)}`;
+    }
 
-		return new Date(date);
-	}
+    return new Date(date);
+  }
 
-	return null;
+  return null;
 }
 
 /**
@@ -25,40 +24,43 @@ export function parseDate(numdate: number | string): Date | null {
  * slug identifies a file, only the base menu is built.
  * File extensions, locale and built-in parameters are metadata by which files are grouped.
  */
+
+type DocumentEntry = {};
+
 interface EntryGroup {
-	slug: string;
-	locales: Record<string, ArchiveDocumentType>;
+  slug: string;
+  locales: Record<string, DocumentEntry>;
 }
 
-export function parseCollectionIntoEntryGroup(docs: ArchiveDocumentType[]) {
-	const groups: Map<string, EntryGroup> = new Map();
+export function parseCollectionIntoEntryGroup(docs: DocumentEntry[]) {
+  const groups: Map<string, EntryGroup> = new Map();
 
-	const addEntryGroup = (group: EntryGroup) => {
-		const existing = groups.get(group.slug);
-		if (existing) {
-			existing.locales = {
-				...existing.locales,
-				...group.locales,
-			};
-		} else {
-			groups.set(group.slug, group);
-		}
-	};
+  const addEntryGroup = (group: EntryGroup) => {
+    const existing = groups.get(group.slug);
+    if (existing) {
+      existing.locales = {
+        ...existing.locales,
+        ...group.locales,
+      };
+    } else {
+      groups.set(group.slug, group);
+    }
+  };
 
-	filenames.forEach((fn) => {
-		// let locale = fn.match(REGEX_LOCALE_PATTERN);
-		const _filename = fn.split(".");
+  filenames.forEach((fn) => {
+    // let locale = fn.match(REGEX_LOCALE_PATTERN);
+    const _filename = fn.split('.');
 
-		if (_filename.length === 3) {
-			const [slug, locale, ext] = _filename;
-			addEntryGroup({ slug, locales: { [locale]: { id: slug } } });
-		} else {
-			const [slug, ext] = _filename;
-			addEntryGroup({ slug, locales: { [DEFAULT_LOCALE]: { id: slug } } });
-		}
+    if (_filename.length === 3) {
+      const [slug, locale, ext] = _filename;
+      addEntryGroup({ slug, locales: { [locale]: { id: slug } } });
+    } else {
+      const [slug, ext] = _filename;
+      addEntryGroup({ slug, locales: { [DEFAULT_LOCALE]: { id: slug } } });
+    }
 
-		console.log(groups);
-	});
+    console.log(groups);
+  });
 }
 
 // ============================================================================================

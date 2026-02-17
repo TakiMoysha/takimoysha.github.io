@@ -7,7 +7,7 @@ export const REGEX_LOCALE_PATTERN = new RegExp(
 
 export const SITE = {
   title: 'Digital Decay' as string,
-  description: 'Blog, notes and reports about development.' as string,
+  description: 'Blog, notes and reports about development and technology.' as string,
   defaultLanguage: 'en-US' as 'en-US' | 'ru-RU',
   themes: ['dark'] as Array<string>,
 };
