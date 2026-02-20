@@ -119,8 +119,6 @@ html[data-theme="halloween"] {
   --color-error-content: oklch(0.1 0.01 25);
 }
 
-
-
 /* layer theme takes precedence over theme, so debug will be overridden */
 @layer theme {
   :root,
@@ -130,8 +128,16 @@ html[data-theme="halloween"] {
       --color-debug-content: oklch(0.4 0.8 20);
     }
   }
+  :root,
+  :host {
+    @variant not-dark {
+      --color-debug: oklch(0.7 0.15 0);
+      --color-debug-content: oklch(1 0.1 400);
+    }
+  }
 }
 
+/* define theme utitility classes */
 @theme {
   /* :root { */
   --color-debug: oklch(0.7 0.15 0);
@@ -169,6 +175,10 @@ html[data-theme="halloween"] {
 
   --color-error: var(--color-error);
   --color-error-content: var(--color-error-content);
+
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-digital: var(--font-digital);
 }
 
 body {

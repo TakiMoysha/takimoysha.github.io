@@ -17,15 +17,17 @@
 - pagefind: maybe;
 - shiki: styling;
 
+- docs/skills update pipeline - count tokens from all files and update token section in yaml front matter in SKILLS with description each file tokens.
+
 ## ULP
 
 ## Localization
 
 SaaS's:
+
 - Crowdin
 - Transifex
 - Lokalise
-
 
 #### tailwind color schemes
 
@@ -35,7 +37,7 @@ SaaS's:
 - working with **color palette**, adobe color wheel;
 -
 
-> [?] migrate to unocss 
+> [?] migrate to unocss
 
 # Resources
 

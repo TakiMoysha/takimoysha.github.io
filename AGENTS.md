@@ -1,8 +1,5 @@
 # AGENTS.md
 
-You are an expert in JavaScript/TypeScript, Nuxt 4, Vue 3, and web application development.
-You write maintainable, performant, and accessible code.
-
 ## Project Overview
 
 This is **Digital Decay** - a blog about development and technology.
@@ -11,7 +8,7 @@ It's a full static site built for deployment on GitHub Pages.
 **Key Technologies:**
 
 - Nuxt 4 (with Nuxt Content for MD/MDX)
-- Vue 3 (Composition API, OptionsAPI disabled)
+- Vue 3 (Composition API, OptionsAPI disabled by config)
 - TailwindCSS 4 + DaisyUI 5 (semantic theming)
 - UnoCSS (for utilities, faster than Tailwind)
 - TypeScript
@@ -20,45 +17,29 @@ It's a full static site built for deployment on GitHub Pages.
 
 **Package Manager:** Use `bun` for all package operations.
 
+You have mcp server:
+
+- chrome-devtools - for debugging pages, use `brave` browser.
+
+Когда заканчиваешь задачу, посмотри AGENTS.md и поправь, если это требуется.
+
 ---
 
 ## Project Structure
 
-```
-├── app/
-│   ├── assets/
-│   │   ├── styles/mail.css      # Tailwind
-│   │   └── icons/                 # SVG icons
-│   ├── components/                # Vue components (auto-imported)
-│   │   ├── RootSeo.vue
-│   │   ├── RootHeader.vue
-│   │   ├── RootFooter.vue
-│   │   └── ...
-│   ├── composables/               # Vue composables (auto-imported)
-│   ├── layouts/                   # Nuxt layouts
-│   │   ├── BaseLayout.vue
-│   │   ├── BookLayout.vue
-│   │   └── ...
-│   ├── lib/                       # Utility functions
-│   ├── pages/                     # File-based routing
-│   │   ├── index.vue
-│   │   ├── archive/
-│   │   ├── cycles/
-│   │   └── projects/
-│   ├── consts.ts                  # Site constants
-│   └── app.vue                    # Root app component
-├── content/                       # Nuxt Content collections
-│   ├── archive/*.md               # Blog posts
-│   ├── cycles/*.json              # Data files
-│   └── projects/*.mdx             # Project pages
-├── tests/
-│   ├── unit/                      # Unit tests
-│   └── nuxt/                      # Nuxt integration tests
-├── nuxt.config.ts                 # Nuxt configuration
-├── content.config.ts              # Content collections config
-├── biome.json                     # Linting/formatting rules
-└── vitest.config.mts              # Test configuration
-```
+Use Standard nuxt project structure.
+
+- `./app/consts.ts` - site constants
+- `./content/archive/` - атомарные посты, блог или заметки.
+- `./content/cycles/` - цикл по определенной теме. на верхнем уровне лежат json, описывающие циклы и что содержат.
+- `./content/docs/` - documentation about this project
+- `./content/projects/` - project page, often these are embedded files, other sites, wasm projects, etc. mdx is used
+- `./tests/unit/` - unit tests
+- `./tests/nuxt/` - nuxt integration tests
+- `./content.config.ts` - content collections config
+- `./biome.json` - linting/formatting rules
+- `./vitest.config.mts` - test configuration
+- `./.oxlintrc` - linting rules (oxlint uses as second linter)
 
 ---
 
@@ -87,11 +68,7 @@ Also see [justfile](justfile).
 ### General
 
 - Use **TypeScript** for all new code
-- Use **Composition API** with `<script setup>` syntax
-- OptionsAPI is disabled in Vite config
-- Prefer `const` over `let`, never use `var`
-- Use single quotes for strings
-- 2 spaces for indentation
+- Use **Composition API** with `<script setup lang="ts">` syntax.
 
 More about tech stack and practices and rules in [SKILLS.md](SKILLS.md).
 
