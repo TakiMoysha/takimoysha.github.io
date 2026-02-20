@@ -37,7 +37,7 @@ const ldJson = computed(() =>
     ],
     potentialAction: {
       '@type': 'SearchAction',
-      target: `${siteUrl}/blog/search?q={search_string}`,
+      target: `${siteUrl}/archive/search?q={search_string}`,
       'query-input': 'required query=search_string',
     },
   }),

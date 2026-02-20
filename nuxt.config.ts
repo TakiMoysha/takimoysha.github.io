@@ -6,9 +6,17 @@ const SITE_URL = 'https://takimoysha.github.io';
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
+
+  hooks: {
+    'content:file:afterParse'(ctx) {
+      const match = ctx.file.id.match(/\.(ru|en)$/);
+      ctx.content.locale = match?.[1] ?? 'en';
+    },
+  },
+
   modules: [
-    '@nuxtjs/sitemap',        // Улучшенные регулярки в Markdown
-    '@nuxtjs/i18n',           //
+    '@nuxtjs/sitemap', // Улучшенные регулярки в Markdown
+    '@nuxtjs/i18n', //
     // 'nuxt-og-image',       // Автоматическая генерация OG-изображений для соцсетей
     // '@nuxt/image',         // Оптимизация изображений (IPX, Cloudinary и др.)
     '@nuxtjs/html-validator', // static content md/mdx/json
@@ -16,10 +24,10 @@ export default defineNuxtConfig({
     // '@nuxt/scripts',       // scripts (Google Tag Manager, Meta Pixel etc.)
     // '@unocss/nuxt',        // faster then tailwindcss
     // '@nuxt/schema',        // TODO: wip
-    '@nuxt/content',          //
-    '@nuxt/ui',               //
-    '@nuxtjs/robots',         //
-    'nuxt-studio',            //
+    '@nuxt/content', //
+    '@nuxt/ui', //
+    '@nuxtjs/robots', //
+    'nuxt-studio', //
   ],
 
   $production: {
@@ -95,9 +103,10 @@ export default defineNuxtConfig({
   i18n: {
     locales: [
       { code: 'en', iso: 'en-US', name: 'English' },
-      { code: 'ru', iso: 'ru-RU', name: 'Русский' },
+      { code: 'ru', iso: 'ru-RU', name: 'Русский' },
     ],
     defaultLocale: 'en',
+    strategy: 'prefix_except_default',
   },
 
   htmlValidator: {

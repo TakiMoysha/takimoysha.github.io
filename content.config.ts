@@ -6,13 +6,14 @@ const archiveSchema = z.object({
   description: z.string().optional(),
   tags: z.array(z.string()).default([]),
   date: z.string(),
+  locale: z.string().default('en'),
 });
 
 const cyclesSchema = z.object({
   title: z.string(),
   description: z.string().optional(),
+  locale: z.string().default('en'),
 });
-
 
 export default defineContentConfig({
   collections: {
@@ -30,6 +31,11 @@ export default defineContentConfig({
     projects: defineCollection({
       type: 'page',
       source: 'content/projects/*.mdx',
+      schema: z.object({
+        title: z.string(),
+        description: z.string().optional(),
+        locale: z.string().default('en'),
+      }),
     }),
   },
 });

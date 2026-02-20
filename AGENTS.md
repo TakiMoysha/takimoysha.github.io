@@ -190,11 +190,34 @@ Supported locales:
 - `en` (default) - English (en-US)
 - `ru` - Russian (ru-RU)
 
-Content files can include locale suffixes:
+### Content Localization
 
-- `post.md` - Default locale
+Content files use locale postfixes before the extension:
+
+- `post.md` - Default locale (en)
 - `post.ru.md` - Russian version
-- `post.en.md` - English version
+- `post.en.md` - English (explicit)
+
+### Architecture
+
+```
+nuxt.config.ts          # Hook: content:file:afterParse extracts locale
+content.config.ts       # Schema: locale field in collections
+app/utils/content-locale.ts    # Utilities for parsing/grouping
+app/composables/useLocalizedContent.ts  # Main composable
+```
+
+### Usage
+
+```typescript
+const { getBySlug, getList } = useLocalizedContent('archive');
+
+// Get entry for current locale with fallback
+const entry = await getBySlug('my-post');
+
+// Get all entries grouped by slug
+const entries = await getList();
+```
 
 Use `const { locale } = useI18n()` for locale-aware logic.
 
@@ -208,7 +231,7 @@ Test pure functions and utilities:
 
 ```typescript
 import { describe, expect, it } from "vitest";
-import { someUtility } from "~/lib/utils";
+import { someUtility } from "~/utils";
 
 describe("someUtility", () => {
   it("should return expected result", () => {
@@ -269,7 +292,7 @@ This project generates a static site for GitHub Pages:
 
 ## Best Practices
 
-1. **Write tests for utilities** in `app/lib/`
+1. **Write tests for utilities** in `app/utils/`
 2. **Use semantic HTML**
 3. **Leverage auto-imports** - components and composables are auto-imported
 4. **Use TypeScript strictly** - define interfaces for props and returns

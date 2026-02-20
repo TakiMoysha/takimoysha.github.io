@@ -1,28 +1,32 @@
 <script setup lang="ts">
-import BaseLayout from "@/layouts/BaseLayout.vue";
+import BaseLayout from '@/layouts/BaseLayout.vue';
 
-const { data: posts } = await useAsyncData("latest-posts", async () => {
-  const collection = await queryCollection("archive")
-    .where("draft", "=", false)
-    .order("date", "DESC")
-    .limit(5)
-    .all();
+const { getList } = useLocalizedContent('archive');
 
-  return collection.map((post) => ({
-    id: post.id,
-    slug: post.slug || post.id,
-    title: post.title,
-    description: post.description || "",
-    date: post.date,
-  }));
+const { data: posts } = await useAsyncData('latest-posts', async () => {
+  const entries = await getList();
+  return entries
+    .sort(
+      (a, b) =>
+        new Date(b.entry?.date || 0).getTime() -
+        new Date(a.entry?.date || 0).getTime(),
+    )
+    .slice(0, 5)
+    .map((item) => ({
+      id: item.entry?.id,
+      slug: item.slug,
+      title: item.entry?.title,
+      description: item.entry?.description || '',
+      date: item.entry?.date,
+    }));
 });
 
 const formatDate = (date: string | Date) => {
   const d = new Date(date);
-  return d.toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
+  return d.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
   });
 };
 </script>
@@ -55,7 +59,6 @@ const formatDate = (date: string | Date) => {
       </section>
 
       <section class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-        <!-- About and Quick Links sections commented out for now -->
       </section>
     </div>
   </BaseLayout>

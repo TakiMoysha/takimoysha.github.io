@@ -1,13 +1,7 @@
-export const DEFAULT_LOCALE = 'en';
-export const SUPPORTED_LOCALES = ['en', 'ru'];
-export const REGEX_LOCALE_PATTERN = new RegExp(
-  `\\.(${SUPPORTED_LOCALES.join('|')}\\.)`,
-  'i',
-);
-
 export const SITE = {
   title: 'Digital Decay' as string,
-  description: 'Blog, notes and reports about development and technology.' as string,
+  description:
+    'Blog, notes and reports about development and technology.' as string,
   defaultLanguage: 'en-US' as 'en-US' | 'ru-RU',
   themes: ['dark'] as Array<string>,
   url: 'https://takimoysha.github.io',
