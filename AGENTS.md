@@ -9,7 +9,7 @@ It's a full static site built for deployment on GitHub Pages.
 
 - Nuxt 4 (with Nuxt Content for MD/MDX)
 - Vue 3 (Composition API, OptionsAPI disabled by config)
-- TailwindCSS 4 + DaisyUI 5 (semantic theming)
+- TailwindCSS 4 + NuxtUI 4 (semantic theming)
 - UnoCSS (for utilities, faster than Tailwind)
 - TypeScript
 - Biome (linting/formatting)
