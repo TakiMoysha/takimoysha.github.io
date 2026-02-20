@@ -7,18 +7,19 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
   modules: [
-    // 'nuxt-og-image',            // Автоматическая генерация OG-изображений для соцсетей
-    '@nuxtjs/sitemap', // Улучшенные регулярки в Markdown
-    '@nuxtjs/i18n', //
-    // '@nuxt/image', // Оптимизация изображений (IPX, Cloudinary и др.)
-    // '@unocss/nuxt', // faster then tailwindcss
+    '@nuxtjs/sitemap',        // Улучшенные регулярки в Markdown
+    '@nuxtjs/i18n',           //
+    // 'nuxt-og-image',       // Автоматическая генерация OG-изображений для соцсетей
+    // '@nuxt/image',         // Оптимизация изображений (IPX, Cloudinary и др.)
     '@nuxtjs/html-validator', // static content md/mdx/json
-    // '@nuxt/fonts', // custom fonts (Google Fonts)
-    // '@nuxt/scripts', // scripts (Google Tag Manager, Meta Pixel etc.)
-    // '@nuxt/schema', // TODO: not working
-    '@nuxt/content',
-    '@nuxtjs/robots',
-    'nuxt-studio',
+    // '@nuxt/fonts',         // custom fonts (Google Fonts)
+    // '@nuxt/scripts',       // scripts (Google Tag Manager, Meta Pixel etc.)
+    // '@unocss/nuxt',        // faster then tailwindcss
+    // '@nuxt/schema',        // TODO: wip
+    '@nuxt/content',          //
+    '@nuxt/ui',               //
+    '@nuxtjs/robots',         //
+    'nuxt-studio',            //
   ],
 
   $production: {

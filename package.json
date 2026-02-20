@@ -15,6 +15,7 @@
     "@heroicons/vue": "^2.2.0",
     "@nuxt/content": "^3.11.2",
     "@nuxt/schema": "^4.3.1",
+    "@nuxt/ui": "^4.4.0",
     "@nuxtjs/feed": "^2.0.0",
     "@nuxtjs/html-validator": "2.1.0",
     "@nuxtjs/i18n": "^10.2.3",
