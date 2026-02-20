@@ -8,16 +8,18 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: [
     // 'nuxt-og-image',            // Автоматическая генерация OG-изображений для соцсетей
+    '@nuxtjs/feed',
     '@nuxtjs/sitemap',
-    '@nuxtjs/i18n',
-    // 'magic-regexp/nuxt',        // Улучшенные регулярки в Markdown
+    '@nuxtjs/i18n', // 'magic-regexp/nuxt',        // Улучшенные регулярки в Markdown
     // '@nuxt/image',              // Оптимизация изображений (IPX, Cloudinary и др.)
-    '@nuxtjs/html-validator', // Validation of HTML for compliance with standards
-    // '@unocss/nuxt', // faster then tailwindcss
-    '@nuxt/content', // static content md/mdx/json
+    // Validation of HTML for compliance with standards
+    '@nuxtjs/html-validator', // '@unocss/nuxt', // faster then tailwindcss
+    // static content md/mdx/json
     // '@nuxt/fonts', // custom fonts (Google Fonts)
     // '@nuxt/scripts', // scripts (Google Tag Manager, Meta Pixel etc.)
     // '@nuxt/schema', // TODO: not working
+    '@nuxt/content',
+    '@nuxtjs/robots',
   ],
 
   $development: {

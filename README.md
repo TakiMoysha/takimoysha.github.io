@@ -48,6 +48,7 @@ SaaS's:
 - [Reference / functions / fumadocs.dev](https://www.fumadocs.dev)
 - [Reference / full blog web site / github.com](https://github.com/NikaNats/Natspaper/tree/master)
 - [Reference / Nuxt / Header / github.com](https://roe.dev/blog/nuxt-server-components/)
+- [Reference / Just Cool Site / stripe.dev](https://stripe.dev/blog)
 
 - [Semantic Interface Palette / uxdesign.cc](https://uxdesign.cc/the-semantic-interface-palette-is-simple-09ef5349c0ca)
 
