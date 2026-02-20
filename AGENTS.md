@@ -27,7 +27,7 @@ It's a full static site built for deployment on GitHub Pages.
 ```
 ├── app/
 │   ├── assets/
-│   │   ├── styles/global.css      # Tailwind + DaisyUI config
+│   │   ├── styles/mail.css      # Tailwind
 │   │   └── icons/                 # SVG icons
 │   ├── components/                # Vue components (auto-imported)
 │   │   ├── RootSeo.vue
@@ -185,7 +185,7 @@ function handleClick() {
 </section>
 ```
 
-See full style reference in `app/assets/styles/global.css`.
+See full style reference in `app/assets/styles/main.css`.
 
 ### Content Collections
 

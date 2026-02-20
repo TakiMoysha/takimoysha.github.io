@@ -28,12 +28,12 @@
 </template>
 
 <script setup lang="ts">
-import BaseLayout from '@/layouts/BaseLayout.vue';
+import BaseLayout from "@/layouts/BaseLayout.vue";
 
-const { data: posts } = await useAsyncData('latest-posts', async () => {
-  const collection = await queryCollection('archive')
-    .where('draft', '=', false)
-    .order('date', 'DESC')
+const { data: posts } = await useAsyncData("latest-posts", async () => {
+  const collection = await queryCollection("archive")
+    .where("draft", "=", false)
+    .order("date", "DESC")
     .limit(5)
     .all();
 
@@ -41,17 +41,17 @@ const { data: posts } = await useAsyncData('latest-posts', async () => {
     id: post.id,
     slug: post.slug || post.id,
     title: post.title,
-    description: post.description || '',
+    description: post.description || "",
     date: post.date,
   }));
 });
 
 const formatDate = (date: string | Date) => {
   const d = new Date(date);
-  return d.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
+  return d.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
   });
 };
 </script>

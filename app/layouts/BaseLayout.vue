@@ -1,5 +1,5 @@
 <template>
-  <Html lang="en" dir="ltr" data-theme="dark" />
+  <Html lang="en" dir="ltr" />
 
   <Head>
     <Meta charset="UTF-8" />

@@ -1,3 +1,5 @@
+import tailwindcss from '@tailwindcss/vite';
+
 const SITE_URL = 'https://takimoysha.github.io';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
@@ -11,7 +13,7 @@ export default defineNuxtConfig({
     // 'magic-regexp/nuxt',        // Улучшенные регулярки в Markdown
     // '@nuxt/image',              // Оптимизация изображений (IPX, Cloudinary и др.)
     '@nuxtjs/html-validator', // Validation of HTML for compliance with standards
-    '@unocss/nuxt', // faster then tailwindcss
+    // '@unocss/nuxt', // faster then tailwindcss
     '@nuxt/content', // static content md/mdx/json
     // '@nuxt/fonts', // custom fonts (Google Fonts)
     // '@nuxt/scripts', // scripts (Google Tag Manager, Meta Pixel etc.)
@@ -51,10 +53,14 @@ export default defineNuxtConfig({
     dirs: [{ path: './app/components/', pathPrefix: false }],
   },
   vite: {
-    css: { lightningcss: {} },
+    // css: { lightningcss: {} }, // for unocss
     build: { modulePreload: { polyfill: false } },
     vue: { features: { optionsAPI: false } },
     clearScreen: true,
+    plugins: [
+      // @ts-expect-error: different versions of "Plugin" under nuxt and tailwindss
+      tailwindcss(),
+    ],
   },
 
   runtimeConfig: {
@@ -74,7 +80,7 @@ export default defineNuxtConfig({
     },
   },
 
-  css: ['@unocss/reset/tailwind.css', '~/assets/styles/global.css'],
+  css: ['~/assets/styles/main.css'],
   ssr: false, // for github pages
   nitro: {
     experimental: { tasks: true },
@@ -98,10 +104,6 @@ export default defineNuxtConfig({
 
   htmlValidator: {
     failOnError: true,
-  },
-
-  ogImage: {
-    zeroRuntime: true,
   },
 
   security: {

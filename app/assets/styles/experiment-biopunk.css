@@ -1,121 +1,62 @@
 @import "tailwindcss";
 
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* experimental, first on layout */
+html[data-theme="biopunk"] {
+  /* Biopunk Dark Theme */
+  --background: 160 30% 4%;
+  --foreground: 165 40% 90%;
+
+  --card: 160 25% 8%;
+  --card-foreground: 165 40% 90%;
+
+  --popover: 160 25% 8%;
+  --popover-foreground: 165 40% 90%;
+
+  /* Bioluminescent Cyan */
+  --primary: 175 80% 45%;
+  --primary-foreground: 160 30% 4%;
+
+  /* Organic Purple */
+  --secondary: 280 60% 50%;
+  --secondary-foreground: 165 40% 90%;
+
+  /* Muted organic tones */
+  --muted: 160 20% 15%;
+  --muted-foreground: 165 30% 60%;
+
+  /* Toxic Green Accent */
+  --accent: 120 100% 50%;
+  --accent-foreground: 160 30% 4%;
+
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 210 40% 98%;
+
+  --border: 160 30% 20%;
+  --input: 160 30% 15%;
+  --ring: 175 80% 45%;
+
+  --radius: 0.75rem;
+
+  /* Biopunk Custom Colors */
+  --glow-cyan: 175 100% 50%;
+  --glow-purple: 280 100% 60%;
+  --glow-green: 120 100% 45%;
+  --bio-dark: 160 40% 6%;
+  --neural-line: 175 60% 30%;
+
+  /* Sidebar */
+  --sidebar-background: 160 30% 6%;
+  --sidebar-foreground: 165 40% 90%;
+  --sidebar-primary: 175 80% 45%;
+  --sidebar-primary-foreground: 160 30% 4%;
+  --sidebar-accent: 160 25% 12%;
+  --sidebar-accent-foreground: 165 40% 90%;
+  --sidebar-border: 160 30% 20%;
+  --sidebar-ring: 175 80% 45%;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-@layer them {
-	:root {
-		/* Biopunk Dark Theme */
-		--background: 160 30% 4%;
-		--foreground: 165 40% 90%;
-
-		--card: 160 25% 8%;
-		--card-foreground: 165 40% 90%;
-
-		--popover: 160 25% 8%;
-		--popover-foreground: 165 40% 90%;
-
-		/* Bioluminescent Cyan */
-		--primary: 175 80% 45%;
-		--primary-foreground: 160 30% 4%;
-
-		/* Organic Purple */
-		--secondary: 280 60% 50%;
-		--secondary-foreground: 165 40% 90%;
-
-		/* Muted organic tones */
-		--muted: 160 20% 15%;
-		--muted-foreground: 165 30% 60%;
-
-		/* Toxic Green Accent */
-		--accent: 120 100% 50%;
-		--accent-foreground: 160 30% 4%;
-
-		--destructive: 0 84% 60%;
-		--destructive-foreground: 210 40% 98%;
-
-		--border: 160 30% 20%;
-		--input: 160 30% 15%;
-		--ring: 175 80% 45%;
-
-		--radius: 0.75rem;
-
-		/* Biopunk Custom Colors */
-		--glow-cyan: 175 100% 50%;
-		--glow-purple: 280 100% 60%;
-		--glow-green: 120 100% 45%;
-		--bio-dark: 160 40% 6%;
-		--neural-line: 175 60% 30%;
-
-		/* Sidebar */
-		--sidebar-background: 160 30% 6%;
-		--sidebar-foreground: 165 40% 90%;
-		--sidebar-primary: 175 80% 45%;
-		--sidebar-primary-foreground: 160 30% 4%;
-		--sidebar-accent: 160 25% 12%;
-		--sidebar-accent-foreground: 165 40% 90%;
-		--sidebar-border: 160 30% 20%;
-		--sidebar-ring: 175 80% 45%;
-	}
-}
-
-@layer base {
-	* {
-		@apply border-border;
-	}
-
-	body {
-		@apply bg-background text-foreground font-body antialiased;
-	}
-
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
-		@apply font-display;
-	}
+@theme {
+ /* TODO: define semantic layer */
 }
 
 @layer utilities {

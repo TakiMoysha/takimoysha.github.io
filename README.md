@@ -10,6 +10,7 @@
 - markdown support: mermaid|plantuml diagraph
 - mdx with jsx support
 - tailwindcss: typography
+  - try unocss with wind4
 
 - seo: article ld+json schema;
 

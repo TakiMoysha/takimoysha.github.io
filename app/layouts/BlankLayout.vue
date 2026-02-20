@@ -40,6 +40,9 @@
               Welcome to <span class="font-mono text-amber-400">Blank Layout</span>
             </h2>
             <p class="text-lg md:text-xl text-primary-content mb-8">Simple landing for see, how it look.</p>
+            <p>
+              <span class="border border-debug text-lg md:text-xl text-debug-content mb-8">Debug content Text.</span>
+            </p>
           </div>
         </div>
       </section>
@@ -59,18 +62,6 @@
           </div>
         </div>
       </section>
-
-      <!-- testimonials -->
-      <section class="relative isolate overflow-hidden bg-base-200 px-6 py-24 sm:py-32 lg:px-8">
-        <div class="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,var(--color-primary),transparent)] opacity-10"></div>
-        <div class="absolute inset-y-0 right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-gray-900 dark:bg-slate-400 shadow-xl ring-1 shadow-indigo-500/5 ring-white/5 sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center"></div>
-
-        <div class="container mx-auto max-w-6xl px-6">
-          <h2 class="text-3xl md:text-4xl font-bold text-center text-shadow-lg mb-12 text-primary-content">Testimonials</h2>
-          <div></div>
-        </div>
-      </section>
-
       <!-- palette -->
       <section class="flex flex-col bg-background mx-auto max-w-6xl p-6">
         <h4 class="mt-4 text-2xl">Base</h4>
@@ -91,6 +82,19 @@
         <div class="palette-block text-base-content bg-base-300">text-base-content + bg-base-300</div>
         <div class="palette-block text-base-content bg-base-400">text-base-content + bg-base-400</div>
       </section>
+
+      <!-- testimonials -->
+      <section class="relative isolate overflow-hidden bg-base-200 px-6 py-24 sm:py-32 lg:px-8">
+        <div class="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,var(--color-primary),transparent)] opacity-10"></div>
+        <div class="absolute inset-y-0 right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-gray-900 dark:bg-slate-400 shadow-xl ring-1 shadow-indigo-500/5 ring-white/5 sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center"></div>
+
+        <div class="container mx-auto max-w-6xl px-6">
+          <h2 class="text-3xl md:text-4xl font-bold text-center text-shadow-lg mb-12 text-primary-content">Testimonials</h2>
+          <div></div>
+        </div>
+      </section>
+
+
     </main>
   </div>
 </template>

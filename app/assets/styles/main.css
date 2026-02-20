@@ -1,0 +1,200 @@
+@import "tailwindcss";
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+:root {
+  --color-primary: oklch(0.65 0.15 260);
+  --color-primary-content: oklch(0.98 0.01 260);
+  --color-primary-focus: oklch(0.55 0.15 260);
+
+  --color-secondary: oklch(0.65 0.15 160);
+  --color-secondary-content: oklch(0.98 0.01 160);
+  --color-secondary-focus: oklch(0.55 0.15 160);
+
+  --color-accent: oklch(0.75 0.18 80);
+  --color-accent-content: oklch(0.2 0.05 80);
+  --color-accent-focus: oklch(0.65 0.18 80);
+
+  --color-neutral: oklch(0.4 0.02 260);
+  --color-neutral-content: oklch(0.98 0.01 260);
+  --color-neutral-focus: oklch(0.3 0.02 260);
+
+  --color-base-100: oklch(0.99 0 0);
+  --color-base-200: oklch(0.96 0.01 260);
+  --color-base-300: oklch(0.92 0.02 260);
+  --color-base-content: oklch(0.2 0.02 260);
+
+  --color-info: oklch(0.7 0.12 220);
+  --color-info-content: oklch(0.98 0.01 220);
+
+  --color-success: oklch(0.7 0.15 145);
+  --color-success-content: oklch(0.98 0.01 145);
+
+  --color-warning: oklch(0.8 0.15 85);
+  --color-warning-content: oklch(0.2 0.05 85);
+
+  --color-error: oklch(0.65 0.18 25);
+  --color-error-content: oklch(0.98 0.01 25);
+
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "Fira Code", "Cascadia Code", monospace;
+  --font-digital: "Share Tech Mono", monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+}
+
+html[data-theme="dark"] {
+  --color-primary: oklch(0.65 0.16 280);
+  --color-primary-content: oklch(0.95 0.02 280);
+  --color-primary-focus: oklch(0.55 0.16 280);
+
+  --color-secondary: oklch(0.68 0.14 200);
+  --color-secondary-content: oklch(0.95 0.02 200);
+  --color-secondary-focus: oklch(0.58 0.14 200);
+
+  --color-accent: oklch(0.82 0.16 40);
+  --color-accent-content: oklch(0.12 0.04 40);
+  --color-accent-focus: oklch(0.72 0.16 40);
+
+  --color-neutral: oklch(0.55 0.03 280);
+  --color-neutral-content: oklch(0.92 0.02 280);
+  --color-neutral-focus: oklch(0.65 0.03 280);
+
+  --color-base-100: oklch(0.15 0.02 280);
+  --color-base-200: oklch(0.21 0.02 280);
+  --color-base-300: oklch(0.27 0.02 280);
+  --color-base-content: oklch(0.93 0.02 280);
+
+  --color-info: oklch(0.72 0.13 210);
+  --color-info-content: oklch(0.12 0.02 210);
+
+  --color-success: oklch(0.7 0.14 130);
+  --color-success-content: oklch(0.12 0.02 130);
+
+  --color-warning: oklch(0.8 0.14 50);
+  --color-warning-content: oklch(0.18 0.04 50);
+
+  --color-error: oklch(0.72 0.17 15);
+  --color-error-content: oklch(0.12 0.02 15);
+}
+
+html[data-theme="halloween"] {
+  --color-primary: oklch(0.7 0.15 260);
+  --color-primary-content: oklch(0.1 0.1 260);
+  --color-primary-focus: oklch(0.6 0.15 260);
+
+  --color-secondary: oklch(0.7 0.15 160);
+  --color-secondary-content: oklch(0.1 0.01 160);
+  --color-secondary-focus: oklch(0.6 0.15 160);
+
+  --color-accent: oklch(0.8 0.18 80);
+  --color-accent-content: oklch(0.15 0.05 80);
+  --color-accent-focus: oklch(0.7 0.18 80);
+
+  --color-neutral: oklch(0.6 0.02 260);
+  --color-neutral-content: oklch(0.1 0.01 260);
+  --color-neutral-focus: oklch(0.7 0.02 260);
+
+  --color-base-100: oklch(0.18 0.02 260);
+  --color-base-200: oklch(0.23 0.02 260);
+  --color-base-300: oklch(0.28 0.02 260);
+  --color-base-content: oklch(0.9 0.02 260);
+
+  --color-info: oklch(0.75 0.12 220);
+  --color-info-content: oklch(0.1 0.01 220);
+
+  --color-success: oklch(0.75 0.15 145);
+  --color-success-content: oklch(0.1 0.01 145);
+
+  --color-warning: oklch(0.85 0.15 85);
+  --color-warning-content: oklch(0.15 0.05 85);
+
+  --color-error: oklch(0.75 0.18 25);
+  --color-error-content: oklch(0.1 0.01 25);
+}
+
+
+
+/* layer theme takes precedence over theme, so debug will be overridden */
+@layer theme {
+  :root,
+  :host {
+    @variant dark {
+      --color-debug: oklch(0.8 0.3 40);
+      --color-debug-content: oklch(0.4 0.8 20);
+    }
+  }
+}
+
+@theme {
+  /* :root { */
+  --color-debug: oklch(0.7 0.15 0);
+  --color-debug-content: oklch(1 0.1 400);
+
+  --color-primary: var(--color-primary);
+  --color-primary-content: var(--color-primary-content);
+  --color-primary-focus: var(--color-primary-focus);
+
+  --color-secondary: var(--color-secondary);
+  --color-secondary-content: var(--color-secondary-content);
+  --color-secondary-focus: var(--color-secondary-focus);
+
+  --color-accent: var(--color-accent);
+  --color-accent-content: var(--color-accent-content);
+  --color-accent-focus: var(--color-accent-focus);
+
+  --color-neutral: var(--color-neutral);
+  --color-neutral-content: var(--color-neutral-content);
+  --color-neutral-focus: var(--color-neutral-focus);
+
+  --color-base-100: var(--color-base-100);
+  --color-base-200: var(--color-base-200);
+  --color-base-300: var(--color-base-300);
+  --color-base-content: var(--color-base-content);
+
+  --color-info: var(--color-info);
+  --color-info-content: var(--color-info-content);
+
+  --color-success: var(--color-success);
+  --color-success-content: var(--color-success-content);
+
+  --color-warning: var(--color-warning);
+  --color-warning-content: var(--color-warning-content);
+
+  --color-error: var(--color-error);
+  --color-error-content: var(--color-error-content);
+}
+
+body {
+  background: var(--color-base-200);
+  color: var(--color-neutral);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-neutral);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-accent);
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}

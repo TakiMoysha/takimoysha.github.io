@@ -1,18 +1,33 @@
 <template>
-  <div>
-    <select ref="themeSelect" data-choose-theme class="select select-md">
-      <option disabled value="nord">Nord</option>
-      <option value="dark">Dark</option>
-    </select>
-  </div>
+  <select class="select select-md bg-base-200 text-base-content border-base-300" v-model="currentTheme"
+    @change="setTheme">
+    <option value="auto">Auto</option>
+    <option value="light">Light</option>
+    <option value="dark">Dark</option>
+    <DevOnly>
+      <option value="halloween">Halloween</option>
+      <option value="halloween">Biopunk</option>
+    </DevOnly>
+  </select>
 </template>
 
 <script setup lang="ts">
-import { themeChange } from 'theme-change';
+const currentTheme = ref('auto');
 
-const themeSelect = ref<HTMLSelectElement | null>(null);
+function setTheme() {
+  document.documentElement.setAttribute('data-theme', currentTheme.value);
+  localStorage.setItem('theme', currentTheme.value);
+}
 
 onMounted(() => {
-  themeChange();
+  const saved = localStorage.getItem('theme');
+
+  if (saved) {
+    currentTheme.value = saved;
+  } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    currentTheme.value = 'halloween';
+  }
+
+  document.documentElement.setAttribute('data-theme', currentTheme.value);
 });
 </script>
