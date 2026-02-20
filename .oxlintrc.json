@@ -2,7 +2,18 @@
   "$schema": "./node_modules/oxlint/configuration_schema.json",
   "plugins": null,
   "categories": {},
-  "rules": {},
+  "rules": {
+    "vue/block-order": [
+      "error",
+      {
+        "order": [
+          "script",
+          "template",
+          "style"
+        ]
+      }
+    ]
+  },
   "settings": {
     "jsx-a11y": {
       "polymorphicPropName": null,

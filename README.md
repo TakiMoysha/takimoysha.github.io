@@ -12,7 +12,7 @@
 - tailwindcss: typography
   - try unocss with wind4
 
-- seo: article ld+json schema;
+- seo: article ld+json schema; https://nuxtseo.com/
 
 - pagefind: maybe;
 - shiki: styling;
