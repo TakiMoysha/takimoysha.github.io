@@ -1,7 +1,18 @@
+<script setup lang="ts">
+interface Props {
+  title: string;
+  description: string;
+  icon: string;
+}
+
+defineProps<Props>();
+</script>
+
 <template>
-  <div class="card bg-base-200 card-xs shadow-sm hover:shadow-md transition ease-in duration-200 hover:scale-105 shadow-accent">
-    <div class="card-body m-2">
-      <div class="flex items-center gap-x-3">
+  <div
+    class="card card-xs bg-base-200 shadow-sm hover:shadow-md transition ease-in duration-200 hover:scale-105 shadow-accent">
+    <div class="m-2">
+      <div class="card-body flex items-center gap-x-3">
         <span class="flex items-start">
           <div class="flex-none w-6 text-accent" v-html="icon"></div>
         </span>
@@ -12,12 +23,17 @@
   </div>
 </template>
 
-<script setup lang="ts">
-interface Props {
-  title: string;
-  description: string;
-  icon: string;
+<style scoped>
+.card {
+  border-radius: 0.5rem;
+  overflow: hidden;
 }
 
-defineProps<Props>();
-</script>
+.card-body {
+  padding: 0.5rem;
+}
+
+.card-xs {
+  min-height: 80px;
+}
+</style>

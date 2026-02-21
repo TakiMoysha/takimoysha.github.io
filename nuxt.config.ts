@@ -27,7 +27,6 @@ export default defineNuxtConfig({
     '@nuxt/content', //
     '@nuxt/ui', //
     '@nuxtjs/robots', //
-    'nuxt-studio', //
   ],
 
   $production: {
@@ -35,6 +34,9 @@ export default defineNuxtConfig({
     experimental: {
       noVueServer: true,
     },
+  },
+  $development: {
+    modules: ['nuxt-studio'],
   },
   $test: {
     modules: ['@nuxt/test-utils/module'],
