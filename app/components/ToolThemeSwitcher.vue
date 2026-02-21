@@ -6,7 +6,7 @@
     <option value="dark">Dark</option>
     <DevOnly>
       <option value="halloween">Halloween</option>
-      <option value="halloween">Biopunk</option>
+      <option value="biopunk">Biopunk</option>
     </DevOnly>
   </select>
 </template>
@@ -27,7 +27,6 @@ onMounted(() => {
   } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
     currentTheme.value = 'halloween';
   }
-
-  document.documentElement.setAttribute('data-theme', currentTheme.value);
+  setTheme();
 });
 </script>

@@ -50,7 +50,7 @@ const pageTitle = computed(() => `${error.value.text} | ${SITE.title}`);
 
 <template>
   <BaseLayout :title="pageTitle" :description="error.description">
-    <div class="flex items-center justify-center p-4 max-w-4xl mx-auto">
+    <div class="flex items-center justify-center p-4 mx-auto">
       <div class="glitch-container relative p-4">
         <h1 class="shake-box glitch text-shadow-md text-center text-6xl font-bold font-digital" :data-text="error.text">
           {{ error.text }}

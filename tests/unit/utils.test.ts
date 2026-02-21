@@ -1,12 +1,12 @@
 import { describe, expect, test } from 'vitest';
-import { parseDate } from '~/utils/content';
+import { parseDate } from '@/utils/content';
 import {
   DEFAULT_LOCALE,
   getLocalizedEntry,
   groupByLocale,
   parseLocaleFromId,
   SUPPORTED_LOCALES,
-} from '~/utils/content-locale';
+} from '@/utils/content-locale';
 
 describe('locale constants', () => {
   test('should have correct default locale', () => {
@@ -58,29 +58,15 @@ describe('locale parsing', () => {
   });
 });
 
+describe('document parsing', () => {
+  test('should parse string to date', () => {
+    const res = parseDate('20230101');
+    expect(res).toBeInstanceOf(Date);
+  });
+
   test('should parse number to date', () => {
     const res = parseDate(20230101);
     expect(res).toBeInstanceOf(Date);
-  });
-});
-
-describe('locale parsing', () => {
-  test('should parse locale from id with ru suffix', () => {
-    const result = parseLocaleFromId('post.ru');
-    expect(result.baseSlug).toBe('post');
-    expect(result.locale).toBe('ru');
-  });
-
-  test('should parse locale from id with en suffix', () => {
-    const result = parseLocaleFromId('article.en');
-    expect(result.baseSlug).toBe('article');
-    expect(result.locale).toBe('en');
-  });
-
-  test('should return default locale for id without suffix', () => {
-    const result = parseLocaleFromId('simple');
-    expect(result.baseSlug).toBe('simple');
-    expect(result.locale).toBe('en');
   });
 });
 
@@ -96,6 +82,17 @@ describe('locale grouping', () => {
     expect(groups.size).toBe(2);
     expect(groups.get('post')?.en?.title).toBe('English Post');
     expect(groups.get('post')?.ru?.title).toBe('Russian Post');
+  });
+
+  test('should return empty map for empty array', () => {
+    const groups = groupByLocale([]);
+    expect(groups.size).toBe(0);
+  });
+
+  test('should handle single item', () => {
+    const groups = groupByLocale([{ id: 'single', title: 'Test' }]);
+    expect(groups.size).toBe(1);
+    expect(groups.get('single')?.en?.title).toBe('Test');
   });
 });
 
@@ -113,5 +110,20 @@ describe('localized entry selection', () => {
   test('should fallback to default locale', () => {
     const entry = getLocalizedEntry({ en: group.en }, 'ru', 'en');
     expect(entry?.title).toBe('English');
+  });
+
+  test('should return first available entry when no fallback', () => {
+    const entry = getLocalizedEntry({ ru: group.ru }, 'en', 'ru');
+    expect(entry?.title).toBe('Russian');
+  });
+
+  test('should return null for empty group', () => {
+    const entry = getLocalizedEntry({}, 'en', 'ru');
+    expect(entry).toBeNull();
+  });
+
+  test('should return null when no matching locale exists', () => {
+    const entry = getLocalizedEntry({}, 'de', 'fr');
+    expect(entry).toBeNull();
   });
 });
