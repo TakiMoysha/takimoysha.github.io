@@ -1,7 +1,10 @@
 ---
 title: Настройка сети для docker/podman
-date: 202503252255
-tags: [docker, networking]
+date: "202503252255"
+locale: en
+tags:
+  - docker
+  - networking
 ---
 
 ## Networking
@@ -22,59 +25,59 @@ DNS - важная фича кастомных мостов, если у нас 
 
 ```yaml
 services:
-	speedtest:
-	image: ...
-	networks:
-		- net-speedtest
-		- private
+    speedtest:
+    image: ...
+    networks:
+        - net-speedtest
+        - private
 
-	speedtest-db:
-		image: ...
-		networks:
-			- private
+    speedtest-db:
+        image: ...
+        networks:
+            - private
 
-	swag:
-		image: lscr.io/linuxserver/swag:latest
-		container_name: swag
-		networks:
-			- net-speedtest
-		ports:
-			- 443:443
-			- 80:80
+    swag:
+        image: lscr.io/linuxserver/swag:latest
+        container_name: swag
+        networks:
+            - net-speedtest
+        ports:
+            - 443:443
+            - 80:80
 
 networks:
-	net-speedtest:
-		name: net-speedtest
-		ipam:
-			config:
-				- subnet: 172.17.0.0/24 # 172.17.0.1 - 172.17.0.254
-	private:
-		name: private
-		internal: true
-		ipam:
-			config:
-				- subnet: 172.17.1.0/29 # 172.17.1.1 - 172.20.1.6
+    net-speedtest:
+        name: net-speedtest
+        ipam:
+            config:
+                - subnet: 172.17.0.0/24 # 172.17.0.1 - 172.17.0.254
+    private:
+        name: private
+        internal: true
+        ipam:
+            config:
+                - subnet: 172.17.1.0/29 # 172.17.1.1 - 172.20.1.6
 ```
 
 Current network topology:
 
 ```mermaid
 graph TD;
-	subgraph containers [ ]
-		direction TB
-		swag["swag"]:::container
-		speedtest["speedtest"]:::container
-		speedtest_db["speedtest-db"]:::container
-	end
+    subgraph containers [ ]
+        direction TB
+        swag["swag"]:::container
+        speedtest["speedtest"]:::container
+        speedtest_db["speedtest-db"]:::container
+    end
 
-	net_speedtest["172.17.0.0/24<br/>net-speedtest"]:::net_speedtest
-	internal["172.17.1.0/29<br/>Internal"]:::internal
+    net_speedtest["172.17.0.0/24<br/>net-speedtest"]:::net_speedtest
+    internal["172.17.1.0/29<br/>Internal"]:::internal
 
-	internal <-->|172.17.1.3/29| speedtest
-	internal <-->|172.17.1.2/29| speedtest_db
+    internal <-->|172.17.1.3/29| speedtest
+    internal <-->|172.17.1.2/29| speedtest_db
 
-	net_speedtest <-->|172.17.0.3/24| speedtest
-	net_speedtest <-->|172.17.0.4/24| swag
+    net_speedtest <-->|172.17.0.3/24| speedtest
+    net_speedtest <-->|172.17.0.4/24| swag
 
 
     classDef container fill:#f8c8d4,stroke:#333,stroke-width:2px;

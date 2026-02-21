@@ -1,34 +1,41 @@
 {
-	"name": "takimoysha.github.io",
-	"type": "module",
-	"version": "0.0.1",
-	"scripts": {
-		"dev": "astro dev",
-		"build": "astro build",
-		"preview": "astro preview",
-		"test": "astro test",
-		"astro": "astro"
-	},
-	"dependencies": {
-		"@astrojs/mdx": "^4.3.13",
-		"@astrojs/rss": "^4.0.15",
-		"@astrojs/sitemap": "^3.7.0",
-		"@radix-ui/react-slot": "^1.2.4",
-		"@tailwindcss/vite": "^4.1.18",
-		"astro": "^5.17.1",
-		"astro-compress": "^2.3.9",
-		"class-variance-authority": "^0.7.1",
-		"clsx": "^2.1.1",
-		"daisyui": "^5.5.18",
-		"slugify": "^1.6.6",
-		"tailwind-merge": "^3.4.0",
-		"theme-change": "^2.5.0"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "2.3.14",
-		"@tailwindcss/typography": "^0.5.19",
-		"@types/bun": "^1.3.9",
-		"tailwindcss": "^4.1.18",
-		"vitest": "^4.0.18"
-	}
+  "name": "digital-decay",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix"
+  },
+  "dependencies": {
+    "@nuxt/content": "^3.11.2",
+    "@nuxt/schema": "^4.3.1",
+    "@nuxt/ui": "^4.4.0",
+    "@nuxtjs/feed": "^2.0.0",
+    "@nuxtjs/html-validator": "2.1.0",
+    "@nuxtjs/i18n": "^10.2.3",
+    "@nuxtjs/robots": "^5.7.0",
+    "@nuxtjs/seo": "^3.4.0",
+    "@nuxtjs/sitemap": "^7.6.0",
+    "@nuxtjs/tailwindcss": "^6.14.0",
+    "@tailwindcss/vite": "^4.2.0",
+    "nuxt": "^4.3.1",
+    "nuxt-og-image": "5.1.13",
+    "nuxt-security": "^2.5.1",
+    "nuxt-studio": "1.3.2",
+    "slugify": "^1.6.6",
+    "tailwind-merge": "^3.5.0",
+    "tailwindcss": "^4.2.0",
+    "vite": "^7.3.1"
+  },
+  "devDependencies": {
+    "@nuxt/test-utils": "^4.0.0",
+    "@tailwindcss/typography": "^0.5.19",
+    "@vue/test-utils": "^2.4.6",
+    "oxlint": "^1.49.0",
+    "vitest": "^4.0.18"
+  }
 }
