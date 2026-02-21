@@ -10,12 +10,12 @@ export const SITE = {
 export const SOCIALS = [
   {
     href: 'https://github.com/takimoysha',
-    icon: 'tabler:brand-github',
+    icon: 'lucide:github',
     linkTitle: 'GitHub',
   },
   {
     href: 'https://linkedin.com/in/takimoysha',
-    icon: 'tabler:brand-linkedin',
+    icon: 'lucide:linkedin',
     linkTitle: 'LinkedIn',
   },
 ];

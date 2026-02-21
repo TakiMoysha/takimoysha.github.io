@@ -21,7 +21,7 @@ const currentYear = new Date().getFullYear();
 
           <NuxtLink to="/rss.xml" title="RSS Feed"
             class="text-base-content/70 hover:text-base-content transition-colors">
-            <UIcon name="uil:rss" class="h-5 w-5" />
+            <UIcon name="lucide:rss" class="h-5 w-5" />
           </NuxtLink>
 
           <ToolThemeSwitcher />
