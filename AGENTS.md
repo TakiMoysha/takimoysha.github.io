@@ -3,7 +3,7 @@
 ## Project Overview
 
 This is **Digital Decay** - a blog about development and technology.
-It's a full static site built for deployment on GitHub Pages.
+It's a **full static web site** built for deployment on GitHub Pages - don't use SSR or server logic.
 
 **Key Technologies:**
 
@@ -29,7 +29,7 @@ You have mcp server:
 
 Use Standard nuxt project structure.
 
-- `./app/consts.ts` - site constants
+- `./app/constants.ts` - site constants
 - `./content/archive/` - атомарные посты, блог или заметки.
 - `./content/cycles/` - цикл по определенной теме. на верхнем уровне лежат json, описывающие циклы и что содержат.
 - `./content/docs/` - documentation about this project

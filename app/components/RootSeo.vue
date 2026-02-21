@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SITE } from '@/consts';
+import { SITE } from '@/constants';
 
 interface Props {
   title?: string;
@@ -70,7 +70,3 @@ useSeoMeta({
   twitterImage: props.imageURL,
 });
 </script>
-
-<template>
-  <!-- SEO meta tags are managed by useHead and useSeoMeta composables -->
-</template>

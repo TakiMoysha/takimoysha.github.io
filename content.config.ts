@@ -17,20 +17,20 @@ const cyclesSchema = z.object({
 
 export default defineContentConfig({
   collections: {
-    docs: defineCollection({ type: 'page', source: 'content/docs/*' }),
+    docs: defineCollection({ type: 'page', source: 'docs/*.md' }),
     archive: defineCollection({
       type: 'page',
-      source: 'content/archive/*.md',
+      source: 'archive/*.md',
       schema: archiveSchema,
     }),
     cycles: defineCollection({
       type: 'data',
-      source: 'content/cycles/*.json',
+      source: 'cycles/*.json',
       schema: cyclesSchema,
     }),
     projects: defineCollection({
       type: 'page',
-      source: 'content/projects/*.mdx',
+      source: 'projects/*.mdx',
       schema: z.object({
         title: z.string(),
         description: z.string().optional(),

@@ -1,13 +1,12 @@
 import type { Collections } from '@nuxt/content';
-import {
-  DEFAULT_LOCALE,
-  getLocalizedEntry,
-  groupByLocale,
-} from '~/utils/content-locale';
+import { getLocalizedEntry, parseLocaleFromId } from '~/utils/content-locale';
+
+const DEFAULT_LOCALE = 'en';
 
 interface EntryGroup<T> {
-  baseSlug: string;
-  locales: Record<string, T>;
+  slug: string;
+  locales: string[];
+  entries: Record<string, T>;
 }
 
 interface LocalizedEntry<T> {
@@ -21,44 +20,55 @@ export function useLocalizedContent<C extends keyof Collections>(
 ) {
   const i18n = useI18n();
 
-  async function getGrouped(): Promise<Map<string, EntryGroup<any>>> {
+  async function getList(): Promise<LocalizedEntry<any>[]> {
     const items = await queryCollection(collection).all();
-    const groups = groupByLocale(items);
 
-    const result = new Map<string, EntryGroup<any>>();
-    for (const [baseSlug, locales] of groups) {
-      result.set(baseSlug, { baseSlug, locales });
+    const grouped = new Map<string, Record<string, any>>();
+
+    for (const item of items) {
+      const id = String(item.id || item.path || item._path);
+      const { baseSlug, locale } = parseLocaleFromId(id);
+
+      if (!grouped.has(baseSlug)) {
+        grouped.set(baseSlug, {});
+      }
+      grouped.get(baseSlug)![locale] = item;
     }
 
-    return result;
-  }
-
-  async function getBySlug(slug: string): Promise<any | null> {
-    const groups = await getGrouped();
-    const group = groups.get(slug);
-    if (!group) return null;
-
-    const currentLocale = unref(i18n.locale);
+    const currentLocale = unref(i18n.locale) ?? DEFAULT_LOCALE;
     const fallbackLocale = unref(i18n.defaultLocale) ?? DEFAULT_LOCALE;
 
-    return getLocalizedEntry(group.locales, currentLocale, fallbackLocale);
-  }
-
-  async function getList(): Promise<LocalizedEntry<any>[]> {
-    const groups = await getGrouped();
-    const currentLocale = unref(i18n.locale);
-    const fallbackLocale = unref(i18n.defaultLocale) ?? DEFAULT_LOCALE;
-
-    return Array.from(groups.values()).map((g) => ({
-      slug: g.baseSlug,
-      entry: getLocalizedEntry(g.locales, currentLocale, fallbackLocale),
-      locales: Object.keys(g.locales),
+    return Array.from(grouped.entries()).map(([slug, entries]) => ({
+      slug,
+      entry: getLocalizedEntry(entries, currentLocale, fallbackLocale),
+      locales: Object.keys(entries),
     }));
   }
 
+  async function getBySlug(slug: string): Promise<any | null> {
+    const items = await queryCollection(collection)
+      .where('_path', 'LIKE', `%${slug}%`)
+      .all();
+
+    if (!items.length) return null;
+
+    const grouped: Record<string, any> = {};
+    for (const item of items) {
+      const id = String(item.id || item.path || item._path);
+      const { baseSlug, locale } = parseLocaleFromId(id);
+      if (baseSlug === slug || baseSlug.endsWith(slug)) {
+        grouped[locale] = item;
+      }
+    }
+
+    const currentLocale = unref(i18n.locale) ?? DEFAULT_LOCALE;
+    const fallbackLocale = unref(i18n.defaultLocale) ?? DEFAULT_LOCALE;
+
+    return getLocalizedEntry(grouped, currentLocale, fallbackLocale);
+  }
+
   return {
-    getGrouped,
-    getBySlug,
     getList,
+    getBySlug,
   };
 }
