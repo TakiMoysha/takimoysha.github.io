@@ -1,6 +1,6 @@
 ---
 title: Test File
-slug: demo-slug-for-sql-file
+slug: demo/demo-slug-for
 description: Test file for testing markdown syntax and website design.
 date: 202109151046
 tags: [dml, ddl]

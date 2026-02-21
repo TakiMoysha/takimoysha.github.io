@@ -1,4 +1,3 @@
-
 ```css
 @theme inline {
 	--radius-sm: calc(var(--radius) - 4px);
