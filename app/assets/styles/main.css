@@ -52,7 +52,7 @@
 
 html[data-theme="dark"] {
   --color-primary: oklch(0.65 0.16 280);
-  --color-primary-content: oklch(0.95 0.02 280);
+  --color-primary-content: oklch(0.98 0.01 160);
   --color-primary-focus: oklch(0.55 0.16 280);
 
   --color-secondary: oklch(0.68 0.14 200);
@@ -87,11 +87,11 @@ html[data-theme="dark"] {
 
 html[data-theme="halloween"] {
   --color-primary: oklch(0.7 0.15 260);
-  --color-primary-content: oklch(0.1 0.1 260);
+  --color-primary-content: oklch(0.95 0.02 280);
   --color-primary-focus: oklch(0.6 0.15 260);
 
   --color-secondary: oklch(0.7 0.15 160);
-  --color-secondary-content: oklch(0.1 0.01 160);
+  --color-secondary-content: oklch(0.95 0.02 280);
   --color-secondary-focus: oklch(0.6 0.15 160);
 
   --color-accent: oklch(0.8 0.18 80);
@@ -99,7 +99,7 @@ html[data-theme="halloween"] {
   --color-accent-focus: oklch(0.7 0.18 80);
 
   --color-neutral: oklch(0.6 0.02 260);
-  --color-neutral-content: oklch(0.1 0.01 260);
+  --color-neutral-content: oklch(0.95 0.02 280);
   --color-neutral-focus: oklch(0.7 0.02 260);
 
   --color-base-100: oklch(0.18 0.02 260);

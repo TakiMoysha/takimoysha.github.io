@@ -4,7 +4,7 @@
       id="skip-to-content"
       href="#main-content"
       aria-label="Skip to main content"
-      class="absolute start-8 -top-full z-50 px-3 py-2 text-accent transition-all focus:top-4"
+      class="absolute inset-s-8 -top-full z-50 px-3 py-2 text-accent transition-all focus:top-4"
     >
       Skip to content
     </a>

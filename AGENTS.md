@@ -118,7 +118,7 @@ function handleClick() {
 </template>
 ```
 
-### Styling (UnoCSS based on tailwindcss and semantic approach)
+### Styling
 
 ```html
 <section>
@@ -210,10 +210,10 @@ app/composables/useLocalizedContent.ts  # Main composable
 ### Usage
 
 ```typescript
-const { getBySlug, getList } = useLocalizedContent('archive');
+const { getBySlug, getList } = useLocalizedContent("archive");
 
 // Get entry for current locale with fallback
-const entry = await getBySlug('my-post');
+const entry = await getBySlug("my-post");
 
 // Get all entries grouped by slug
 const entries = await getList();

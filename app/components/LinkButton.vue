@@ -1,22 +1,9 @@
 <template>
-  <span
-    v-if="disabled"
-    :id="id"
-    class="group inline-block"
-    :class="klass"
-    :title="title"
-    aria-disabled="true"
-  >
+  <span v-if="disabled" :id="id" class="group inline-block" :class="klass" :title="title" aria-disabled="true">
     <slot />
   </span>
-  <a
-    v-else
-    :id="id"
-    :href="href"
-    class="group inline-block text-base-content hover:text-accent"
-    :class="klass"
-    :title="title"
-  >
+  <a v-else :id="id" :href="href" class="group inline-block text-base-content hover:text-accent" :class="klass"
+    :title="title">
     <slot />
   </a>
 </template>

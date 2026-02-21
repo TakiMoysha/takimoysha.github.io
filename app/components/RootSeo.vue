@@ -6,7 +6,6 @@ interface Props {
   lang?: 'en-US' | 'ru-RU';
   description?: string;
   author?: string;
-  canonicalURL?: string;
   imageURL?: string;
 }
 
@@ -21,9 +20,7 @@ const siteUrl = useRuntimeConfig().public.siteUrl;
 const googleSiteVerification = useRuntimeConfig().public.googleSiteVerification;
 const bingSiteVerification = useRuntimeConfig().public.bingSiteVerification;
 
-const canonicalURL = computed(
-  () => props.canonicalURL ?? `${siteUrl}${route.path}`,
-);
+const canonicalURL = computed(() => `${siteUrl}${route.path}`);
 
 const ldJson = computed(() =>
   JSON.stringify({
