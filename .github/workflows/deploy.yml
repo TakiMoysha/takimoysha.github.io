@@ -32,14 +32,14 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-nuxt-
 
-      - run: bun install
+      - run: bun install ; bun run nuxt prepare
       - run: bun run test
-
       - name: Static HTML export with Nuxt
         run: bun run generate
         env:
           PUBLIC_GOOGLE_SITE_VERIFICATION: ${{ vars.PUBLIC_GOOGLE_SITE_VERIFICATION }}
           PUBLIC_BING_SITE_VERIFICATION: ${{ vars.PUBLIC_BING_SITE_VERIFICATION }}
+
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

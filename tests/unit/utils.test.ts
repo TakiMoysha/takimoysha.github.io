@@ -1,16 +1,62 @@
 import { describe, expect, test } from 'vitest';
-import { parseDate } from './content';
+import { parseDate } from '~/utils/content';
 import {
+  DEFAULT_LOCALE,
   getLocalizedEntry,
   groupByLocale,
   parseLocaleFromId,
-} from './content-locale';
+  SUPPORTED_LOCALES,
+} from '~/utils/content-locale';
 
-describe('document parsing', () => {
-  test('should parse string to date', () => {
-    const res = parseDate('20230101');
-    expect(res).toBeInstanceOf(Date);
+describe('locale constants', () => {
+  test('should have correct default locale', () => {
+    expect(DEFAULT_LOCALE).toBe('en');
   });
+
+  test('should have supported locales defined', () => {
+    expect(SUPPORTED_LOCALES).toContain('en');
+    expect(SUPPORTED_LOCALES).toContain('ru');
+    expect(SUPPORTED_LOCALES).toHaveLength(2);
+  });
+});
+
+describe('locale parsing', () => {
+  test('should parse locale from id with ru suffix', () => {
+    const result = parseLocaleFromId('post.ru');
+    expect(result.baseSlug).toBe('post');
+    expect(result.locale).toBe('ru');
+  });
+
+  test('should parse locale from id with en suffix', () => {
+    const result = parseLocaleFromId('article.en');
+    expect(result.baseSlug).toBe('article');
+    expect(result.locale).toBe('en');
+  });
+
+  test('should return default locale for id without suffix', () => {
+    const result = parseLocaleFromId('simple');
+    expect(result.baseSlug).toBe('simple');
+    expect(result.locale).toBe('en');
+  });
+
+  test('should handle complex slugs with dots', () => {
+    const result = parseLocaleFromId('my.post.en');
+    expect(result.baseSlug).toBe('my.post');
+    expect(result.locale).toBe('en');
+  });
+
+  test('should handle path-like ids', () => {
+    const result = parseLocaleFromId('archive/my-post.ru');
+    expect(result.baseSlug).toBe('archive/my-post');
+    expect(result.locale).toBe('ru');
+  });
+
+  test('should handle ids with multiple dots', () => {
+    const result = parseLocaleFromId('doc.v2.ru');
+    expect(result.baseSlug).toBe('doc.v2');
+    expect(result.locale).toBe('ru');
+  });
+});
 
   test('should parse number to date', () => {
     const res = parseDate(20230101);

@@ -1,21 +1,8 @@
-import {
-  defineVitestConfig,
-  defineVitestProject,
-} from '@nuxt/test-utils/config';
-import { configDefaults, defineConfig } from 'vitest/config';
-
-const integrationTests = defineVitestProject({
-  test: {
-    name: 'nuxt',
-    dir: 'tests/nuxt',
-    environmentOptions: {
-      nuxt: { overrides: { ogImage: { enabled: false } } },
-    },
-  },
-});
+import { defineVitestConfig } from '@nuxt/test-utils/config';
 
 export default defineVitestConfig({
   test: {
-    projects: ['tests/unit', integrationTests],
+    environment: 'happy-dom',
+    include: ['tests/**/*.test.ts'],
   },
 });

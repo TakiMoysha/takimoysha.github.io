@@ -10,7 +10,7 @@
 - markdown support: mermaid|plantuml diagraph
 - mdx with jsx support
 - tailwindcss: typography
-  - try unocss with wind4
+  - [?] try unocss with wind4
 
 - seo: article ld+json schema; https://nuxtseo.com/
 
@@ -29,23 +29,6 @@ SaaS's:
 - Transifex
 - Lokalise
 
-## Localization
-
-SaaS's:
-- Crowdin
-- Transifex
-- Lokalise
-
-
-#### tailwind color schemes
-
-> [!note] working with tailwindcss v4+
-
-- why 5 colors
-- working with **color palette**, adobe color wheel;
--
-
-> [?] migrate to unocss
 
 # Resources
 
