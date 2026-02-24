@@ -6,20 +6,12 @@ const SITE_URL = 'https://takimoysha.github.io';
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
-
-  hooks: {
-    'content:file:afterParse'(ctx) {
-      const match = ctx.file.id.match(/\.(ru|en)$/);
-      ctx.content.locale = match?.[1] ?? 'en';
-    },
-  },
-
   modules: [
     '@nuxtjs/sitemap', //
     '@nuxtjs/i18n', //
     // 'nuxt-og-image',       // Автоматическая генерация OG-изображений для соцсетей
     // '@nuxt/image',         // Оптимизация изображений (IPX, Cloudinary и др.)
-    '@nuxtjs/html-validator', 
+    '@nuxtjs/html-validator',
     // '@nuxt/fonts',         // custom fonts (Google Fonts)
     // '@nuxt/scripts',       // scripts (Google Tag Manager, Meta Pixel etc.)
     // '@unocss/nuxt',        // faster then tailwindcss
@@ -36,7 +28,9 @@ export default defineNuxtConfig({
     },
   },
   $development: {
-    modules: ['nuxt-studio'],
+    modules: [
+      'nuxt-studio',
+    ],
   },
   $test: {
     modules: ['@nuxt/test-utils/module'],
