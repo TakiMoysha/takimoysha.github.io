@@ -1,33 +1,33 @@
 <script setup lang="ts">
-import ToolThemeSwitcher from '@/components/ToolThemeSwitcher.vue';
-import CardInfo from '@/components/draft/CardInfo.vue';
+import ToolThemeSwitcher from "@/components/ToolThemeSwitcher.vue";
+import CardInfo from "@/components/draft/CardInfo.vue";
 
 interface Props {
   title?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  title: 'Blank Page | TakiMoysha',
+  title: "Blank Page | TakiMoysha",
 });
 
 const properties = [
   {
-    title: 'Robust',
+    title: "Robust",
     description:
-      'Po, the day you were chosen as Dragon Warrior was the worst day of my life. By far. Nothing else came close.',
+      "Po, the day you were chosen as Dragon Warrior was the worst day of my life. By far. Nothing else came close.",
     icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
     </svg>`,
   },
   {
-    title: 'Efficient',
+    title: "Efficient",
     description: "Honestly, I didn't really know what I was doing.",
     icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
     </svg>`,
   },
   {
-    title: 'Intuitive',
+    title: "Intuitive",
     description: "Your enemy can't guess your strategy if you don't have any.",
     icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
@@ -37,39 +37,39 @@ const properties = [
 
 const testimonials = [
   {
-    username: 'Sun Tzu',
-    role: 'Leader',
+    username: "Sun Tzu",
+    role: "Leader",
     avatar_url:
-      'https://testingbot.com/free-online-tools/random-avatar/200?u=u837kfei139kn',
-    text: 'If you know the enemy and know yourself, you need not fear the result of a hundred battles. If you know yourself but not the enemy, for every victory gained you will also suffer a defeat. If you know neither the enemy nor yourself, you will succumb in every battle.',
+      "https://testingbot.com/free-online-tools/random-avatar/200?u=u837kfei139kn",
+    text: "If you know the enemy and know yourself, you need not fear the result of a hundred battles. If you know yourself but not the enemy, for every victory gained you will also suffer a defeat. If you know neither the enemy nor yourself, you will succumb in every battle.",
   },
   {
-    username: 'Oogway',
-    role: 'Master',
+    username: "Oogway",
+    role: "Master",
     avatar_url:
-      'https://testingbot.com/free-online-tools/random-avatar/200?u=u837kxei139kn',
-    text: 'Oh, Shifu. THere is just news. There is no good or bad.',
+      "https://testingbot.com/free-online-tools/random-avatar/200?u=u837kxei139kn",
+    text: "Oh, Shifu. THere is just news. There is no good or bad.",
   },
   {
-    username: 'Mao Zedong',
-    role: 'Leader',
+    username: "Mao Zedong",
+    role: "Leader",
     avatar_url:
-      'https://testingbot.com/free-online-tools/random-avatar/200?u=u8wdf7ei139kn',
-    text: 'I thought I wanted a career, turns out I just wanted a paycheck.',
+      "https://testingbot.com/free-online-tools/random-avatar/200?u=u8wdf7ei139kn",
+    text: "I thought I wanted a career, turns out I just wanted a paycheck.",
   },
   {
-    username: 'Winston Churchill',
-    role: 'General',
+    username: "Winston Churchill",
+    role: "General",
     avatar_url:
-      'https://testingbot.com/free-online-tools/random-avatar/200?u=u8o1iwqq139kx',
-    text: 'und eri doderido deriodod eriodoo Iwbnfouevcmsiehwvudbqv Government.',
+      "https://testingbot.com/free-online-tools/random-avatar/200?u=u8o1iwqq139kx",
+    text: "und eri doderido deriodod eriodoo Iwbnfouevcmsiehwvudbqv Government.",
   },
   {
-    username: 'Niccolò di Bernardo dei Machiavelli',
-    role: 'Leader',
+    username: "Niccolò di Bernardo dei Machiavelli",
+    role: "Leader",
     avatar_url:
-      'https://testingbot.com/free-online-tools/random-avatar/200?u=u837kfei139kx',
-    text: 'I am not a philosopher because I have read too much, I am a philosopher because I have read too little.',
+      "https://testingbot.com/free-online-tools/random-avatar/200?u=u837kfei139kx",
+    text: "I am not a philosopher because I have read too much, I am a philosopher because I have read too little.",
   },
 ];
 </script>
@@ -183,6 +183,12 @@ const testimonials = [
         <div class="palette-block text-base-content bg-base-400">
           text-base-content + bg-base-400
         </div>
+
+
+        <h4 class="mt-4 text-2xl">Fonts & Sizes</h4>
+        <div class="palette-block text-base-content font-sans">Font Sans <span class="uppercase">UppserCase</span></div>
+        <div class="palette-block text-base-content font-mono">Font Mono <span class="uppercase">UppserCase</span></div>
+        <div class="palette-block text-base-content font-digital">Font Digital <span class="uppercase">UppserCase</span></div>
       </section>
 
       <!-- testimonials -->

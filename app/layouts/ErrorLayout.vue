@@ -96,7 +96,7 @@ const pageTitle = computed(() => `${error.value.text} | ${SITE.title}`);
 }
 
 .shake-box {
-  animation: noise 0.2s linear infinite;
+  animation: shake 0.2s linear infinite;
 }
 
 .glitch {
@@ -128,7 +128,7 @@ const pageTitle = computed(() => `${error.value.text} | ${SITE.title}`);
   animation: glitch-2 5s infinite linear alternate-reverse;
 }
 
-@keyframes noise {
+@keyframes shake {
 
   0%,
   100% {
