@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import RootSeo from '@/components/RootSeo.vue';
-import RootHeader from '@/components/RootHeader.vue';
-import RootFooter from '@/components/RootFooter.vue';
+import RootSeo from "@/components/RootSeo.vue";
+import RootHeader from "@/components/RootHeader.vue";
+import RootFooter from "@/components/RootFooter.vue";
 
 interface Props {
   title: string;
@@ -24,7 +24,7 @@ const props = defineProps<Props>();
 
   <div class="body-margin flex min-h-screen flex-col">
     <RootHeader />
-    <main id="main-content" class="main-margin relative z-1 flex-1">
+    <main id="main-content" class="main-margin relative z-1 flex-1 pattern-swamp">
       <slot />
     </main>
     <RootFooter />
