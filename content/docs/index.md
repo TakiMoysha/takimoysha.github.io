@@ -3,6 +3,10 @@
 - reference https://github.com/onmax/nuxt-skills
 - specification https://agentskills.io/specification
 
+## Content
+
+Content support multilanguage (i18n).
+
 ## Semantic CSS
 
 Use NuxtUI and TailwindCSS.

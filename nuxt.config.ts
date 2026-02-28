@@ -2,6 +2,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 const SITE_CONFIG = {
   title: 'Digital Decay',
+  author: "TakiMoysha",
   description: 'Blog posts and notes about development and technology.',
   themes: ['dark', 'light'] as Array<string>,
   url: 'https://takimoysha.github.io',
@@ -71,7 +72,25 @@ export default defineNuxtConfig({
     head: {
       title: SITE_CONFIG.title,
       htmlAttrs: { lang: 'en-US' },
-      link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }],
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' },
+        {
+          rel: 'alternate',
+          type: 'application/rss+xml',
+          title: 'Digital Decay / TakiMoysha / RSS',
+          href: `${SITE_CONFIG.url}/feed.xml`,
+        },
+      ],
+      meta: [
+        {
+          name: 'google-site-verification',
+          content: process.env.NUXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+        },
+        {
+          name: 'msvalidate.01',
+          content: process.env.NUXT_PUBLIC_BING_SITE_VERIFICATION,
+        },
+      ],
     },
     pageTransition: false,
     layoutTransition: false,
@@ -79,6 +98,7 @@ export default defineNuxtConfig({
   site: {
     /* not working properly */
     url: SITE_CONFIG.url,
+    name: SITE_CONFIG.title,
     title: SITE_CONFIG.title,
   },
   ogImage: { enabled: false },
@@ -112,7 +132,7 @@ export default defineNuxtConfig({
   css: ['~/assets/styles/main.css'],
   ssr: false, // for github pages
   nitro: {
-    preset: "github-pages", // or static
+    preset: 'github-pages', // or static
     experimental: { tasks: true },
     future: { nativeSWR: true },
     // prerender: {
