@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { SITE } from '@/constants';
 import BaseLayout from '@/layouts/BaseLayout.vue';
+
+const site = useSiteConfig();
 
 type ErrorCode = '404' | '500' | 'work-in-progress';
 
@@ -45,7 +46,7 @@ const error = computed<ErrorInfo>(() => {
   return ERROR_MAP[props.code] ?? DEFAULT_ERROR;
 });
 
-const pageTitle = computed(() => `${error.value.text} | ${SITE.title}`);
+const pageTitle = computed(() => `${error.value.text} | ${site.title}`);
 </script>
 
 <template>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SITE } from "@/constants";
+const site = useSiteConfig();
 </script>
 
 <template>
@@ -12,7 +12,7 @@ import { SITE } from "@/constants";
         <sub class="text-medium pl-px text-base-content/60">\</sub>
 
         <span class="font-semibold text-xl brand-style tracking-tight">
-          {{ SITE.title }}
+          {{ site.title }}
         </span>
       </h3>
     </NuxtLink>

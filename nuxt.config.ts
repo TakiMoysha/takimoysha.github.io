@@ -1,6 +1,12 @@
 import tailwindcss from '@tailwindcss/vite';
 
-const SITE_URL = 'https://takimoysha.github.io';
+const CONFIG = {
+  title: 'Digital Decay',
+  description: 'Blog and notes about development and technology.',
+  defaultLanguage: 'en-US' as 'en-US' | 'ru-RU',
+  themes: ['dark'] as Array<string>,
+  url: 'https://takimoysha.github.io',
+};
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -9,9 +15,9 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/sitemap', //
     '@nuxtjs/i18n', //
+    '@nuxtjs/html-validator', //
     // 'nuxt-og-image',       // Автоматическая генерация OG-изображений для соцсетей
     // '@nuxt/image',         // Оптимизация изображений (IPX, Cloudinary и др.)
-    '@nuxtjs/html-validator',
     // '@nuxt/fonts',         // custom fonts (Google Fonts)
     // '@nuxt/scripts',       // scripts (Google Tag Manager, Meta Pixel etc.)
     // '@unocss/nuxt',        // faster then tailwindcss
@@ -28,9 +34,7 @@ export default defineNuxtConfig({
     },
   },
   $development: {
-    modules: [
-      'nuxt-studio',
-    ],
+    modules: ['nuxt-studio'],
   },
   $test: {
     modules: ['@nuxt/test-utils/module'],
@@ -38,17 +42,28 @@ export default defineNuxtConfig({
       componentIslands: true,
     },
   },
+  runtimeConfig: {
+    public: {
+      googleSiteVerification: '',
+      bingSiteVerification: '',
+    },
+  },
 
   app: {
     head: {
+      title: CONFIG.title,
       htmlAttrs: { lang: 'en-US' },
-      title: 'Digital Decay',
+      link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }],
     },
     pageTransition: false,
     layoutTransition: false,
   },
+  site: {
+    url: CONFIG.url,
+    title: CONFIG.title,
+    description: CONFIG.title,
+  },
 
-  site: { url: SITE_URL },
   sitemap: {
     zeroRuntime: true, // when sitemap is generated on build
   },
@@ -66,18 +81,11 @@ export default defineNuxtConfig({
     ],
   },
 
-  runtimeConfig: {
-    public: {
-      googleSiteVerification: '',
-      bingSiteVerification: '',
-    },
-  },
-
   content: {
     watch: { enabled: false },
     build: {
       markdown: {
-        highlight: { theme: 'tokyo-night', langs: ['js', 'json', 'python'] },
+        highlight: { theme: 'tokyo-night', langs: ['python', 'js', 'json'] },
       },
     },
   },

@@ -4,37 +4,7 @@ import BaseLayout from '@/layouts/BaseLayout.vue';
 const pageTitle = 'Archive';
 const pageDescription = 'All notes, articles and blog posts.';
 
-const { getList } = useLocalizedContent('archive');
-
-const { data: entries } = await useAsyncData('archive-entries', () =>
-  getList(),
-);
-
-const postsByYear = computed(() => {
-  const result: Record<
-    number,
-    { slug: string; entry: any; locales: string[] }[]
-  > = {};
-
-  for (const item of entries.value || []) {
-    if (!item.entry) continue;
-    const year = new Date(item.entry.date).getFullYear();
-
-    if (!result[year]) {
-      result[year] = [];
-    }
-
-    result[year].push(item);
-  }
-
-  return result;
-});
-
-const years = computed(() => {
-  return Object.keys(postsByYear.value)
-    .map(Number)
-    .sort((a, b) => b - a);
-});
+const postsByYear = {};
 </script>
 
 <template>
@@ -56,16 +26,9 @@ const years = computed(() => {
           </header>
 
           <div class="space-y-6">
-            <ArchiveArticleCard
-              v-for="item in postsByYear[year]"
-              :key="item.slug"
-              :slug="item.slug"
-              :date="item.entry.date"
-              :title="item.entry.title"
-              :description="item.entry.description"
-              :tags="item.entry.tags"
-              :locales="item.locales"
-            />
+            <ArchiveArticleCard v-for="item in postsByYear[year]" :key="item.slug" :slug="item.slug"
+              :date="item.entry.date" :title="item.entry.title" :description="item.entry.description"
+              :tags="item.entry.tags" :locales="item.locales" />
           </div>
         </section>
       </div>

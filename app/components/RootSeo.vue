@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { SITE } from '@/constants';
+import { SOCIALS } from '~/constants';
 
+// use nuxt-seo and explicit ?? for default values
+// nuxt can't get default values from hoisted outside of the setup
 interface Props {
   title?: string;
   lang?: 'en-US' | 'ru-RU';
@@ -9,12 +11,10 @@ interface Props {
   imageURL?: string;
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  title: SITE.title,
-  description: SITE.description,
-  lang: 'en-US',
-});
+const props = defineProps<Props>();
 
+
+const site = useSiteConfig();
 const route = useRoute();
 const siteUrl = useRuntimeConfig().public.siteUrl;
 const googleSiteVerification = useRuntimeConfig().public.googleSiteVerification;
@@ -28,10 +28,7 @@ const ldJson = computed(() =>
     '@type': 'Person',
     name: props.author,
     url: siteUrl,
-    sameAs: [
-      'https://github.com/takimoysha',
-      'https://linkedin.com/in/takimoysha',
-    ],
+    sameAs: SOCIALS.map((social) => social.href),
     potentialAction: {
       '@type': 'SearchAction',
       target: `${siteUrl}/archive/search?q={search_string}`,
@@ -60,13 +57,13 @@ useHead({
 });
 
 useSeoMeta({
-  title: props.title,
-  description: props.description,
-  ogTitle: props.title,
-  ogDescription: props.description,
+  title: props.title ?? site.title,
+  description: props.description ?? site.description,
+  ogTitle: props.title ?? site.title,
+  ogDescription: props.description ?? site.description,
   ogImage: props.imageURL,
-  twitterTitle: props.title,
-  twitterDescription: props.description,
+  twitterTitle: props.title ?? site.title,
+  twitterDescription: props.description ?? site.description,
   twitterImage: props.imageURL,
 });
 </script>

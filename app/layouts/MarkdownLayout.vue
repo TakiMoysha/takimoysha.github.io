@@ -1,3 +1,14 @@
+<script setup lang="ts">
+import BaseLayout from './BaseLayout.vue';
+import ArticleProgressBar from '@/components/ArticleProgressBar.vue';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+const props = defineProps<Props>();
+</script>
+
 <template>
   <BaseLayout :title="title" :description="description">
     <ArticleProgressBar />
@@ -11,15 +22,3 @@
     </article>
   </BaseLayout>
 </template>
-
-<script setup lang="ts">
-import BaseLayout from './BaseLayout.vue';
-import ArticleProgressBar from '@/components/ArticleProgressBar.vue';
-
-interface Props {
-  title: string;
-  description: string | undefined;
-}
-
-defineProps<Props>();
-</script>
