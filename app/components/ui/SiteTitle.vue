@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const site = useAppConfig()["SITE_CONFIG"]
+const site = useAppConfig().SITE_CONFIG;
 </script>
 
 <template>

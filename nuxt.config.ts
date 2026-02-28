@@ -112,15 +112,15 @@ export default defineNuxtConfig({
   css: ['~/assets/styles/main.css'],
   ssr: false, // for github pages
   nitro: {
+    preset: "github-pages", // or static
     experimental: { tasks: true },
     future: { nativeSWR: true },
-    prerender: {
-      crawlLinks: true,
-      ignore: ['/__nuxt_content'],
-      routes: ['/'],
-    },
-    hooks: {},
-    preset: 'static',
+    // prerender: {
+    //   crawlLinks: true,
+    //   ignore: ['/__nuxt_content'],
+    //   routes: ['/'],
+    // },
+    // hooks: {},
   },
 
   i18n: {
