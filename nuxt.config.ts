@@ -5,6 +5,12 @@ const SITE_CONFIG = {
   author: 'TakiMoysha',
   description: 'Blog posts and notes about development and technology.',
   themes: ['dark', 'light', 'halloween', 'biopunk'] as Array<string>,
+  contentThemes: [
+    'github-light',
+    'github-dark',
+    'monokai',
+    'monokai',
+  ] as Array<string>,
   url: 'https://takimoysha.github.io',
 };
 
@@ -121,10 +127,19 @@ export default defineNuxtConfig({
   },
 
   content: {
-    watch: { enabled: false },
+    watch: { enabled: process.env.NODE_ENV === 'development' },
     build: {
       markdown: {
-        highlight: { theme: 'tokyo-night', langs: ['python', 'js', 'json'] },
+        highlight: {
+          theme: {
+            default: 'github-light',
+            dark: "catppuccin-mocha",
+            light: 'github-dark',
+            halloween: 'monokai',
+            biopunk: 'monokai'
+          },
+          langs: ['python', 'js', 'ts', 'json', 'yaml', 'html', 'md', 'mermaid', 'sql',],
+        },
       },
     },
   },

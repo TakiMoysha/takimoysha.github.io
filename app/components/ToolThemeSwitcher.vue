@@ -25,5 +25,5 @@ onMounted(() => {
 </script>
 
 <template>
-  <USelect v-model="currentTheme" :items="themes" class="w-32" />
+  <USelect class="w-32 bg-base-100 text-base-content" v-model="currentTheme" :items="themes" />
 </template>

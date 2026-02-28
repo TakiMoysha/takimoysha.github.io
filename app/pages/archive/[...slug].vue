@@ -10,6 +10,7 @@ const { data: page } = await useAsyncData(route.path, () => {
 
 <template>
   <MarkdownLayout>
+    <!-- <ContentYamlFrontmatter /> -->
     <ContentRenderer v-if="page" :value="page" />
   </MarkdownLayout>
 </template>

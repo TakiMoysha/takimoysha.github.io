@@ -7,6 +7,19 @@
 
 Content support multilanguage (i18n).
 
+YamlFrontmatter example of syntax:
+
+```md
+---
+title: SQL (ТЕСТ)
+description: Тестовый файл для проверки markdown и дизайна.
+date: 202109151046
+tags: [dml, ddl]
+zerolinks:
+  - '[[0 Databases]]"
+---
+```
+
 ## Semantic CSS
 
 Use NuxtUI and TailwindCSS.
