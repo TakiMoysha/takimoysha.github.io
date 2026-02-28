@@ -8,7 +8,7 @@ const postsByYear = {};
 </script>
 
 <template>
-  <BaseLayout :title="pageTitle" :description="pageDescription">
+  <BaseLayout>
     <div class="mx-auto max-w-5xl px-4 py-12">
       <header class="mb-14">
         <h1 class="mb-3 text-4xl font-bold text-base-content">

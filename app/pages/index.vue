@@ -1,14 +1,9 @@
 <script setup lang="ts">
 import BaseLayout from '@/layouts/BaseLayout.vue';
-import useArchiveContent from '@/composables/useArchiveContent';
 import { computed } from 'vue';
 import { parseDate } from '@/utils/content';
 
-const archiveContentCompose = useArchiveContent();
-
 const archiveContent = await useAsyncData(() => {
-  if (import.meta.client && !import.meta.dev) return Promise.resolve([]);
-
   return queryCollection('archive').all();
 });
 
@@ -20,16 +15,20 @@ const formatDate = (datastr: string) => {
   });
 };
 const posts = computed(() => archiveContent.data.value?.slice(0, 5));
+
+const cyclesContent = await queryCollection('cycles').all();
+const docsContent = await queryCollection('docs').all();
+const projectsContent = await queryCollection('projects').all();
 </script>
 
 <template>
-  <BaseLayout title="Digital Decay" description="Blog, notes and reports about development.">
+  <BaseLayout>
     <div class="max-w-4xl mx-auto px-4">
       <section class="py-12">
         <h2 class="text-2xl font-semibold mb-6 pb-2 border-b">Posts</h2>
         <div class="space-y-8">
           <article v-for="post in posts" :key="post.id" class="group">
-            <NuxtLink :to="`/archive/${post.slug}`" class="block">
+            <NuxtLink :to="`${post.slug || post.path}`" class="block">
               <h3 class="text-xl font-medium text-blue-600 dark:text-blue-400 group-hover:underline mb-1">
                 {{ post.title }}
               </h3>
@@ -45,9 +44,11 @@ const posts = computed(() => archiveContent.data.value?.slice(0, 5));
       </section>
 
       <DebugOnly>
-        <hr class="border-amber-400" />
-        <section>
-          Archive Content: {{ archiveContent.data.value?.map(item => item.id.concat(";").concat(item.slug)) }}
+        <section class='border-2 border-solid border-amber-400 p-2'>
+          <p>Archive Content: {{archiveContent.data.value?.map(item => item.id.concat(";").concat(item.slug))}} </p>
+          <p>Cycles Content: {{cyclesContent.map(item => item.id)}} </p>
+          <p>Docs Content: {{docsContent.map(item => item.id)}} </p>
+          <p>Projects Content: {{projectsContent.map(item => item.id)}} </p>
         </section>
       </DebugOnly>
 

@@ -15,6 +15,7 @@ export default defineContentConfig({
         locale: z.string().default('en'),
         draft: z.boolean().default(false),
       }),
+      indexes: [{ columns: ['slug', 'date', 'tags'] }],
     }),
     cycles: defineCollection({
       type: 'data',
@@ -26,6 +27,7 @@ export default defineContentConfig({
         spec: z.object({}).default({}),
         draft: z.boolean().default(false),
       }),
+      indexes: [],
     }),
     projects: defineCollection({
       type: 'page',
