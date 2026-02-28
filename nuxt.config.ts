@@ -2,9 +2,9 @@ import tailwindcss from '@tailwindcss/vite';
 
 const SITE_CONFIG = {
   title: 'Digital Decay',
-  author: "TakiMoysha",
+  author: 'TakiMoysha',
   description: 'Blog posts and notes about development and technology.',
-  themes: ['dark', 'light'] as Array<string>,
+  themes: ['dark', 'light', 'halloween', 'biopunk'] as Array<string>,
   url: 'https://takimoysha.github.io',
 };
 
@@ -71,7 +71,7 @@ export default defineNuxtConfig({
   app: {
     head: {
       title: SITE_CONFIG.title,
-      htmlAttrs: { lang: 'en-US' },
+      htmlAttrs: { lang: 'en-US', 'data-theme': SITE_CONFIG.themes[0] },
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' },
         {

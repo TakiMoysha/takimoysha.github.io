@@ -3,6 +3,7 @@ import { SOCIALS } from '@/constants';
 import ToolThemeSwitcher from '@/components/ToolThemeSwitcher.vue';
 
 const currentYear = new Date().getFullYear();
+const site = useAppConfig().SITE_CONFIG;
 </script>
 
 <template>
@@ -10,7 +11,7 @@ const currentYear = new Date().getFullYear();
     <div class="mx-auto px-4">
       <div class="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
         <p class="text-base-content/70 text-sm">
-          © {{ currentYear }}, TakiMoysha
+          © {{ currentYear }} powered by {{ site.author }}
         </p>
 
         <div class="flex items-center gap-4">

@@ -2,6 +2,7 @@
 import BaseLayout from '@/layouts/BaseLayout.vue';
 import useArchiveContent from '@/composables/useArchiveContent';
 import { computed } from 'vue';
+import { parseDate } from '@/utils/content';
 
 const archiveContentCompose = useArchiveContent();
 
@@ -12,23 +13,20 @@ const archiveContent = await useAsyncData(() => {
 });
 
 const formatDate = (datastr: string) => {
-  return new Date(datastr).toLocaleDateString('en-US', {
+  return parseDate(datastr)?.toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
-
   });
 };
 const posts = computed(() => archiveContent.data.value?.slice(0, 5));
-
-const debugContent = computed(() => archiveContent.data.value?.map((item) => item.id));
 </script>
 
 <template>
   <BaseLayout title="Digital Decay" description="Blog, notes and reports about development.">
     <div class="max-w-4xl mx-auto px-4">
       <section class="py-12">
-        <h2 class="text-2xl font-semibold mb-6 pb-2 border-b">Latest Posts</h2>
+        <h2 class="text-2xl font-semibold mb-6 pb-2 border-b">Posts</h2>
         <div class="space-y-8">
           <article v-for="post in posts" :key="post.id" class="group">
             <NuxtLink :to="`/archive/${post.slug}`" class="block">
@@ -49,7 +47,7 @@ const debugContent = computed(() => archiveContent.data.value?.map((item) => ite
       <DebugOnly>
         <hr class="border-amber-400" />
         <section>
-          Archive Content: {{ debugContent }}
+          Archive Content: {{ archiveContent.data.value?.map(item => item.id.concat(";").concat(item.slug)) }}
         </section>
       </DebugOnly>
 

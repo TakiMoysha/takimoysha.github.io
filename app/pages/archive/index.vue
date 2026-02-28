@@ -18,7 +18,7 @@ const postsByYear = {};
       </header>
 
       <div class="space-y-12">
-        <section v-for="year in years" :key="year">
+        <section v-for="year in postsByYear" :key="year">
           <header class="mb-6 border-b border-accent/40 pb-2">
             <h2 class="text-2xl font-semibold text-primary-content">
               {{ year }}
