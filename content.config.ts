@@ -5,7 +5,7 @@ export default defineContentConfig({
     docs: defineCollection({ type: 'page', source: 'docs/*.md' }),
     archive: defineCollection({
       type: 'page',
-      source: 'archive/*.md',
+      source: 'archive/**/*.md',
       schema: z.object({
         title: z.string(),
         slug: z.string().optional(),
@@ -18,7 +18,7 @@ export default defineContentConfig({
     }),
     cycles: defineCollection({
       type: 'data',
-      source: 'cycles/*.json',
+      source: 'cycles/**/manifest.json',
       schema: z.object({
         title: z.string(),
         description: z.string().optional(),
@@ -29,7 +29,7 @@ export default defineContentConfig({
     }),
     projects: defineCollection({
       type: 'page',
-      source: 'projects/*.mdx',
+      source: 'projects/**/index.mdx',
       schema: z.object({
         title: z.string(),
         description: z.string().optional(),
