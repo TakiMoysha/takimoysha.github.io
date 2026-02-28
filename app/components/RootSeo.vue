@@ -13,7 +13,6 @@ interface Props {
 
 const props = defineProps<Props>();
 
-
 const site = useSiteConfig();
 const route = useRoute();
 const siteUrl = useRuntimeConfig().public.siteUrl;

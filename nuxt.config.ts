@@ -1,11 +1,23 @@
 import tailwindcss from '@tailwindcss/vite';
 
-const CONFIG = {
+const SITE_CONFIG = {
   title: 'Digital Decay',
-  description: 'Blog and notes about development and technology.',
-  defaultLanguage: 'en-US' as 'en-US' | 'ru-RU',
-  themes: ['dark'] as Array<string>,
+  description: 'Blog posts and notes about development and technology.',
+  themes: ['dark', 'light'] as Array<string>,
   url: 'https://takimoysha.github.io',
+};
+
+const SOCIALS_CONFIG = {
+  github: {
+    href: 'https://github.com/takimoysha',
+    icon: 'lucide:github',
+    linkTitle: 'GitHub',
+  },
+  linkedin: {
+    href: 'https://linkedin.com/in/takimoysha',
+    icon: 'lucide:linkedin',
+    linkTitle: 'LinkedIn',
+  },
 };
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
@@ -13,7 +25,9 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
   modules: [
-    '@nuxtjs/sitemap', //
+    '@nuxtjs/seo', //
+    // '@nuxtjs/sitemap', // TODO: migration to nuxt/seo
+    // '@nuxtjs/robots', // TODO: migration to nuxt/seo
     '@nuxtjs/i18n', //
     '@nuxtjs/html-validator', //
     // 'nuxt-og-image',       // Автоматическая генерация OG-изображений для соцсетей
@@ -24,7 +38,6 @@ export default defineNuxtConfig({
     // '@nuxt/schema',        // TODO: wip
     '@nuxt/content', // static content md/mdx/json
     '@nuxt/ui', //
-    '@nuxtjs/robots', //
   ],
 
   $production: {
@@ -42,6 +55,11 @@ export default defineNuxtConfig({
       componentIslands: true,
     },
   },
+
+  appConfig: {
+    SITE_CONFIG,
+    SOCIALS_CONFIG,
+  },
   runtimeConfig: {
     public: {
       googleSiteVerification: '',
@@ -51,7 +69,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: CONFIG.title,
+      title: SITE_CONFIG.title,
       htmlAttrs: { lang: 'en-US' },
       link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }],
     },
@@ -59,10 +77,11 @@ export default defineNuxtConfig({
     layoutTransition: false,
   },
   site: {
-    url: CONFIG.url,
-    title: CONFIG.title,
-    description: CONFIG.title,
+    /* not working properly */
+    url: SITE_CONFIG.url,
+    title: SITE_CONFIG.title,
   },
+  ogImage: { enabled: false },
 
   sitemap: {
     zeroRuntime: true, // when sitemap is generated on build
@@ -105,6 +124,7 @@ export default defineNuxtConfig({
   },
 
   i18n: {
+    baseUrl: SITE_CONFIG.url,
     locales: [
       { code: 'en', iso: 'en-US', name: 'English' },
       { code: 'ru', iso: 'ru-RU', name: 'Русский' },
@@ -125,8 +145,8 @@ export default defineNuxtConfig({
 
   social: {
     networks: {
-      linkedin: { identifier: 'takimoysha.arpa' },
-      github: { identifier: 'takimoysha.arpa' },
+      linkedin: SOCIALS_CONFIG.linkedin,
+      github: SOCIALS_CONFIG.github,
     },
   },
 });
