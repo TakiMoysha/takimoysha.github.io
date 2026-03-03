@@ -35,6 +35,7 @@ export default defineNuxtConfig({
     '@nuxtjs/seo', //
     // '@nuxtjs/sitemap', // TODO: migration to nuxt/seo
     // '@nuxtjs/robots', // TODO: migration to nuxt/seo
+    // '@nuxt/schema',        // TODO: migration to nuxt/seo
     '@nuxtjs/i18n', //
     '@nuxtjs/html-validator', //
     // 'nuxt-og-image',       // Автоматическая генерация OG-изображений для соцсетей
@@ -42,7 +43,6 @@ export default defineNuxtConfig({
     // '@nuxt/fonts',         // custom fonts (Google Fonts)
     // '@nuxt/scripts',       // scripts (Google Tag Manager, Meta Pixel etc.)
     // '@unocss/nuxt',        // faster then tailwindcss
-    // '@nuxt/schema',        // TODO: wip
     '@nuxt/content', // static content md/mdx/json
     '@nuxt/ui', //
   ],
@@ -131,14 +131,25 @@ export default defineNuxtConfig({
     build: {
       markdown: {
         highlight: {
+          // supported themes: https://github.com/shikijs/textmate-grammars-themes/tree/main/packages/tm-themes
           theme: {
             default: 'github-light',
-            dark: "catppuccin-mocha",
+            dark: 'catppuccin-mocha',
             light: 'github-dark',
             halloween: 'monokai',
-            biopunk: 'monokai'
+            biopunk: 'monokai',
           },
-          langs: ['python', 'js', 'ts', 'json', 'yaml', 'html', 'md', 'mermaid', 'sql',],
+          langs: [
+            'python',
+            'js',
+            'ts',
+            'json',
+            'yaml',
+            'html',
+            'md',
+            'mermaid',
+            'plsql',
+          ],
         },
       },
     },
@@ -161,10 +172,10 @@ export default defineNuxtConfig({
   i18n: {
     baseUrl: SITE_CONFIG.url,
     locales: [
-      { code: 'en', iso: 'en-US', name: 'English' },
       { code: 'ru', iso: 'ru-RU', name: 'Русский' },
+      { code: 'en', iso: 'en-US', name: 'English' },
     ],
-    defaultLocale: 'en',
+    defaultLocale: 'ru',
     strategy: 'prefix_except_default',
   },
 

@@ -7,7 +7,7 @@
 
 Content support multilanguage (i18n).
 
-YamlFrontmatter example of syntax:
+At the top of the file you can see is YamlFrontmatter:
 
 ```md
 ---
@@ -16,9 +16,12 @@ description: Тестовый файл для проверки markdown и ди�
 date: 202109151046
 tags: [dml, ddl]
 zerolinks:
-  - '[[0 Databases]]"
+  - [[0 Databases]]
 ---
 ```
+
+### markdown Formatter
+
 
 ## Semantic CSS
 
@@ -38,20 +41,11 @@ const content = defineCollection({
     }),
     z.object({
       type: z.literal("video"),
-      title: z.string(),
-      videoUrl: z.string().url(),
-      duration: z.string(),
       image: z.boject({
         title: z.string(),
         cover: image().refine(img) => img.width >= 1200, { msg: "Cover should be at least 1200px wide" }, }),
         thumbnail: image().optional(),
       }),
-    }),
-    z.object({
-      type: z.literal("podcast"),
-      title: z.string(),
-      audioUrl: z.string().url(),
-      guests: z.array(z.string()),
     }),
   ]),
 });
