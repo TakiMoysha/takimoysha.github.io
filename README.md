@@ -19,6 +19,8 @@
 
 - docs/skills update pipeline - count tokens from all files and update token section in yaml front matter in SKILLS with description each file tokens.
 
+- gh rulesets
+
 ## ULP
 
 ## Localization
