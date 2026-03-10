@@ -190,37 +190,6 @@ Supported locales:
 - `en` (default) - English (en-US)
 - `ru` - Russian (ru-RU)
 
-### Content Localization
-
-Content files use locale postfixes before the extension:
-
-- `post.md` - Default locale (en)
-- `post.ru.md` - Russian version
-- `post.en.md` - English (explicit)
-
-### Architecture
-
-```
-nuxt.config.ts          # Hook: content:file:afterParse extracts locale
-content.config.ts       # Schema: locale field in collections
-app/utils/content-locale.ts    # Utilities for parsing/grouping
-app/composables/useLocalizedContent.ts  # Main composable
-```
-
-### Usage
-
-```typescript
-const { getBySlug, getList } = useLocalizedContent("archive");
-
-// Get entry for current locale with fallback
-const entry = await getBySlug("my-post");
-
-// Get all entries grouped by slug
-const entries = await getList();
-```
-
-Use `const { locale } = useI18n()` for locale-aware logic.
-
 ---
 
 ## Testing

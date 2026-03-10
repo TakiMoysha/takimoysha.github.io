@@ -1,32 +1,50 @@
 import tailwindcss from '@tailwindcss/vite';
 
-const SITE_URL = 'https://takimoysha.github.io';
+const SITE_CONFIG = {
+  title: 'Digital Decay',
+  author: 'TakiMoysha',
+  description: 'Blog posts and notes about development and technology.',
+  themes: ['dark', 'light', 'halloween', 'biopunk'] as Array<string>,
+  contentThemes: [
+    'github-light',
+    'github-dark',
+    'monokai',
+    'monokai',
+  ] as Array<string>,
+  url: 'https://takimoysha.github.io',
+};
+
+const SOCIALS_CONFIG = {
+  github: {
+    href: 'https://github.com/takimoysha',
+    icon: 'lucide:github',
+    linkTitle: 'GitHub',
+  },
+  linkedin: {
+    href: 'https://linkedin.com/in/takimoysha',
+    icon: 'lucide:linkedin',
+    linkTitle: 'LinkedIn',
+  },
+};
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
-
-  hooks: {
-    'content:file:afterParse'(ctx) {
-      const match = ctx.file.id.match(/\.(ru|en)$/);
-      ctx.content.locale = match?.[1] ?? 'en';
-    },
-  },
-
   modules: [
-    '@nuxtjs/sitemap', //
+    '@nuxtjs/seo', //
+    // '@nuxtjs/sitemap', // TODO: migration to nuxt/seo
+    // '@nuxtjs/robots', // TODO: migration to nuxt/seo
+    // '@nuxt/schema',        // TODO: migration to nuxt/seo
     '@nuxtjs/i18n', //
+    '@nuxtjs/html-validator', //
     // 'nuxt-og-image',       // Автоматическая генерация OG-изображений для соцсетей
     // '@nuxt/image',         // Оптимизация изображений (IPX, Cloudinary и др.)
-    '@nuxtjs/html-validator', 
     // '@nuxt/fonts',         // custom fonts (Google Fonts)
     // '@nuxt/scripts',       // scripts (Google Tag Manager, Meta Pixel etc.)
     // '@unocss/nuxt',        // faster then tailwindcss
-    // '@nuxt/schema',        // TODO: wip
     '@nuxt/content', // static content md/mdx/json
     '@nuxt/ui', //
-    '@nuxtjs/robots', //
   ],
 
   $production: {
@@ -45,16 +63,52 @@ export default defineNuxtConfig({
     },
   },
 
+  appConfig: {
+    SITE_CONFIG,
+    SOCIALS_CONFIG,
+  },
+  runtimeConfig: {
+    public: {
+      googleSiteVerification: '',
+      bingSiteVerification: '',
+    },
+  },
+
   app: {
     head: {
-      htmlAttrs: { lang: 'en-US' },
-      title: 'Digital Decay',
+      title: SITE_CONFIG.title,
+      htmlAttrs: { lang: 'en-US', 'data-theme': SITE_CONFIG.themes[0] },
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' },
+        {
+          rel: 'alternate',
+          type: 'application/rss+xml',
+          title: 'Digital Decay / TakiMoysha / RSS',
+          href: `${SITE_CONFIG.url}/feed.xml`,
+        },
+      ],
+      meta: [
+        {
+          name: 'google-site-verification',
+          content: process.env.NUXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+        },
+        {
+          name: 'msvalidate.01',
+          content: process.env.NUXT_PUBLIC_BING_SITE_VERIFICATION,
+        },
+      ],
     },
     pageTransition: false,
     layoutTransition: false,
   },
+  site: {
+    /* not working properly */
+    url: SITE_CONFIG.url,
+    name: SITE_CONFIG.title,
+    title: SITE_CONFIG.title,
+  },
+  ogImage: { enabled: false },
 
-  site: { url: SITE_URL },
   sitemap: {
     zeroRuntime: true, // when sitemap is generated on build
   },
@@ -72,18 +126,31 @@ export default defineNuxtConfig({
     ],
   },
 
-  runtimeConfig: {
-    public: {
-      googleSiteVerification: '',
-      bingSiteVerification: '',
-    },
-  },
-
   content: {
-    watch: { enabled: false },
+    watch: { enabled: process.env.NODE_ENV === 'development' },
     build: {
       markdown: {
-        highlight: { theme: 'tokyo-night', langs: ['js', 'json', 'python'] },
+        highlight: {
+          // supported themes: https://github.com/shikijs/textmate-grammars-themes/tree/main/packages/tm-themes
+          theme: {
+            default: 'github-light',
+            dark: 'catppuccin-mocha',
+            light: 'github-dark',
+            halloween: 'monokai',
+            biopunk: 'monokai',
+          },
+          langs: [
+            'python',
+            'js',
+            'ts',
+            'json',
+            'yaml',
+            'html',
+            'md',
+            'mermaid',
+            'plsql',
+          ],
+        },
       },
     },
   },
@@ -91,23 +158,24 @@ export default defineNuxtConfig({
   css: ['~/assets/styles/main.css'],
   ssr: false, // for github pages
   nitro: {
+    preset: 'github-pages', // or static
     experimental: { tasks: true },
     future: { nativeSWR: true },
-    prerender: {
-      crawlLinks: true,
-      ignore: ['/__nuxt_content'],
-      routes: ['/'],
-    },
-    hooks: {},
-    preset: 'static',
+    // prerender: {
+    //   crawlLinks: true,
+    //   ignore: ['/__nuxt_content'],
+    //   routes: ['/'],
+    // },
+    // hooks: {},
   },
 
   i18n: {
+    baseUrl: SITE_CONFIG.url,
     locales: [
-      { code: 'en', iso: 'en-US', name: 'English' },
       { code: 'ru', iso: 'ru-RU', name: 'Русский' },
+      { code: 'en', iso: 'en-US', name: 'English' },
     ],
-    defaultLocale: 'en',
+    defaultLocale: 'ru',
     strategy: 'prefix_except_default',
   },
 
@@ -123,8 +191,8 @@ export default defineNuxtConfig({
 
   social: {
     networks: {
-      linkedin: { identifier: 'takimoysha.arpa' },
-      github: { identifier: 'takimoysha.arpa' },
+      linkedin: SOCIALS_CONFIG.linkedin,
+      github: SOCIALS_CONFIG.github,
     },
   },
 });

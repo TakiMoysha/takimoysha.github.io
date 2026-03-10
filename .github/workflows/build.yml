@@ -1,0 +1,41 @@
+name: Build
+
+on:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+
+      - name: Restore cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            node_modules
+            .nuxt
+          key: ${{ runner.os }}-nuxt-${{ hashFiles('bun.lockb') }}
+          restore-keys: |
+            ${{ runner.os }}-nuxt-
+
+      - run: bun install
+
+      - name: Static HTML export with Nuxt
+        run: bun run generate
+        env:
+          PUBLIC_GOOGLE_SITE_VERIFICATION: ${{ vars.PUBLIC_GOOGLE_SITE_VERIFICATION }}
+          PUBLIC_BING_SITE_VERIFICATION: ${{ vars.PUBLIC_BING_SITE_VERIFICATION }}
+
+      - name: Upload artifact
+        id: upload
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+    outputs:
+      artifact-id: ${{ steps.upload.outputs.artifact-id }}

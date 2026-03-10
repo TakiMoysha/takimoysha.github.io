@@ -1,56 +1,41 @@
 <script setup lang="ts">
 import BaseLayout from '@/layouts/BaseLayout.vue';
+import { computed } from 'vue';
+import { parseDate } from '@/utils/content';
 
-const { getList } = useLocalizedContent('archive');
-
-const { data: posts } = await useAsyncData('latest-posts', async () => {
-  const entries = await getList();
-  return entries
-    .sort(
-      (a, b) =>
-        new Date(b.entry?.date || 0).getTime() -
-        new Date(a.entry?.date || 0).getTime(),
-    )
-    .slice(0, 5)
-    .map((item) => ({
-      id: item.entry?.id,
-      slug: item.slug,
-      title: item.entry?.title,
-      description: item.entry?.description || '',
-      date: item.entry?.date,
-    }));
+const archiveContent = await useAsyncData(() => {
+  return queryCollection('archive').all();
 });
 
-const formatDate = (date: string | Date) => {
-  const d = new Date(date);
-  return d.toLocaleDateString('en-US', {
+const formatDate = (datastr: string) => {
+  return parseDate(datastr)?.toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
   });
 };
+const posts = computed(() => archiveContent.data.value?.slice(0, 5));
+
+const cyclesContent = await queryCollection('cycles').all();
+const docsContent = await queryCollection('docs').all();
+const projectsContent = await queryCollection('projects').all();
 </script>
 
 <template>
-  <BaseLayout
-    title="Digital Decay"
-    description="Blog, notes and reports about development."
-  >
-    <div class="max-w-4xl mx-auto px-4 py-12">
-      <section class="mb-16">
-        <h2 class="text-2xl font-semibold mb-6 pb-2 border-b">Latest Posts</h2>
+  <BaseLayout>
+    <div class="max-w-4xl mx-auto px-4">
+      <section class="py-12">
+        <h2 class="text-2xl font-semibold mb-6 pb-2 border-b">Posts</h2>
         <div class="space-y-8">
           <article v-for="post in posts" :key="post.id" class="group">
-            <NuxtLink :to="`/archive/${post.slug}`" class="block">
-              <h3
-                class="text-xl font-medium text-blue-600 dark:text-blue-400 group-hover:underline mb-1"
-              >
+            <NuxtLink :to="`${post.slug || post.path}`" class="block">
+              <h3 class="text-xl font-medium text-blue-600 dark:text-blue-400 group-hover:underline mb-1">
                 {{ post.title }}
               </h3>
-              <p class="text-gray-600 dark:text-gray-400 text-sm mb-2">
+              <p class="text-base-300-content text-sm mb-2">
                 {{ formatDate(post.date) }}
               </p>
-              <p class="text-gray-700 dark:text-gray-300">
+              <p class="text-base-content">
                 {{ post.description }}
               </p>
             </NuxtLink>
@@ -58,8 +43,15 @@ const formatDate = (date: string | Date) => {
         </div>
       </section>
 
-      <section class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-      </section>
+      <DebugOnly>
+        <section class='border-2 border-solid border-amber-400 p-2'>
+          <p>Archive Content: {{archiveContent.data.value?.map(item => item.id.concat(";").concat(item.slug))}} </p>
+          <p>Cycles Content: {{cyclesContent.map(item => item.id)}} </p>
+          <p>Docs Content: {{docsContent.map(item => item.id)}} </p>
+          <p>Projects Content: {{projectsContent.map(item => item.id)}} </p>
+        </section>
+      </DebugOnly>
+
     </div>
   </BaseLayout>
 </template>

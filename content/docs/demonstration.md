@@ -1,28 +1,12 @@
 ---
-title: Test File
-slug: demo-slug-for-sql-file
-description: Test file for testing markdown syntax and website design.
-date: 202109151046
-tags: [dml, ddl]
+title: Demonstration Document
+slug: archive/support-demo-doc
+tags:
+  - support
+date: "20210915"
+draft: false
 ---
 
-hello world!
-
-
-```sql
-SELECT * FROM users GROUP BY count HAVING count > 10
-```
-
-<p>hello world</p>
-
-```html
-<div class="flex items-center">
-  <div class="card bg-base-200 rounded-full">
-    <h1 class="text-xl text-base-content">{ page.title }</h1>
-    <p class="text-prose text-sm text-base-content/40">{ page.description }</p>
-  </div>
-</div>
-```
 
 
 ## Syntax
@@ -122,4 +106,23 @@ sequenceDiagram
 * **Quadrant Chart (quadrantChart)** - 
 * **XY Chart (xychart-beta)** - 
 
+
+## Base
+
+```base
+views:
+  - type: table
+    name: Table
+    filters:
+      or:
+        - file.hasTag("support")
+        - file.hasTag("workspace")
+    order:
+      - file.name
+      - file.mtime
+    sort:
+      - property: file.mtime
+        direction: ASC
+
+```
 

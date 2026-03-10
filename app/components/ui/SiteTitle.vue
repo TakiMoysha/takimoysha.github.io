@@ -1,13 +1,26 @@
 <script setup lang="ts">
-import { SITE } from '@/constants';
+const site = useAppConfig().SITE_CONFIG;
 </script>
 
 <template>
-  <div class="flex shrink-0 items-center gap-3">
-    <NuxtLink to="/" class="text-xl">
-      <h1 class="bg-linear-to-r from-[#06b6d4] to-[#3b82f6] bg-clip-text font-bold uppercase text-transparent">
-        {{ SITE.title }}
-      </h1>
-    </NuxtLink>
-  </div>
+  <NuxtLink to="/" class="flex items-center ">
+    <h3 class="px-2 py-1 rounded-md bg-transparent hover:bg-base-200 transition">
+      <span class="font-mono text-base-content/60">TakiMoysha</span>
+
+      <sup class="text-medium pl-0.5 text-base-content/60">\</sup>
+      <sub class="text-medium pl-px text-base-content/60">\</sub>
+
+      <span class="font-semibold text-xl brand-style tracking-tight">
+        {{ site.title }}
+      </span>
+    </h3>
+  </NuxtLink>
 </template>
+
+<style scoped>
+@reference "tailwindcss";
+
+.brand-style {
+  @apply bg-clip-text uppercase text-transparent bg-linear-to-r from-[#06b6d4] to-[#3b82f6];
+}
+</style>

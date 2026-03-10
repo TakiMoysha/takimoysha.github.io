@@ -97,10 +97,10 @@ const testimonials = [
         </div>
 
         <nav class="hidden md:flex space-x-6">
-          <a href="#" class="prose-headings text-onlight-text hover:text-accent transition">Home</a>
-          <a href="#" class="prose-headings text-onlight-text hover:text-accent transition">Projects</a>
-          <a href="#" class="prose-headings text-onlight-text hover:text-accent transition">Links</a>
-          <a href="#" class="prose-headings text-onlight-text hover:text-accent transition">About</a>
+          <a href="/" class="prose-headings text-onlight-text hover:text-accent transition">Home</a>
+          <a href="#" class="hover:line-through transition">Projects</a>
+          <a href="#" class="hover:line-through transition">Links</a>
+          <a href="#" class="hover:line-through transition">About</a>
         </nav>
 
         <div class="flex">
@@ -182,6 +182,13 @@ const testimonials = [
         </div>
         <div class="palette-block text-base-content bg-base-400">
           text-base-content + bg-base-400
+        </div>
+
+
+        <h4 class="mt-4 text-2xl">Fonts & Sizes</h4>
+        <div class="palette-block text-base-content font-sans">Font Sans <span class="uppercase">UppserCase</span></div>
+        <div class="palette-block text-base-content font-mono">Font Mono <span class="uppercase">UppserCase</span></div>
+        <div class="palette-block text-base-content font-digital">Font Digital <span class="uppercase">UppserCase</span>
         </div>
       </section>
 

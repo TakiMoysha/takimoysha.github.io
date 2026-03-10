@@ -3,6 +3,8 @@ title: SQL (ТЕСТ)
 description: Тестовый файл для проверки markdown и дизайна.
 date: 202109151046
 tags: [dml, ddl]
+zerolinks:
+  - '[[0 Databases]]"
 ---
 
 ```sql
@@ -10,7 +12,7 @@ SELECT * FROM users GROUP BY count HAVING count > 10
 ```
 
 
-# {frontmatter.title}
+# {{ frontmatter.title }}
 
 <p>hello world</p>
 
@@ -41,9 +43,4 @@ _Каскадное удаление (обновление)_ - процесс, �
 2. [SQL Primer / postgrespro.ru](https://edu.postgrespro.ru/sql_primer.pdf)
 3.
 
----
 
-# SupportLinks
-
-- [[0 Databases]]
--

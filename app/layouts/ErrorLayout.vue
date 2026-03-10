@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { SITE } from '@/constants';
 import BaseLayout from '@/layouts/BaseLayout.vue';
+
+const site = useSiteConfig();
 
 type ErrorCode = '404' | '500' | 'work-in-progress';
 
@@ -45,11 +46,15 @@ const error = computed<ErrorInfo>(() => {
   return ERROR_MAP[props.code] ?? DEFAULT_ERROR;
 });
 
-const pageTitle = computed(() => `${error.value.text} | ${SITE.title}`);
+const pageTitle = computed(() => `${error.value.text} | ${site.title}`);
+
+useHead({
+  title: pageTitle,
+});
 </script>
 
 <template>
-  <BaseLayout :title="pageTitle" :description="error.description">
+  <BaseLayout>
     <div class="flex items-center justify-center p-4 mx-auto">
       <div class="glitch-container relative p-4">
         <h1 class="shake-box glitch text-shadow-md text-center text-6xl font-bold font-digital" :data-text="error.text">
@@ -64,7 +69,7 @@ const pageTitle = computed(() => `${error.value.text} | ${SITE.title}`);
           <code class="relative z-10 block overflow-x-auto font-digital text-sm text-green-400">
             <span class="text-purple-400">if</span> (<span class="text-blue-400">!</span><span
               class="text-white">router</span>.<span class="text-yellow-400">get</span><span class="text-green-200">('{{
-              currentPath }}'</span>)) {<br />
+                currentPath }}'</span>)) {<br />
             &nbsp;&nbsp;<span class="text-red-400">console</span>.<span class="text-yellow-400">error</span>(<span
               class="text-green-200">'{{ error.text }}'</span>);<br />
             &nbsp;&nbsp;<span class="text-purple-400">throw new </span><span class="text-blue-400">Error</span>(<span
@@ -96,7 +101,7 @@ const pageTitle = computed(() => `${error.value.text} | ${SITE.title}`);
 }
 
 .shake-box {
-  animation: noise 0.2s linear infinite;
+  animation: shake 0.2s linear infinite;
 }
 
 .glitch {
@@ -128,7 +133,7 @@ const pageTitle = computed(() => `${error.value.text} | ${SITE.title}`);
   animation: glitch-2 5s infinite linear alternate-reverse;
 }
 
-@keyframes noise {
+@keyframes shake {
 
   0%,
   100% {

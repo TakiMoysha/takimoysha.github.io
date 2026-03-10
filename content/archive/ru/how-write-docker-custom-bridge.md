@@ -1,6 +1,7 @@
 ---
 title: Настройка сети для docker/podman
 date: "202503252255"
+draft: false
 locale: en
 tags:
   - docker
@@ -23,7 +24,7 @@ Docker have a lots of different types:
 
 DNS - важная фича кастомных мостов, если у нас есть контейнер `speedtest` и `speedtest-db`, работающие по `net-speedtest`, то мы можем указать `speedtest` подключаться к бд используя `speedtest-db:5432`, а не напрямую писать адрес и expose порт. Так же можно контролировать размер сети, независимо от lan/wan сети. Дополнительно, с кастомный мостом не нужно беспокоится о портах, т.к. контейнеры распределяться по ip, и все могут использовать один порт, например 80.
 
-```yaml
+```yaml [compose.yaml]
 services:
     speedtest:
     image: ...
