@@ -176,7 +176,7 @@ export default defineNuxtConfig({
       { code: 'en', iso: 'en-US', name: 'English' },
     ],
     defaultLocale: 'ru',
-    strategy: 'prefix_except_default',
+    strategy: 'no_prefix',
   },
 
   htmlValidator: {

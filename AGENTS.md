@@ -19,9 +19,9 @@ It's a **full static web site** built for deployment on GitHub Pages - don't use
 
 You have mcp server:
 
-- chrome-devtools - for debugging pages, use `brave` browser.
+- chrome-devtools - for debugging pages, use browser from `$BROWSER` env var.
 
-Когда заканчиваешь задачу, посмотри AGENTS.md и поправь, если это требуется.
+When you complete a task, check AGENTS.md and update it, if required.
 
 ---
 
