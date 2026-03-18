@@ -1,4 +1,12 @@
 import { defineCollection, defineContentConfig, z } from '@nuxt/content';
+import { SITE_CONFIG } from './config';
+
+const stackInformation = {
+  /* core libraries and it versions */
+};
+const remarkText = {
+  /* some remark about note */
+};
 
 const archiveMultilanguage = {
   archive: defineCollection({
@@ -9,36 +17,9 @@ const archiveMultilanguage = {
       slug: z.string().optional(),
       description: z.string().optional(),
       tags: z.array(z.string()).default([]),
+      zerolinks: z.array(z.string()).default([]),
       date: z.string(),
-      locale: z.string().default('en'),
-      draft: z.boolean().default(false),
-    }),
-    indexes: [{ columns: ['slug', 'date', 'tags'] }],
-  }),
-  archive_ru: defineCollection({
-    type: 'page',
-    source: 'archive/**/*.ru.md',
-    schema: z.object({
-      title: z.string(),
-      slug: z.string().optional(),
-      description: z.string().optional(),
-      tags: z.array(z.string()).default([]),
-      date: z.string(),
-      locale: z.string().default('ru'),
-      draft: z.boolean().default(false),
-    }),
-    indexes: [{ columns: ['slug', 'date', 'tags'] }],
-  }),
-  archive_en: defineCollection({
-    type: 'page',
-    source: 'archive/**/*.en.md',
-    schema: z.object({
-      title: z.string(),
-      slug: z.string().optional(),
-      description: z.string().optional(),
-      tags: z.array(z.string()).default([]),
-      date: z.string(),
-      locale: z.string().default('en'),
+      locale: z.string().default(SITE_CONFIG.defaultLocale),
       draft: z.boolean().default(false),
     }),
     indexes: [{ columns: ['slug', 'date', 'tags'] }],
@@ -55,7 +36,7 @@ export default defineContentConfig({
       schema: z.object({
         title: z.string(),
         description: z.string().optional(),
-        locale: z.string().default('en'),
+        locale: z.string().default(SITE_CONFIG.defaultLocale),
         spec: z.object({}).default({}),
         draft: z.boolean().default(false),
       }),
@@ -66,7 +47,7 @@ export default defineContentConfig({
       schema: z.object({
         title: z.string(),
         description: z.string().optional(),
-        locale: z.string().default('en'),
+        locale: z.string().default(SITE_CONFIG.defaultLocale),
         draft: z.boolean().default(false),
       }),
     }),

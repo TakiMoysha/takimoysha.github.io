@@ -2,7 +2,7 @@
 title: Настройка сети для docker/podman
 date: "202503252255"
 draft: false
-locale: en
+locale: ru
 tags:
   - docker
   - networking
@@ -22,17 +22,17 @@ Docker have a lots of different types:
 
 ### Inter-Container Communication
 
-DNS - важная фича кастомных мостов, если у нас есть контейнер `speedtest` и `speedtest-db`, работающие по `net-speedtest`, то мы можем указать `speedtest` подключаться к бд используя `speedtest-db:5432`, а не напрямую писать адрес и expose порт. Так же можно контролировать размер сети, независимо от lan/wan сети. Дополнительно, с кастомный мостом не нужно беспокоится о портах, т.к. контейнеры распределяться по ip, и все могут использовать один порт, например 80.
+DNS - важная фича кастомных мостов, если у нас есть контейнер `appname` и `appname-db`, работающие по `net-appname`, то мы можем указать `appname` подключаться к бд используя `appname-db:5432`, а не напрямую писать адрес и expose порт. Так же можно контролировать размер сети, независимо от lan/wan сети. Дополнительно, с кастомный мостом не нужно беспокоится о портах, т.к. контейнеры распределяться по ip, и все могут использовать один порт, например 80.
 
 ```yaml [compose.yaml]
 services:
-    speedtest:
+    appname:
     image: ...
     networks:
-        - net-speedtest
+        - net-appname
         - private
 
-    speedtest-db:
+    appname-db:
         image: ...
         networks:
             - private
@@ -41,14 +41,14 @@ services:
         image: lscr.io/linuxserver/swag:latest
         container_name: swag
         networks:
-            - net-speedtest
+            - net-appname
         ports:
             - 443:443
             - 80:80
 
 networks:
-    net-speedtest:
-        name: net-speedtest
+    net-appname:
+        name: net-appname
         ipam:
             config:
                 - subnet: 172.17.0.0/24 # 172.17.0.1 - 172.17.0.254
@@ -67,21 +67,21 @@ graph TD;
     subgraph containers [ ]
         direction TB
         swag["swag"]:::container
-        speedtest["speedtest"]:::container
-        speedtest_db["speedtest-db"]:::container
+        appname["appname"]:::container
+        appname_db["appname-db"]:::container
     end
 
-    net_speedtest["172.17.0.0/24<br/>net-speedtest"]:::net_speedtest
+    net_appname["172.17.0.0/24<br/>net-appname"]:::net_appname
     internal["172.17.1.0/29<br/>Internal"]:::internal
 
-    internal <-->|172.17.1.3/29| speedtest
-    internal <-->|172.17.1.2/29| speedtest_db
+    internal <-->|172.17.1.3/29| appname
+    internal <-->|172.17.1.2/29| appname_db
 
-    net_speedtest <-->|172.17.0.3/24| speedtest
-    net_speedtest <-->|172.17.0.4/24| swag
+    net_appname <-->|172.17.0.3/24| appname
+    net_appname <-->|172.17.0.4/24| swag
 
 
     classDef container fill:#f8c8d4,stroke:#333,stroke-width:2px;
     classDef internal fill:#c4f8c8,stroke:#333,stroke-width:2px;
-    classDef net_speedtest fill:#c8c8c8c,stroke:#333,stroke-width:2px;
+    classDef net_appname fill:#c8c8c8c,stroke:#333,stroke-width:2px;
 ```

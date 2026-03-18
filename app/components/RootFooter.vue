@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { SOCIALS } from '@/constants';
 import ToolThemeSwitcher from '@/components/ToolThemeSwitcher.vue';
+
+const SOCIALS = useAppConfig().SOCIALS_CONFIG;
 
 const currentYear = new Date().getFullYear();
 const site = useAppConfig().SITE_CONFIG;

@@ -46,15 +46,16 @@ const error = computed<ErrorInfo>(() => {
   return ERROR_MAP[props.code] ?? DEFAULT_ERROR;
 });
 
-const pageTitle = computed(() => `${error.value.text} | ${site.title}`);
+const pageTitle = computed(() => error.value.text);
 
 useHead({
   title: pageTitle,
-});
+})
 </script>
 
 <template>
   <BaseLayout>
+    {{ error }}
     <div class="flex items-center justify-center p-4 mx-auto">
       <div class="glitch-container relative p-4">
         <h1 class="shake-box glitch text-shadow-md text-center text-6xl font-bold font-digital" :data-text="error.text">

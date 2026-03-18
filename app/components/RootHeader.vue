@@ -3,8 +3,9 @@ import SiteTitle from './ui/SiteTitle.vue';
 
 const navigationItems = [
   { label: 'Archive', to: '/archive' },
-  { label: 'Cycles', to: '/cycles' },
-  { label: 'Projects', to: '/projects' },
+  { label: 'Cycles', to: '/cycles', disabled: true },
+  { label: 'Projects', to: '/projects', disabled: true },
+  { label: 'CV', to: '/cv', disabled: true },
 ];
 
 const dropdownItems = navigationItems.map((item) => ({

@@ -41,7 +41,7 @@ const content = defineCollection({
     }),
     z.object({
       type: z.literal("video"),
-      image: z.boject({
+      image: z.object({
         title: z.string(),
         cover: image().refine(img) => img.width >= 1200, { msg: "Cover should be at least 1200px wide" }, }),
         thumbnail: image().optional(),

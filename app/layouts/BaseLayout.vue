@@ -4,11 +4,16 @@ import RootFooter from '@/components/RootFooter.vue';
 </script>
 
 <template>
+
   <Head>
     <Meta charset="UTF-8" />
     <Meta name="viewport" content="width=device-width, initial-scale=1" />
     <Meta name="robots" content="index, follow" />
     <Link rel="icon" type="image/svg+xml" href="/favicon.png" />
+
+    <!-- vivladi test colors -->
+    <meta name="theme-color" content="#44624a" media="(prefers-color-scheme:dark)">
+
   </Head>
 
   <div class="body-margin flex min-h-screen flex-col">

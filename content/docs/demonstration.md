@@ -7,19 +7,17 @@ date: "20210915"
 draft: false
 ---
 
-
-
 ## Syntax
-- [ ] to-do
+
+- to-do
 - [/] incomplete
-- [x] done
+- done
 - [-] canceled
 - [>] forwarded
 - [<] scheduling
-
 - [?] question
 - [!] important
-- [*] star
+- [\*] star
 - ["] quote
 - [l] location
 - [b] bookmark
@@ -37,31 +35,36 @@ draft: false
 - [P] open pull request
 - [M] merged pull request
 
-
 ### Сноски
+
 #### Базовые
-> [!NOTE]  
+
+> [!NOTE]:br
 > Highlights information that users should take into account, even when skimming.
 
 > [!TIP]
 > Optional information to help a user be more successful.
 
-> [!IMPORTANT]  
+> [!IMPORTANT]:br
 > Crucial information necessary for users to succeed.
 
-> [!WARNING]  
+> [!WARNING]:br
 > Critical content demanding immediate user attention due to potential risks.
 
 > [!CAUTION]
 > Negative potential consequences of an action.
 
 #### Все
-> [!example]
-> > [!todo]
-> > > [!info]
-> > > > [!note] 
-> > > > > [!bug]
 
+> [!example]
+>
+> > [!todo]
+> >
+> > > [!info]
+> > >
+> > > > [!note]
+> > > >
+> > > > > [!bug]
 
 > [!abstract] abstract, summary, tldr
 
@@ -79,9 +82,8 @@ draft: false
 
 > [!quote] quote, cite
 
-
-
 # Plugins
+
 ## Mermaid, C4
 
 ```markdown
@@ -91,21 +93,21 @@ draft: false
 
 ```mermaid
 sequenceDiagram
-	Client ->> +Server: Ping!
-	Server ->> -Client: Pong!
+    Client ->> +Server: Ping!
+    Server ->> -Client: Pong!
 ```
 
 *Синтаксис*: Любая диаграмма в начале объявляется через задекларированное имя типа диаграммы. Допустимые типы:
-* **Flowchart (graph)** - 
-* **Sequence diagram (sequenceDiagram)** - 
-* **Gantt diagram (gantt)** - 
-* **Class diagram (classDiagram)** - 
-* **Git graph (gitGraph)** - 
-* **Entity Relationship Diagram (erDiagram)** - 
-* **User Journej Diagram (journey)** - 
-* **Quadrant Chart (quadrantChart)** - 
-* **XY Chart (xychart-beta)** - 
 
+- **Flowchart (graph)** -
+- **Sequence diagram (sequenceDiagram)** -
+- **Gantt diagram (gantt)** -
+- **Class diagram (classDiagram)** -
+- **Git graph (gitGraph)** -
+- **Entity Relationship Diagram (erDiagram)** -
+- **User Journej Diagram (journey)** -
+- **Quadrant Chart (quadrantChart)** -
+- **XY Chart (xychart-beta)** -
 
 ## Base
 
@@ -125,4 +127,3 @@ views:
         direction: ASC
 
 ```
-

@@ -13,30 +13,31 @@
   },
   "dependencies": {
     "@nuxt/content": "^3.12.0",
-    "@nuxt/schema": "^4.3.1",
-    "@nuxt/ui": "^4.5.0",
+    "@nuxt/schema": "^4.4.2",
+    "@nuxt/ui": "^4.5.1",
     "@nuxtjs/feed": "^2.0.0",
     "@nuxtjs/html-validator": "2.1.0",
     "@nuxtjs/i18n": "^10.2.3",
     "@nuxtjs/seo": "^3.4.0",
     "@nuxtjs/tailwindcss": "^6.14.0",
-    "@tailwindcss/vite": "^4.2.1",
-    "nuxt": "^4.3.1",
-    "nuxt-og-image": "5.1.13",
+    "@tailwindcss/vite": "^4.2.2",
+    "nuxt": "^4.4.2",
+    "nuxt-og-image": "6.0.3",
     "nuxt-security": "^2.5.1",
     "nuxt-studio": "1.4.0",
-    "slugify": "^1.6.6",
+    "slugify": "^1.6.8",
     "tailwind-merge": "^3.5.0",
-    "tailwindcss": "^4.2.1",
-    "vite": "^7.3.1"
+    "tailwindcss": "^4.2.2",
+    "vite": "^8.0.0"
   },
   "devDependencies": {
+    "@nuxt/devtools": "^4.0.0-alpha.1",
     "@nuxt/test-utils": "^4.0.0",
     "@tailwindcss/typography": "^0.5.19",
     "@vue/test-utils": "^2.4.6",
-    "happy-dom": "^20.7.0",
-    "oxlint": "^1.50.0",
+    "happy-dom": "^20.8.4",
+    "oxlint": "^1.56.0",
     "prettier": "^3.8.1",
-    "vitest": "^4.0.18"
+    "vitest": "^4.1.0"
   }
 }

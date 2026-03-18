@@ -7,8 +7,9 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  title: 'Blank Page | TakiMoysha',
+  title: 'Blank Page',
 });
+useHead({ title: props.title });
 
 const properties = [
   {
@@ -72,6 +73,10 @@ const testimonials = [
     text: 'I am not a philosopher because I have read too much, I am a philosopher because I have read too little.',
   },
 ];
+
+import { useLocaleFromQuery } from '@/composables/useQuery';
+
+const locale = useLocaleFromQuery();
 </script>
 
 <template>
@@ -81,7 +86,6 @@ const testimonials = [
     <Meta charset="UTF-8" />
     <Meta name="viewport" content="width=device-width, initial-scale=1" />
     <Meta name="robots" content="index, follow" />
-    <Title>{{ title }}</Title>
     <Link rel="icon" type="image/svg+xml" href="/favicon.png" />
   </Head>
 
@@ -205,7 +209,12 @@ const testimonials = [
           <h2 class="text-3xl md:text-4xl font-bold text-center text-shadow-lg mb-12 text-primary-content">
             Testimonials
           </h2>
-          <div></div>
+          <div>
+            <p>
+              Locale: {{ locale }}
+            </p>
+            <p>Locale: {{ useRoute().query.locale || useAppConfig().defaultLocale }}</p>
+          </div>
         </div>
       </section>
     </main>

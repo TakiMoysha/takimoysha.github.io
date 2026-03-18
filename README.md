@@ -1,7 +1,7 @@
 # Blog & Documentation
 
 - **archive**: it's like blog and notes;
-- **cycles** (review): like book about theme;
+- **cycles** (review): like book about theme (or light/dark with colorschemas);
 - **projects**: my projects;
 
 ## Milestones
@@ -16,10 +16,17 @@
 
 - pagefind: maybe;
 - shiki: styling;
+- typst pipeline;
 
 - docs/skills update pipeline - count tokens from all files and update token section in yaml front matter in SKILLS with description each file tokens.
 
 - gh rulesets
+
+- address book: list of my public servers
+
+## Issues
+
+- title issue (nuxt-seo, nust-site-config)
 
 ## ULP
 
@@ -52,3 +59,5 @@ SaaS's:
 3. [TailwindCSS Tools / tailwindcolor.tools](https://tailwindcolor.tools)
 4. [Microsoft Webmaster Tools / SEO Info / bing.com](https://www.bing.com/webmasters?siteUrl=https%3A%2F%2Ftakimoysha.github.io)
 5. [Style and grid / How looking in twitter / inthistweet.app](https://inthistweet.app/)
+
+1. [typst lang / github.com](https://github.com/typst/typst)

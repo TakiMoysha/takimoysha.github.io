@@ -25,7 +25,7 @@ const projectsContent = await queryCollection('projects').all();
   <BaseLayout>
     <div class="max-w-4xl mx-auto px-4">
       <section class="py-12">
-        <h2 class="text-2xl font-semibold mb-6 pb-2 border-b">Posts</h2>
+        <h2 class="text-2xl font-semibold mb-6 pb-2 border-b">Recent Posts</h2>
         <div class="space-y-8">
           <article v-for="post in posts" :key="post.id" class="group">
             <NuxtLink :to="`${post.slug || post.path}`" class="block">
@@ -45,7 +45,8 @@ const projectsContent = await queryCollection('projects').all();
 
       <DebugOnly>
         <section class='border-2 border-solid border-amber-400 p-2'>
-          <p>Archive Content: {{archiveContent.data.value?.map(item => item.id.concat(";").concat(item.slug))}} </p>
+          <p>Archive Content: {{archiveContent.data.value?.map(item => item.id.concat(";").concat(item.slug || ""))}}
+          </p>
           <p>Cycles Content: {{cyclesContent.map(item => item.id)}} </p>
           <p>Docs Content: {{docsContent.map(item => item.id)}} </p>
           <p>Projects Content: {{projectsContent.map(item => item.id)}} </p>

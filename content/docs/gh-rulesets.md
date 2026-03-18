@@ -1,3 +1,7 @@
+---
+title: Gh Rulesets
+description: RuleSets задает правила для репозитория и автоматически проверяет их при PR.
+---
 
 RuleSets задает правила для репозитория и автоматически проверяет их при PR.
 
@@ -6,8 +10,7 @@ RuleSets задает правила для репозитория и автом
 - **GitHub Actions**: Rulesets поддерживаются в github actions/cicd.
 - **Centralized Management**: Rulesets могут быть управляемы в одном месте и применяться к нескольким репозиториям.
 
-```
-yaml
+```yaml
 rules:
   - name: Maximum line length
     description: Lines should not exceed 80 characters.
@@ -22,4 +25,3 @@ rules:
 ```
 
 Инструменты, которые можно использовать с Rulesets могут быть разнообразными: linters, static analysis tools, dependency check.
-

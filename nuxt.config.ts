@@ -1,31 +1,5 @@
 import tailwindcss from '@tailwindcss/vite';
-
-const SITE_CONFIG = {
-  title: 'Digital Decay',
-  author: 'TakiMoysha',
-  description: 'Blog posts and notes about development and technology.',
-  themes: ['dark', 'light', 'halloween', 'biopunk'] as Array<string>,
-  contentThemes: [
-    'github-light',
-    'github-dark',
-    'monokai',
-    'monokai',
-  ] as Array<string>,
-  url: 'https://takimoysha.github.io',
-};
-
-const SOCIALS_CONFIG = {
-  github: {
-    href: 'https://github.com/takimoysha',
-    icon: 'lucide:github',
-    linkTitle: 'GitHub',
-  },
-  linkedin: {
-    href: 'https://linkedin.com/in/takimoysha',
-    icon: 'lucide:linkedin',
-    linkTitle: 'LinkedIn',
-  },
-};
+import { SITE_CONFIG, SOCIALS_CONFIG } from './config';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -44,7 +18,7 @@ export default defineNuxtConfig({
     // '@nuxt/scripts',       // scripts (Google Tag Manager, Meta Pixel etc.)
     // '@unocss/nuxt',        // faster then tailwindcss
     '@nuxt/content', // static content md/mdx/json
-    '@nuxt/ui', //
+    '@nuxt/ui', // UI compatibility with TailwindCSS
   ],
 
   $production: {
@@ -54,7 +28,7 @@ export default defineNuxtConfig({
     },
   },
   $development: {
-    modules: ['nuxt-studio'],
+    modules: ['nuxt-studio', '@nuxt/devtools'],
   },
   $test: {
     modules: ['@nuxt/test-utils/module'],
@@ -77,14 +51,17 @@ export default defineNuxtConfig({
   app: {
     head: {
       title: SITE_CONFIG.title,
-      htmlAttrs: { lang: 'en-US', 'data-theme': SITE_CONFIG.themes[0] },
+      htmlAttrs: {
+        lang: SITE_CONFIG.defaultLocale,
+        'data-theme': SITE_CONFIG.themes[0],
+      },
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' },
         {
           rel: 'alternate',
           type: 'application/rss+xml',
           title: 'Digital Decay / TakiMoysha / RSS',
-          href: `${SITE_CONFIG.url}/feed.xml`,
+          href: `${SITE_CONFIG.url}/rss.xml`,
         },
       ],
       meta: [
@@ -103,9 +80,9 @@ export default defineNuxtConfig({
   },
   site: {
     /* not working properly */
-    url: SITE_CONFIG.url,
-    name: SITE_CONFIG.title,
-    title: SITE_CONFIG.title,
+    // url: SITE_CONFIG.url,
+    // name: SITE_CONFIG.title,
+    // title: SITE_CONFIG.title,
   },
   ogImage: { enabled: false },
 
@@ -120,36 +97,24 @@ export default defineNuxtConfig({
     build: { modulePreload: { polyfill: false } },
     vue: { features: { optionsAPI: false } },
     clearScreen: true,
-    plugins: [
-      // @ts-expect-error: different versions of "Plugin" under nuxt and tailwindss
-      tailwindcss(),
-    ],
+    plugins: [tailwindcss()],
   },
 
   content: {
     watch: { enabled: process.env.NODE_ENV === 'development' },
     build: {
       markdown: {
+        rehypePlugins: {
+          // https://github.com/remarkjs/remark
+        },
+        remarkPlugins: {
+          // https://github.com/remarkjs/remark
+        },
         highlight: {
           // supported themes: https://github.com/shikijs/textmate-grammars-themes/tree/main/packages/tm-themes
           theme: {
             default: 'github-light',
-            dark: 'catppuccin-mocha',
-            light: 'github-dark',
-            halloween: 'monokai',
-            biopunk: 'monokai',
           },
-          langs: [
-            'python',
-            'js',
-            'ts',
-            'json',
-            'yaml',
-            'html',
-            'md',
-            'mermaid',
-            'plsql',
-          ],
         },
       },
     },
@@ -175,7 +140,7 @@ export default defineNuxtConfig({
       { code: 'ru', iso: 'ru-RU', name: 'Русский' },
       { code: 'en', iso: 'en-US', name: 'English' },
     ],
-    defaultLocale: 'ru',
+    defaultLocale: SITE_CONFIG.defaultLocale,
     strategy: 'no_prefix',
   },
 
@@ -183,16 +148,16 @@ export default defineNuxtConfig({
     failOnError: true,
   },
 
-  security: {
-    headers: {
-      crossOriginEmbedderPolicy: false,
-    },
-  },
+  // security: {
+  //   headers: {
+  //     crossOriginEmbedderPolicy: false,
+  //   },
+  // },
 
-  social: {
-    networks: {
-      linkedin: SOCIALS_CONFIG.linkedin,
-      github: SOCIALS_CONFIG.github,
-    },
-  },
+  // social: {
+  //   networks: {
+  //     linkedin: SOCIALS_CONFIG.linkedin,
+  //     github: SOCIALS_CONFIG.github,
+  //   },
+  // },
 });
