@@ -22,7 +22,11 @@ const archiveMultilanguage = {
       locale: z.string().default(SITE_CONFIG.defaultLocale),
       draft: z.boolean().default(false),
     }),
-    indexes: [{ columns: ['slug', 'date', 'tags'] }],
+    indexes: [
+      { columns: ['slug'] },
+      { columns: ['date'] },
+      { columns: ['tags'] },
+    ],
   }),
 };
 

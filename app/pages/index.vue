@@ -1,19 +1,12 @@
 <script setup lang="ts">
 import BaseLayout from '@/layouts/BaseLayout.vue';
 import { computed } from 'vue';
-import { parseDate } from '@/utils/content';
+import { parseDate, formatDate } from '@/utils/content';
 
 const archiveContent = await useAsyncData(() => {
   return queryCollection('archive').all();
 });
 
-const formatDate = (datastr: string) => {
-  return parseDate(datastr)?.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
-};
 const posts = computed(() => archiveContent.data.value?.slice(0, 5));
 
 const cyclesContent = await queryCollection('cycles').all();

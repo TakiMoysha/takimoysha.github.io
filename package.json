@@ -31,9 +31,10 @@
     "vite": "^8.0.0"
   },
   "devDependencies": {
-    "@nuxt/devtools": "^4.0.0-alpha.1",
     "@nuxt/test-utils": "^4.0.0",
     "@tailwindcss/typography": "^0.5.19",
+    "@vue/devtools-core": "^8.1.0",
+    "@vue/devtools-kit": "^8.1.0",
     "@vue/test-utils": "^2.4.6",
     "happy-dom": "^20.8.4",
     "oxlint": "^1.56.0",

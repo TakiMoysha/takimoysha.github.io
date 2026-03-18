@@ -1,7 +1,7 @@
 ---
 title: Demonstration Document
 description: Демонстрационный документ для отладки.
-date: "20210915"
+date: "20210909"
 draft: false
 locale: en
 tags:

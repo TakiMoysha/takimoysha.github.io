@@ -20,3 +20,11 @@ export function parseDate(numdate: number | string): Date | null {
 
   return null;
 }
+
+export function formatDate(datastr: string) {
+  return parseDate(datastr)?.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+}

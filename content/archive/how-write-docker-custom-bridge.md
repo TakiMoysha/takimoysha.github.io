@@ -1,6 +1,6 @@
 ---
 title: Настройка сети для docker/podman
-date: "202503252255"
+date: "20250325"
 draft: false
 locale: ru
 tags:

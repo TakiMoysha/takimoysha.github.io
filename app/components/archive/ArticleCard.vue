@@ -1,71 +1,50 @@
 <script setup lang="ts">
+import { formatDate } from "@/utils/content";
+
 interface Props {
-  slug: string;
-  date: string;
-  title: string;
-  description?: string;
-  tags?: string[];
-  locales: string[];
+  data: {
+    id: string;
+    date: string;
+    slug?: string;
+    title: string;
+    description?: string;
+    tags?: string[];
+    locales?: string[];
+  }
 }
 
-defineProps<Props>();
-
-const dateFormatter = new Intl.DateTimeFormat('en-US', {
-  day: '2-digit',
-  month: 'long',
-  year: 'numeric',
-});
-
-function formatDate(date: string): string {
-  return dateFormatter.format(new Date(date));
-}
+const props = defineProps<Props>();
 </script>
 
 <template>
-  <article
-    class="group border-l-2 border-transparent pl-4 transition hover:border-accent"
-  >
+  <article class="group border-l-2 border-transparent pl-4 transition hover:border-accent">
     <header class="mb-2 flex flex-wrap items-baseline gap-2">
       <time class="text-sm uppercase tracking-wide text-neutral-content/40">
-        {{ formatDate(date) }}
+        {{ formatDate(data.date) }}
       </time>
-      <NuxtLink
-        :to="`/archive/${slug}`"
-        class="text-lg font-medium text-blue-600 group-hover:underline dark:text-blue-400"
-      >
-        {{ title }}
+      <NuxtLink :to="data.id" class="text-lg font-medium text-blue-600 group-hover:underline dark:text-blue-400">
+        {{ data.title }}
       </NuxtLink>
     </header>
 
-    <p v-if="description" class="text-neutral-content">
-      {{ description }}
+    <p v-if="data.description" class="text-neutral-content">
+      {{ data.description }}
     </p>
 
-    <ul
-      v-if="tags && tags.length > 0"
-      class="mt-3 flex flex-wrap gap-2 text-xs uppercase tracking-wide text-secondary-content/40"
-    >
-      <li
-        v-for="tag in tags"
-        :key="tag"
-        class="rounded bg-base-300 px-2 py-1"
-        :aria-label="`Tag: ${tag}`"
-      >
+    <ul v-if="data.tags && data.tags.length > 0"
+      class="mt-3 flex flex-wrap gap-2 text-xs uppercase tracking-wide text-secondary-content/40">
+      <li v-for="tag in data.tags" :key="tag" class="rounded bg-base-300 px-2 py-1" :aria-label="`Tag: ${tag}`">
         {{ tag }}
       </li>
     </ul>
 
-    <div
-      v-if="locales.length > 1"
-      class="mt-4 flex flex-wrap items-center gap-2 text-xs text-neutral-content/70"
-    >
+    <div v-if="data.locales && data.locales.length > 1"
+      class="mt-4 flex flex-wrap items-center gap-2 text-xs text-neutral-content/70">
       <span class="font-semibold uppercase tracking-wide">Languages:</span>
       <ul class="flex flex-wrap gap-2">
-        <li v-for="locale in locales" :key="locale">
-          <NuxtLink
-            :to="`/archive/${slug}?lang=${locale}`"
-            class="rounded-full border border-transparent bg-base-200 px-2 py-1 font-semibold uppercase tracking-wide text-base-content/50 transition hover:border-accent hover:text-accent-content"
-          >
+        <li v-for="locale in data.locales" :key="locale">
+          <NuxtLink :to="`/${data.id}?lang=${locale}`"
+            class="rounded-full border border-transparent bg-base-200 px-2 py-1 font-semibold uppercase tracking-wide text-base-content/50 transition hover:border-accent hover:text-accent-content">
             {{ locale }}
           </NuxtLink>
         </li>

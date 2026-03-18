@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import BaseLayout from '@/layouts/BaseLayout.vue';
+import ArchiveArticleCard from '@/components/archive/ArticleCard.vue';
 
 const pageTitle = 'Archive';
 const pageDescription = 'All notes, articles and blog posts.';
 
-const postsByYear = await useAsyncData('archive', async () => {
-  let content = await queryCollection('archive').all();
-  return content;
+const postsByDate = await useAsyncData('archive', async () => {
+  return queryCollection('archive').order('date', 'DESC').all();
 });
 </script>
 
@@ -20,30 +20,16 @@ const postsByYear = await useAsyncData('archive', async () => {
         <p class="text-lg text-base-content">{{ pageDescription }}</p>
       </header>
 
-      <DebugOnly>
-        <section>
-          {{ postsByYear }}
-        </section>
-      </DebugOnly>
-
-      <!--
-        <div class="space-y-12">
-          <section v-for="(year,index) in postsByYear" :key="year">
-            <header class="mb-6 border-b border-accent/40 pb-2">
-              <h2 class="text-2xl font-semibold text-primary-content">
-                {{ year }}
-              </h2>
-            </header>
-
+      <div class="space-y-12">
+        <template v-for="item in postsByDate.data.value" :key="item.slug">
+          <div class="mb-6 border-b border-accent/40 pb-2">
             <div class="space-y-6">
-              <ArchiveArticleCard v-for="item in postsByYear[year]" :key="item.slug" :slug="item.slug"
-                :date="item.entry.date" :title="item.entry.title" :description="item.entry.description"
-                :tags="item.entry.tags" :locales="item.locales" />
+              <ArchiveArticleCard :data="item" />
             </div>
-          </section>
-        </div>
+          </div>
+        </template>
+      </div>
 
-      -->
     </div>
   </BaseLayout>
 </template>

@@ -12,7 +12,7 @@ export default defineNuxtConfig({
     // '@nuxt/schema',        // TODO: migration to nuxt/seo
     '@nuxtjs/i18n', //
     '@nuxtjs/html-validator', //
-    // 'nuxt-og-image',       // Автоматическая генерация OG-изображений для соцсетей
+    'nuxt-og-image', // Автоматическая генерация OG-изображений для соцсетей
     // '@nuxt/image',         // Оптимизация изображений (IPX, Cloudinary и др.)
     // '@nuxt/fonts',         // custom fonts (Google Fonts)
     // '@nuxt/scripts',       // scripts (Google Tag Manager, Meta Pixel etc.)
