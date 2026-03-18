@@ -2,6 +2,7 @@
 title: SQL (ТЕСТ)
 description: Тестовый файл для проверки markdown и дизайна.
 date: "20210915"
+draft: true
 tags: [dml, ddl]
 zerolinks:
   - '[[0 Databases]]"

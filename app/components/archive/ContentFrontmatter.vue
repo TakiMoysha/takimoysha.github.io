@@ -8,7 +8,7 @@ export interface Props {
     date?: string;
     tags?: string[];
     zerolinks?: string[];
-  }
+  };
 }
 
 defineProps<Props>();

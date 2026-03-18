@@ -2,7 +2,7 @@
 title: Demonstration Document
 description: Демонстрационный документ для отладки.
 date: "20210909"
-draft: false
+draft: true
 locale: en
 tags:
   - support

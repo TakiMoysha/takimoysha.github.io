@@ -40,7 +40,7 @@ defineProps<Props>();
       </li>
     </ul>
 
-    <div v-if="value.locales && value.locales.length > 1"
+    <div v-if="value.locales && value.locales.length > 0"
       class="mt-4 flex flex-wrap items-center gap-2 text-xs text-neutral-content/70">
       <span class="font-semibold uppercase tracking-wide">Languages:</span>
       <ul class="flex flex-wrap gap-2">

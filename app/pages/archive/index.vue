@@ -24,7 +24,7 @@ const postsByDate = await useAsyncData('archive', async () => {
         <template v-for="item in postsByDate.data.value" :key="item.slug">
           <div class="mb-6 border-b border-accent/40 pb-2">
             <div class="space-y-6">
-              <ArchiveArticleCard :data="item" />
+              <ArchiveArticleCard :value="item" />
             </div>
           </div>
         </template>
