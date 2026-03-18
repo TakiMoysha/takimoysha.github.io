@@ -23,6 +23,7 @@
 - gh rulesets
 
 - address book: list of my public servers
+- pagigation for archive/index.vue
 
 ## Issues
 
