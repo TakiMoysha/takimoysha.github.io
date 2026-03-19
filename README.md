@@ -24,6 +24,7 @@
 
 - address book: list of my public servers
 - pagigation for archive/index.vue
+- grouping multilanguage notes
 
 ## Issues
 

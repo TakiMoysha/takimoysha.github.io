@@ -50,12 +50,11 @@ const pageTitle = computed(() => error.value.text);
 
 useHead({
   title: pageTitle,
-})
+});
 </script>
 
 <template>
   <BaseLayout>
-    {{ error }}
     <div class="flex items-center justify-center p-4 mx-auto">
       <div class="glitch-container relative p-4">
         <h1 class="shake-box glitch text-shadow-md text-center text-6xl font-bold font-digital" :data-text="error.text">
@@ -93,9 +92,6 @@ useHead({
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom,
-      rgba(0, 0, 0, 0) 50%,
-      rgba(0, 255, 255, 0.1) 50%);
   background-size: 100% 4px;
   pointer-events: none;
   z-index: 10;

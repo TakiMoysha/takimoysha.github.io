@@ -21,12 +21,12 @@ export default defineNuxtConfig({
     '@nuxt/ui', // UI compatibility with TailwindCSS
   ],
 
-  $production: {
-    modules: ['nuxt-security'],
-    experimental: {
-      noVueServer: true,
-    },
-  },
+  // $production: {
+  //   modules: [],
+  //   experimental: {
+  //     noVueServer: true,
+  //   },
+  // },
   $development: {
     modules: ['nuxt-studio', '@nuxt/devtools'],
   },
@@ -35,6 +35,9 @@ export default defineNuxtConfig({
     experimental: {
       componentIslands: true,
     },
+  },
+  experimental: {
+    payloadExtraction: 'client',
   },
 
   appConfig: {

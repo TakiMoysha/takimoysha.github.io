@@ -40,17 +40,19 @@ defineProps<Props>();
       </li>
     </ul>
 
-    <div v-if="value.locales && value.locales.length > 0"
-      class="mt-4 flex flex-wrap items-center gap-2 text-xs text-neutral-content/70">
-      <span class="font-semibold uppercase tracking-wide">Languages:</span>
-      <ul class="flex flex-wrap gap-2">
-        <li v-for="locale in value.locales" :key="locale">
-          <NuxtLink :to="`/${value.path}?lang=${locale}`"
-            class="rounded-full border border-transparent bg-base-200 px-2 py-1 font-semibold uppercase tracking-wide text-base-content/50 transition hover:border-accent hover:text-accent-content">
-            {{ locale }}
-          </NuxtLink>
-        </li>
-      </ul>
-    </div>
+    <template v-if="value.locales && value.locales.length > 0">
+      <div class="mt-4 flex flex-wrap items-center gap-2 text-xs text-neutral-content/70">
+        <span class="font-semibold uppercase tracking-wide">Languages:</span>
+        <ul class="flex flex-wrap gap-2">
+          <li v-for="locale in value.locales" :key="locale">
+            <NuxtLink :to="`/${value.path}?lang=${locale}`"
+              class="rounded-full border border-transparent bg-base-200 px-2 py-1 font-semibold uppercase tracking-wide text-base-content/50 transition hover:border-accent hover:text-accent-content">
+              {{ locale }}
+            </NuxtLink>
+          </li>
+        </ul>
+      </div>
+    </template>
+
   </article>
 </template>
