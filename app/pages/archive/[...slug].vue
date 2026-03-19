@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import MarkdownLayout from '@/layouts/MarkdownLayout.vue';
-import ContentFrontmatter from "@/components/archive/ContentFrontmatter.vue";
+import ContentFrontmatter from '@/components/archive/ContentFrontmatter.vue';
 
 const route = useRoute();
 

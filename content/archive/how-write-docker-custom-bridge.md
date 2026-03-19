@@ -59,29 +59,3 @@ networks:
             config:
                 - subnet: 172.17.1.0/29 # 172.17.1.1 - 172.20.1.6
 ```
-
-Current network topology:
-
-```mermaid
-graph TD;
-    subgraph containers [ ]
-        direction TB
-        swag["swag"]:::container
-        appname["appname"]:::container
-        appname_db["appname-db"]:::container
-    end
-
-    net_appname["172.17.0.0/24<br/>net-appname"]:::net_appname
-    internal["172.17.1.0/29<br/>Internal"]:::internal
-
-    internal <-->|172.17.1.3/29| appname
-    internal <-->|172.17.1.2/29| appname_db
-
-    net_appname <-->|172.17.0.3/24| appname
-    net_appname <-->|172.17.0.4/24| swag
-
-
-    classDef container fill:#f8c8d4,stroke:#333,stroke-width:2px;
-    classDef internal fill:#c4f8c8,stroke:#333,stroke-width:2px;
-    classDef net_appname fill:#c8c8c8c,stroke:#333,stroke-width:2px;
-```

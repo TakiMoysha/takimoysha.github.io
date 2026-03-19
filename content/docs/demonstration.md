@@ -1,6 +1,5 @@
 ---
 title: Demonstration Document
-slug: archive/support-demo-doc
 tags:
   - support
 date: "20210915"

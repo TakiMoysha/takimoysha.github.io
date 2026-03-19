@@ -74,3 +74,15 @@ const countries = defineCollection({
 });
 
 ```
+
+## Working with nuxt-content
+
+
+```ts
+const queryRecentContent = queryCollection('archive')
+  .where('draft', '=', false)
+  .order('date', 'DESC')
+  .limit(5)
+  .all();
+
+```
