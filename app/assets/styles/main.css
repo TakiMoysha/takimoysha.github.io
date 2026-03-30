@@ -185,7 +185,7 @@ html[data-theme="halloween"] {
 
 body {
   background: var(--color-base-200);
-  color: var(--color-neutral);
+  color: var(--color-neutral-content);
 }
 
 ::-webkit-scrollbar {
