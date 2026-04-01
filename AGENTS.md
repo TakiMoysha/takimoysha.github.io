@@ -31,7 +31,7 @@ Use Standard nuxt project structure.
 
 - `./app/constants.ts` - site constants
 - `./content/archive/` - атомарные посты, блог или заметки.
-- `./content/cycles/` - цикл по определенной теме. на верхнем уровне лежат json, описывающие циклы и что содержат.
+- `./content/series/` - цикл по определенной теме. на верхнем уровне лежат json, описывающие циклы и что содержат.
 - `./content/docs/` - documentation about this project
 - `./content/projects/` - project page, often these are embedded files, other sites, wasm projects, etc. mdx is used
 - `./tests/unit/` - unit tests
@@ -170,7 +170,7 @@ Content is managed via `@nuxt/content` with these collections (defined in `conte
 
 - `docs` - Documentation pages (`content/docs/*`)
 - `archive` - Blog posts (`content/archive/*.md`)
-- `cycles` - JSON data files (`content/cycles/*.json`)
+- `series` - JSON data files (`content/series/*.json`)
 - `projects` - Project pages (`content/projects/*.mdx`)
 
 **Accessing content:**

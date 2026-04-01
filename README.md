@@ -1,7 +1,7 @@
 # Blog & Documentation
 
 - **archive**: it's like blog and notes;
-- **cycles** (review): like book about theme (or light/dark with colorschemas);
+- **series** (review): like book about theme (or light/dark with colorschemas);
 - **projects**: my projects;
 
 ## Milestones

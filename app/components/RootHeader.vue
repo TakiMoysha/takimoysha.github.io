@@ -3,7 +3,7 @@ import SiteTitle from './ui/SiteTitle.vue';
 
 const navigationItems = [
   { label: 'Archive', to: '/archive' },
-  { label: 'Cycles', to: '/cycles', disabled: true },
+  { label: 'Series', to: '/series', disabled: true },
   { label: 'Projects', to: '/projects', disabled: true },
   { label: 'CV', to: '/cv', disabled: true },
 ];

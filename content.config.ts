@@ -34,9 +34,9 @@ export default defineContentConfig({
   collections: {
     ...archiveMultilanguage,
     docs: defineCollection({ type: 'page', source: 'docs/*.md' }),
-    cycles: defineCollection({
+    series: defineCollection({
       type: 'data',
-      source: 'cycles/**/manifest.json',
+      source: 'series/**/manifest.json',
       schema: z.object({
         title: z.string(),
         description: z.string().optional(),
