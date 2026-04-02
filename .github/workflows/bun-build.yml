@@ -20,10 +20,10 @@ jobs:
             ~/.bun/install/cache
           key: ${{ runner.os }}-bun-nuxt-${{ hashFiles('**/bun.lock') }}
 
-      - run: bun install --frozen-lock
-
+      - run: bun install --frozen-lockfile
+ 
       - name: Static HTML export with Nuxt
-        run: bun run build
+        run: bun run generate
         env:
           NUXT_PUBLIC_GOOGLE_SITE_VERIFICATION: ${{ vars.NUXT_PUBLIC_GOOGLE_SITE_VERIFICATION }}
           NUXT_PUBLIC_BING_SITE_VERIFICATION: ${{ vars.NUXT_PUBLIC_BING_SITE_VERIFICATION }}
