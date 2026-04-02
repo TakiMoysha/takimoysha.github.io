@@ -14,7 +14,7 @@ concurrency:
 
 jobs:
   build:
-    uses: ./.github/workflows/build.yml
+    uses: ./.github/workflows/bun-build.yml
 
   deploy:
     needs: build
