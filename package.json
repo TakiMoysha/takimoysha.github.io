@@ -14,31 +14,31 @@
   "dependencies": {
     "@nuxt/content": "^3.12.0",
     "@nuxt/schema": "^4.4.2",
-    "@nuxt/ui": "^4.5.1",
+    "@nuxt/ui": "^4.6.0",
     "@nuxtjs/feed": "^2.0.0",
     "@nuxtjs/html-validator": "2.1.0",
-    "@nuxtjs/i18n": "^10.2.3",
-    "@nuxtjs/seo": "^3.4.0",
+    "@nuxtjs/i18n": "^10.2.4",
+    "@nuxtjs/seo": "^5.1.0",
     "@nuxtjs/tailwindcss": "^6.14.0",
     "@tailwindcss/vite": "^4.2.2",
     "nuxt": "^4.4.2",
-    "nuxt-og-image": "6.0.3",
+    "nuxt-og-image": "^6.3.2",
     "nuxt-security": "^2.5.1",
-    "nuxt-studio": "1.5.0",
-    "slugify": "^1.6.8",
+    "nuxt-studio": "^1.5.1",
+    "slugify": "^1.6.9",
     "tailwind-merge": "^3.5.0",
     "tailwindcss": "^4.2.2",
-    "vite": "^8.0.0"
+    "vite": "^8.0.3"
   },
   "devDependencies": {
     "@nuxt/test-utils": "^4.0.0",
     "@tailwindcss/typography": "^0.5.19",
-    "@vue/devtools-core": "^8.1.0",
-    "@vue/devtools-kit": "^8.1.0",
+    "@vue/devtools-core": "^8.1.1",
+    "@vue/devtools-kit": "^8.1.1",
     "@vue/test-utils": "^2.4.6",
-    "happy-dom": "^20.8.4",
-    "oxlint": "^1.56.0",
+    "happy-dom": "^20.8.9",
+    "oxlint": "^1.58.0",
     "prettier": "^3.8.1",
-    "vitest": "^4.1.0"
+    "vitest": "^4.1.2"
   }
 }
