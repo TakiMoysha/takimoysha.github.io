@@ -9,7 +9,7 @@ describe('document parsing', () => {
   });
 
   test('should parse number to date', () => {
-    let dataset = [202109151046, 20230101, '2026-01-05T14:16'];
+    const dataset = [202109151046, 20230101, '2026-01-05T14:16'];
     dataset.forEach((element) => {
       const res = parseDate(element);
       console.log(res);

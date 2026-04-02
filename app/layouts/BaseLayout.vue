@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import RootHeader from '@/components/RootHeader.vue';
 import RootFooter from '@/components/RootFooter.vue';
+import useSeo from '@/composables/useSeo';
+
+useSeo()
 </script>
 
 <template>
@@ -13,7 +16,6 @@ import RootFooter from '@/components/RootFooter.vue';
 
     <!-- vivladi test colors -->
     <meta name="theme-color" content="#44624a" media="(prefers-color-scheme:dark)">
-
   </Head>
 
   <div class="body-margin flex min-h-screen flex-col">
