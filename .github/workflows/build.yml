@@ -19,17 +19,17 @@ jobs:
           path: |
             node_modules
             .nuxt
-          key: ${{ runner.os }}-nuxt-${{ hashFiles('bun.lockb') }}
+          key: ${{ runner.os }}-nuxt-${{ hashFiles('bun.lock') }}
           restore-keys: |
             ${{ runner.os }}-nuxt-
 
-      - run: bun install
+      - run: bun install --frozen-lock
 
       - name: Static HTML export with Nuxt
-        run: bun run generate
+        run: bun run build
         env:
-          PUBLIC_GOOGLE_SITE_VERIFICATION: ${{ vars.PUBLIC_GOOGLE_SITE_VERIFICATION }}
-          PUBLIC_BING_SITE_VERIFICATION: ${{ vars.PUBLIC_BING_SITE_VERIFICATION }}
+          NUXT_PUBLIC_GOOGLE_SITE_VERIFICATION: ${{ vars.NUXT_PUBLIC_GOOGLE_SITE_VERIFICATION }}
+          NUXT_PUBLIC_BING_SITE_VERIFICATION: ${{ vars.NUXT_PUBLIC_BING_SITE_VERIFICATION }}
 
       - name: Upload artifact
         id: upload
