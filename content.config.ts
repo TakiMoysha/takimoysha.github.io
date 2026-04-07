@@ -1,4 +1,5 @@
 import { defineCollection, defineContentConfig, z } from '@nuxt/content';
+import { defineSitemapSchema } from '@nuxtjs/sitemap/content';
 import { SITE_CONFIG } from './config';
 
 const stackInformation = {
@@ -21,6 +22,7 @@ const archiveMultilanguage = {
       date: z.string(),
       locale: z.string().default(SITE_CONFIG.defaultLocale),
       draft: z.boolean().default(false),
+      sitemap: defineSitemapSchema(),
     }),
     indexes: [
       { columns: ['slug'] },
@@ -43,6 +45,7 @@ export default defineContentConfig({
         locale: z.string().default(SITE_CONFIG.defaultLocale),
         spec: z.object({}).default({}),
         draft: z.boolean().default(false),
+        sitemap: defineSitemapSchema(),
       }),
     }),
     projects: defineCollection({
@@ -53,6 +56,7 @@ export default defineContentConfig({
         description: z.string().optional(),
         locale: z.string().default(SITE_CONFIG.defaultLocale),
         draft: z.boolean().default(false),
+        sitemap: defineSitemapSchema(),
       }),
     }),
   },

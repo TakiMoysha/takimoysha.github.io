@@ -6,19 +6,21 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
   modules: [
+    '@nuxt/ui', // UI compatibility with TailwindCSS
+    '@nuxt/fonts',         // custom fonts (Google Fonts)
+
+    '@nuxt/content', // static content md/mdx/json, must be before sitemap
+
     '@nuxtjs/seo', //
-    // '@nuxtjs/sitemap', // TODO: migration to nuxt/seo
-    // '@nuxtjs/robots', // TODO: migration to nuxt/seo
-    // '@nuxt/schema',        // TODO: migration to nuxt/seo
+    '@nuxtjs/sitemap', //
+    '@nuxtjs/robots', //
+    // '@nuxt/schema',        // TODO:
     '@nuxtjs/i18n', //
     '@nuxtjs/html-validator', //
     'nuxt-og-image', // Автоматическая генерация OG-изображений для соцсетей
     // '@nuxt/image',         // Оптимизация изображений (IPX, Cloudinary и др.)
-    // '@nuxt/fonts',         // custom fonts (Google Fonts)
     // '@nuxt/scripts',       // scripts (Google Tag Manager, Meta Pixel etc.)
     // '@unocss/nuxt',        // faster then tailwindcss
-    '@nuxt/content', // static content md/mdx/json
-    '@nuxt/ui', // UI compatibility with TailwindCSS
   ],
 
   // $production: {
@@ -68,6 +70,7 @@ export default defineNuxtConfig({
         },
       ],
       meta: [
+        { name: 'description', content: SITE_CONFIG.description },
         {
           name: 'google-site-verification',
           content: process.env.NUXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
@@ -82,15 +85,16 @@ export default defineNuxtConfig({
     layoutTransition: false,
   },
   site: {
-    /* not working properly */
-    // url: SITE_CONFIG.url,
-    // name: SITE_CONFIG.title,
-    // title: SITE_CONFIG.title,
+    /* @nuxtjs/sitemap: ... */
+    url: SITE_CONFIG.url,
+    name: SITE_CONFIG.title,
+    title: SITE_CONFIG.title,
   },
   ogImage: { enabled: false },
 
   sitemap: {
     zeroRuntime: true, // when sitemap is generated on build
+    include: [],
   },
   components: {
     dirs: [{ path: './app/components/', pathPrefix: false }],
