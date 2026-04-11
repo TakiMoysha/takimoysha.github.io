@@ -6,13 +6,8 @@ import ArticleProgressBar from '@/components/ArticleProgressBar.vue';
 <template>
   <BaseLayout>
     <ArticleProgressBar />
-    <article class="prose prose-slate mx-auto max-w-2xl p-6 dark:prose-invert">
-      <div>
-        <!-- TODO: maybe set mdx, how working with astrojs/content extension -->
-        <section class="markdown">
-          <slot />
-        </section>
-      </div>
+    <article class="prose prose-slate mx-auto lg:max-w-4xl p-6 dark:prose-invert">
+      <slot />
     </article>
   </BaseLayout>
 </template>
