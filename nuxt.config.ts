@@ -6,21 +6,21 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
   modules: [
-    '@nuxt/ui', // UI compatibility with TailwindCSS
-    '@nuxt/fonts', // custom fonts (Google Fonts)
-
-    '@nuxt/content', // static content md/mdx/json, must be before sitemap
-
+    // UI compatibility with TailwindCSS
+    '@nuxt/ui', // custom fonts (Google Fonts)
+    '@nuxt/fonts', // static content md/mdx/json, must be before sitemap
+    '@nuxt/content', //
     '@nuxtjs/seo', //
     '@nuxtjs/sitemap', //
-    '@nuxtjs/robots', //
-    // '@nuxt/schema',        // TODO:
+    '@nuxtjs/robots', // '@nuxt/schema',        // TODO:
+    //
     '@nuxtjs/i18n', //
-    '@nuxtjs/html-validator', //
-    'nuxt-og-image', // Автоматическая генерация OG-изображений для соцсетей
+    '@nuxtjs/html-validator', // Автоматическая генерация OG-изображений для соцсетей
     // '@nuxt/image',         // Оптимизация изображений (IPX, Cloudinary и др.)
     // '@nuxt/scripts',       // scripts (Google Tag Manager, Meta Pixel etc.)
     // '@unocss/nuxt',        // faster then tailwindcss
+    'nuxt-og-image',
+    '@nuxtjs/storybook',
   ],
 
   // $production: {
@@ -105,6 +105,9 @@ export default defineNuxtConfig({
     vue: { features: { optionsAPI: false } },
     clearScreen: true,
     plugins: [tailwindcss()],
+    optimizeDeps: {
+      include: ['@vue/devtools-core', '@vue/devtools-kit'],
+    },
   },
 
   content: {
@@ -168,4 +171,6 @@ export default defineNuxtConfig({
   //     github: SOCIALS_CONFIG.github,
   //   },
   // },
+  storybook: {},
 });
+
