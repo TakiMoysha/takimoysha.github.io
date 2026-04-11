@@ -1,4 +1,2 @@
-
-
 test-cicd:
-  act
+    act

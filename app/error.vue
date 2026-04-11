@@ -1,7 +1,3 @@
-<template>
-  <ErrorLayout code="404" />
-</template>
-
 <script setup lang="ts">
 import ErrorLayout from '@/layouts/ErrorLayout.vue';
 
@@ -11,3 +7,7 @@ if (event) {
   setResponseStatus(event, 404);
 }
 </script>
+
+<template>
+  <ErrorLayout code="404" />
+</template>
