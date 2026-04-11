@@ -1,7 +1,7 @@
 ---
 title: Как работает UV
 date: "20260411"
-description: Свободный перевод статьи "How uv Works Under the Hood"
+description: Вольный перевод статьи "How uv Works Under the Hood"
 draft: false
 locale: en
 sitemap:

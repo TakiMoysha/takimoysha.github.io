@@ -19,7 +19,9 @@ useSeo();
   </Head>
 
   <div class="body-margin flex min-h-screen flex-col">
-    <RootHeader />
+    <RootHeader>
+      <template #header><slot name="header" /></template>
+    </RootHeader>
     <main id="main-content" class="main-margin relative z-1 flex-1 pattern-swamp">
       <slot />
     </main>

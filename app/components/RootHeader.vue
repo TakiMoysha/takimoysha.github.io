@@ -26,6 +26,9 @@ const dropdownItems = navigationItems.map((item) => ({
       <UDropdownMenu :items="dropdownItems" :content="{ align: 'end' }" class="sm:hidden">
         <UButton icon="lucide:menu" color="neutral" variant="ghost" aria-label="Toggle navigation menu" />
       </UDropdownMenu>
+
     </div>
+
+    <slot name="header" />
   </header>
 </template>
