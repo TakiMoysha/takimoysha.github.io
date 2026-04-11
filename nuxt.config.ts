@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: [
     '@nuxt/ui', // UI compatibility with TailwindCSS
-    '@nuxt/fonts',         // custom fonts (Google Fonts)
+    '@nuxt/fonts', // custom fonts (Google Fonts)
 
     '@nuxt/content', // static content md/mdx/json, must be before sitemap
 
@@ -122,6 +122,7 @@ export default defineNuxtConfig({
           theme: {
             default: 'github-light',
           },
+          langs: ['toml', 'rust', 'scheme', 'bash'],
         },
       },
     },

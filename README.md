@@ -4,6 +4,11 @@
 - **series** (review): like book about theme (or light/dark with colorschemas);
 - **projects**: my projects;
 
+## Issues
+
+- [ ] title issue (nuxt-seo, nust-site-config)
+- [x] sitemap error
+
 ## Milestones
 
 - rss feed: https://docs.astro.build/en/recipes/rss/
@@ -25,12 +30,6 @@
 - address book: list of my public servers
 - pagigation for archive/index.vue
 - grouping multilanguage notes
-
-## Issues
-
-- title issue (nuxt-seo, nust-site-config)
-
-## ULP
 
 ## Localization
 

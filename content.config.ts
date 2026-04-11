@@ -40,12 +40,8 @@ export default defineContentConfig({
       type: 'data',
       source: 'series/**/manifest.json',
       schema: z.object({
-        title: z.string(),
-        description: z.string().optional(),
-        locale: z.string().default(SITE_CONFIG.defaultLocale),
-        spec: z.object({}).default({}),
-        draft: z.boolean().default(false),
-        sitemap: defineSitemapSchema(),
+        version: z.string(),
+        content: z.record(z.any()).optional(),
       }),
     }),
     projects: defineCollection({
