@@ -7,7 +7,6 @@ export const SITE_CONFIG = {
     'github-light',
     'github-dark',
     'monokai',
-    'monokai',
   ] as Array<string>,
   url: 'https://takimoysha.github.io',
   defaultLocale: 'en',

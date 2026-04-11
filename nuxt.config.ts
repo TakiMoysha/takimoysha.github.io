@@ -6,21 +6,15 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
   modules: [
-    // UI compatibility with TailwindCSS
-    '@nuxt/ui', // custom fonts (Google Fonts)
-    '@nuxt/fonts', // static content md/mdx/json, must be before sitemap
-    '@nuxt/content', //
-    '@nuxtjs/seo', //
-    '@nuxtjs/sitemap', //
-    '@nuxtjs/robots', // '@nuxt/schema',        // TODO:
-    //
-    '@nuxtjs/i18n', //
-    '@nuxtjs/html-validator', // Автоматическая генерация OG-изображений для соцсетей
-    // '@nuxt/image',         // Оптимизация изображений (IPX, Cloudinary и др.)
-    // '@nuxt/scripts',       // scripts (Google Tag Manager, Meta Pixel etc.)
-    // '@unocss/nuxt',        // faster then tailwindcss
+    '@nuxt/ui',
+    '@nuxt/fonts',
+    '@nuxt/content',
+    '@nuxtjs/seo',
+    '@nuxtjs/sitemap',
+    '@nuxtjs/robots',
+    '@nuxtjs/i18n',
+    '@nuxtjs/html-validator',
     'nuxt-og-image',
-    '@nuxtjs/storybook',
   ],
 
   // $production: {
@@ -30,7 +24,9 @@ export default defineNuxtConfig({
   //   },
   // },
   $development: {
-    modules: ['nuxt-studio', '@nuxt/devtools'],
+    modules: process.env.STORYBOOK
+      ? ['@nuxtjs/storybook', '@nuxt/devtools']
+      : ['nuxt-studio', '@nuxt/devtools'],
   },
   $test: {
     modules: ['@nuxt/test-utils/module'],
@@ -173,4 +169,3 @@ export default defineNuxtConfig({
   // },
   storybook: {},
 });
-

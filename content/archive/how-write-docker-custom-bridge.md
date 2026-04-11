@@ -3,6 +3,8 @@ title: Настройка сети для docker/podman
 date: "20250325"
 draft: false
 locale: ru
+sitemap:
+  loc: /archive/how-write-docker-custom-bridge
 tags:
   - docker
   - networking

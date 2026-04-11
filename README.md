@@ -4,6 +4,10 @@
 - **series** (review): like book about theme (or light/dark with colorschemas);
 - **projects**: my projects;
 
+```shell
+bun install && bun prepare
+```
+
 ## Issues
 
 - [ ] title issue (nuxt-seo, nust-site-config)

@@ -1,9 +1,11 @@
 ---
 title: Demonstration Document
-description: Демонстрационный документ для отладки.
 date: "20210909"
+description: Демонстрационный документ для отладки.
 draft: true
 locale: en
+sitemap:
+  loc: /archive/demodoc
 tags:
   - support
 todo: move to docs
@@ -54,16 +56,13 @@ todo: move to docs
 
 #### Базовые
 
-> [!NOTE]:br
 > Highlights information that users should take into account, even when skimming.
 
 > [!TIP]
 > Optional information to help a user be more successful.
 
-> [!IMPORTANT]:br
 > Crucial information necessary for users to succeed.
 
-> [!WARNING]:br
 > Critical content demanding immediate user attention due to potential risks.
 
 > [!CAUTION]

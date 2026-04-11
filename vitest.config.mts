@@ -6,5 +6,8 @@ export default defineVitestConfig({
     include: ['tests/**/*.test.ts'],
     globals: true,
     setupFiles: ['tests/unit/setup.ts'],
+    alias: {
+      '@': './app',
+    },
   },
 });

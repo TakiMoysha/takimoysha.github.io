@@ -3,7 +3,7 @@ import RootHeader from '@/components/RootHeader.vue';
 import RootFooter from '@/components/RootFooter.vue';
 import useSeo from '@/composables/useSeo';
 
-useSeo()
+useSeo();
 </script>
 
 <template>
