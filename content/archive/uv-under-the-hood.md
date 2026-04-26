@@ -1,7 +1,7 @@
 ---
 title: Как работает UV
 date: "20260411"
-description: Вольный перевод статьи ("How uv Works Under the Hood")[https://noos.blog/posts/uv-how-it-works-under-the-hood/]
+description: Вольный перевод статьи "How uv Works Under the Hood"
 draft: false
 locale: en
 sitemap:
@@ -396,4 +396,4 @@ cargo insta test --accept --test-runner nextest
 
 # Resources
 
-- [uv under the hood](https://noos.blog/posts/uv-how-it-works-under-the-hood/)
+- [Source / How uv Works Under the Hood / noos.blog](https://noos.blog/posts/uv-how-it-works-under-the-hood/)
