@@ -2,7 +2,7 @@
 
 - **archive**: it's like blog and notes;
 - **series** (review): like book about theme (or light/dark with colorschemas);
-- **projects**: my projects;
+- **projects**: my projects. TODO: Используется Layout WIKI.
 
 ```shell
 bun install && bun prepare
