@@ -55,6 +55,7 @@ SaaS's:
 7. [Reference / functions / fumadocs.dev](https://www.fumadocs.dev)
 8. [Reference / full blog web site / github.com](https://github.com/NikaNats/Natspaper/tree/master)
 9. [Reference / clean and structured / github.com](https://nbrosse.github.io)
+10. [Reference / curious / fathy.fr](https://fathy.fr)
 
 1. [Reference / Just Cool Site / stripe.dev](https://stripe.dev/blog)
 2. [Reference / Nuxt / Header / github.com](https://roe.dev/blog/nuxt-server-components/)

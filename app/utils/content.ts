@@ -1,3 +1,7 @@
+/** Parse date string to Date object (by default use iso-8601)
+ * - `:r !date -iso-8601`
+ * !TODO: udpate for iso-8601
+ * */
 export function parseDate(numdate: number | string): Date | null {
   if (typeof numdate === 'number') numdate = String(numdate);
 
