@@ -15,7 +15,7 @@ useSeo();
     <Link rel="icon" type="image/svg+xml" href="/favicon.png" />
 
     <!-- vivladi test colors -->
-    <meta name="theme-color" content="#44624a" media="(prefers-color-scheme:dark)">
+    <Meta name="theme-color" content="#44624a" media="(prefers-color-scheme:dark)" />
   </Head>
 
   <div class="body-margin flex min-h-screen flex-col">

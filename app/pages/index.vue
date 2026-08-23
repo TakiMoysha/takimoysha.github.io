@@ -11,13 +11,13 @@ const { data: recentPosts } = await useAsyncData(() => {
   <BaseLayout>
     <div class="max-w-4xl mx-auto px-4">
       <section class="py-12">
-        <h2 class="text-2xl font-semibold mb-6 pb-2 border-b">Recent Posts</h2>
+        <h1 class="text-2xl font-semibold mb-6 pb-2 border-b">Recent Posts</h1>
         <div class="space-y-8">
           <article v-if="recentPosts" v-for="post in recentPosts" :key="post.id" class="group">
             <NuxtLink :to="`${post.slug || post.path}`" class="block">
-              <h3 class="text-xl font-medium text-blue-600 dark:text-blue-400 group-hover:underline mb-1">
+              <h2 class="text-xl font-medium text-blue-600 dark:text-blue-400 group-hover:underline mb-1">
                 {{ post.title }}
-              </h3>
+              </h2>
               <p class="text-base-300-content text-sm mb-2">
                 {{ formatDate(post.date) }}
               </p>

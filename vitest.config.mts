@@ -1,3 +1,5 @@
+import { fileURLToPath } from 'node:url';
+
 import { defineVitestConfig } from '@nuxt/test-utils/config';
 
 export default defineVitestConfig({
@@ -7,7 +9,7 @@ export default defineVitestConfig({
     globals: true,
     setupFiles: ['tests/unit/setup.ts'],
     alias: {
-      '@': './app',
+      '@': fileURLToPath(new URL('./app', import.meta.url)),
     },
   },
 });

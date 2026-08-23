@@ -10,7 +10,7 @@ It's a **full static web site** built for deployment on GitHub Pages - don't use
 - Nuxt 4 (with Nuxt Content for MD/MDX)
 - Vue 3 (Composition API, OptionsAPI disabled by config)
 - TailwindCSS 4 + NuxtUI 4 (semantic theming)
-- UnoCSS (for utilities, faster than Tailwind)
+- UnoCSS (for utilities, faster than Tailwind) (WIP)
 - TypeScript
 - Biome (linting/formatting)
 - Vitest (testing)
@@ -41,27 +41,8 @@ Use Standard nuxt project structure.
 - `./vitest.config.mts` - test configuration
 - `./.oxlintrc` - linting rules (oxlint uses as second linter)
 
----
 
-## Commands
-
-```bash
-# Development
-bun run dev              # Start dev server
-
-# Building
-bun run generate         # Generate static site (for GitHub Pages)
-bun run build            # Build for production
-
-# Testing
-bun test                 # Run all tests
-bun test -- --project=unit       # Run unit tests only
-bun test -- --project=nuxt       # Run Nuxt tests only
-```
-
-Also see [justfile](justfile).
-
----
+## Commands (see [justfile](justfile))
 
 ## Code Style & Conventions
 
@@ -70,7 +51,7 @@ Also see [justfile](justfile).
 - Use **TypeScript** for all new code
 - Use **Composition API** with `<script setup lang="ts">` syntax.
 
-More about tech stack and practices and rules in [SKILLS.md](SKILLS.md).
+More about tech stack and practices and rules in [SKILLS.md](SKILLS.md) or global skills.
 
 ### Vue Components
 
@@ -227,20 +208,28 @@ describe("My Page", async () => {
 });
 ```
 
----
-
 ## Static Site Generation (SSG)
 
 This project generates a static site for GitHub Pages:
 
-- `ssr: false` in `nuxt.config.ts`
-- Nitro preset: `static`
-- All routes are prerendered at build time
+- `ssr: true` in `nuxt.config.ts` — pages are rendered to HTML at build time (needed for schema.org/SEO)
+- Nitro preset: `github-pages`
+- All routes are prerendered at build time (`/rss.xml` explicitly listed in `nitro.prerender.routes`)
 - Sitemap generated automatically (`@nuxtjs/sitemap`)
+- RSS feed served from `server/routes/rss.xml.ts` (prerendered, no feed module)
 
 **Important:** All dynamic content must be available at build time via Nuxt Content.
 
----
+**Note:** `content.experimental.sqliteConnector: 'native'` — uses built-in `node:sqlite` (Node >= 22.5). Don't use the default better-sqlite3 connector: its native binary breaks with "module did not self-register" when Node ABI changes.
+
+## Testing Commands
+
+Use vitest, not `bun test` (Bun's own runner ignores `vitest.config.mts` — aliases/setup won't apply):
+
+```bash
+bunx vitest run          # all tests
+bun run test             # watch mode
+```
 
 ## SEO & Meta
 
@@ -249,15 +238,11 @@ This project generates a static site for GitHub Pages:
 - HTML validation enabled (`@nuxtjs/html-validator`)
 - Use `<Head>` and `<Title>` components from `@unhead/vue`
 
----
-
 ## Security
 
 - `nuxt-security` module enabled in production
 - Security headers configured in `nuxt.config.ts`
 - CORS policies applied via route rules
-
----
 
 ## Best Practices
 
@@ -267,8 +252,7 @@ This project generates a static site for GitHub Pages:
 4. **Use TypeScript strictly** - define interfaces for props and returns
 5. **Keep components small** - extract logic to composables when possible
 6. **Test static generation** with `bun run generate` before deployment
-
----
+7. **Use Nuxt Content** for content management
 
 ## Documentation
 

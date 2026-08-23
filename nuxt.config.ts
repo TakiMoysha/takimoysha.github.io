@@ -17,16 +17,8 @@ export default defineNuxtConfig({
     'nuxt-og-image',
   ],
 
-  // $production: {
-  //   modules: [],
-  //   experimental: {
-  //     noVueServer: true,
-  //   },
-  // },
   $development: {
-    modules: process.env.STORYBOOK
-      ? ['@nuxtjs/storybook', '@nuxt/devtools']
-      : ['nuxt-studio', '@nuxt/devtools'],
+    modules: ['nuxt-studio', '@nuxt/devtools'],
   },
   $test: {
     modules: ['@nuxt/test-utils/module'],
@@ -35,7 +27,7 @@ export default defineNuxtConfig({
     },
   },
   experimental: {
-    payloadExtraction: 'client',
+    payloadExtraction: true,
   },
 
   appConfig: {
@@ -107,6 +99,12 @@ export default defineNuxtConfig({
   },
 
   content: {
+    experimental: {
+      // native = встроенный node:sqlite (Node >= 22.5 / bun).
+      // better-sqlite3 не используем: его нативный бинарник собран под другой ABI
+      // и падает с "module did not self-register" после обновления Node.
+      sqliteConnector: 'native',
+    },
     watch: { enabled: process.env.NODE_ENV === 'development' },
     build: {
       markdown: {
@@ -128,16 +126,17 @@ export default defineNuxtConfig({
   },
 
   css: ['~/assets/styles/main.css'],
-  ssr: false, // for github pages
+  // full-static SSG для github pages: страницы рендерятся в HTML на этапе build,
+  // это нужно и для schema.org (иначе warning "schema.org with SSR disabled")
+  ssr: true,
   nitro: {
     preset: 'github-pages', // or static
     experimental: { tasks: true },
     future: { nativeSWR: true },
-    // prerender: {
-    //   crawlLinks: true,
-    //   ignore: ['/__nuxt_content'],
-    //   routes: ['/'],
-    // },
+    prerender: {
+      // rss.xml — server route, краулер сам её не находит надёжно
+      routes: ['/rss.xml'],
+    },
     // hooks: {},
   },
 
@@ -153,6 +152,21 @@ export default defineNuxtConfig({
 
   htmlValidator: {
     failOnError: true,
+    options: {
+      rules: {
+        // reka-ui (NuxtUI) рендерит порталы поповеров только на клиенте,
+        // в статическом HTML id-ссылки селектов всегда "висящие"
+        'no-missing-references': 'off',
+        // NuxtUI/reka виджеты — div-ы с ARIA-ролями, это ок
+        'prefer-native-element': 'off',
+        // shiki подсветка кода инжектит <style> прямо в поток контента
+        'element-permitted-content': 'off',
+        // GFM-таблицы из markdown не умеют scope у th
+        'wcag/h63': 'off',
+        // уровни заголовков в авторском markdown — не блокируем сборку
+        'heading-level': 'warn',
+      },
+    },
   },
 
   // security: {
@@ -167,5 +181,4 @@ export default defineNuxtConfig({
   //     github: SOCIALS_CONFIG.github,
   //   },
   // },
-  storybook: {},
 });

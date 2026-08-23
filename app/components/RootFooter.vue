@@ -17,11 +17,12 @@ const site = useAppConfig().SITE_CONFIG;
 
         <div class="flex items-center gap-4">
           <NuxtLink v-for="social in SOCIALS" :key="social.href" :to="social.href" :title="social.linkTitle"
-            target="_blank" class="text-base-content/70 hover:text-base-content transition-colors">
+            :aria-label="social.linkTitle" target="_blank"
+            class="text-base-content/70 hover:text-base-content transition-colors">
             <UIcon :name="social.icon" class="h-5 w-5" />
           </NuxtLink>
 
-          <NuxtLink to="/rss.xml" title="RSS Feed"
+          <NuxtLink to="/rss.xml" title="RSS Feed" aria-label="RSS Feed"
             class="text-base-content/70 hover:text-base-content transition-colors">
             <UIcon name="lucide:rss" class="h-5 w-5" />
           </NuxtLink>

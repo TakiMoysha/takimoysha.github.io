@@ -394,6 +394,6 @@ cargo install cargo-insta
 cargo insta test --accept --test-runner nextest
 ```
 
-# Resources
+## Resources
 
 - [Source / How uv Works Under the Hood / noos.blog](https://noos.blog/posts/uv-how-it-works-under-the-hood/)

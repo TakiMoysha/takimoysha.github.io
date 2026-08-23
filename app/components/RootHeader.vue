@@ -19,9 +19,10 @@ const dropdownItems = navigationItems.map((item) => ({
     <div class="container mx-auto px-4 h-16 flex items-center justify-between">
       <SiteTitle />
 
-      <nav class="hidden sm:flex items-center">
-        <UNavigationMenu :items="navigationItems" highlight color="neutral" variant="link" />
-      </nav>
+      <div class="hidden sm:flex items-center">
+        <UNavigationMenu :items="navigationItems" aria-label="Main navigation" highlight color="neutral"
+          variant="link" />
+      </div>
 
       <UDropdownMenu :items="dropdownItems" :content="{ align: 'end' }" class="sm:hidden">
         <UButton icon="lucide:menu" color="neutral" variant="ghost" aria-label="Toggle navigation menu" />

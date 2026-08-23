@@ -17,7 +17,6 @@
     "@nuxt/content": "^3.15.2",
     "@nuxt/schema": "^4.5.2",
     "@nuxt/ui": "^4.11.0",
-    "@nuxtjs/feed": "^2.0.0",
     "@nuxtjs/html-validator": "2.1.0",
     "@nuxtjs/i18n": "^10.6.0",
     "@nuxtjs/seo": "^5.3.14",
@@ -33,9 +32,6 @@
   "devDependencies": {
     "@histoire/plugin-nuxt": "^1.0.0-beta.1",
     "@nuxt/test-utils": "^4.1.0",
-    "@nuxtjs/storybook": "^9.0.1",
-    "@storybook/addon-a11y": "^10.5.10",
-    "@storybook/addon-docs": "^10.5.10",
     "@tailwindcss/typography": "^0.5.20",
     "@vue/devtools-core": "^8.2.1",
     "@vue/devtools-kit": "^8.2.1",
@@ -43,7 +39,6 @@
     "happy-dom": "^20.11.6",
     "oxlint": "^1.79.0",
     "prettier": "^3.9.6",
-    "storybook": "^10.5.10",
     "vitest": "^4.1.11"
   }
 }

@@ -33,6 +33,3 @@ pnpm-lock.yaml
 .vscode/*
 !.vscode/extensions.json
 .idea
-
-*storybook.log
-storybook-static
