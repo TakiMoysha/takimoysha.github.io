@@ -1,6 +1,10 @@
 import tailwindcss from '@tailwindcss/vite';
 import { SITE_CONFIG, SOCIALS_CONFIG } from './config';
 
+// histoire поднимает nuxt c dev: true — studio/devtools/watchers держат процесс
+// после story:build, не давая ему завершиться
+const isHistoire = process.argv.some((arg) => arg.includes('histoire'));
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
@@ -18,7 +22,7 @@ export default defineNuxtConfig({
   ],
 
   $development: {
-    modules: ['nuxt-studio', '@nuxt/devtools'],
+    modules: isHistoire ? [] : ['nuxt-studio', '@nuxt/devtools'],
   },
   $test: {
     modules: ['@nuxt/test-utils/module'],
@@ -105,7 +109,7 @@ export default defineNuxtConfig({
       // и падает с "module did not self-register" после обновления Node.
       sqliteConnector: 'native',
     },
-    watch: { enabled: process.env.NODE_ENV === 'development' },
+    watch: { enabled: process.env.NODE_ENV === 'development' && !isHistoire },
     build: {
       markdown: {
         rehypePlugins: {

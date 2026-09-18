@@ -231,6 +231,19 @@ bunx vitest run          # all tests
 bun run test             # watch mode
 ```
 
+## Component Playground (Histoire)
+
+Stories live next to components as `*.story.vue` (e.g. `app/components/FileTreeView.story.vue`).
+Config: [histoire.config.ts](histoire.config.ts) (`HstVue()` is required for `.story.vue` support, `HstNuxt()` adds the Nuxt context).
+
+```bash
+bun run story:dev        # playground on :6006
+bun run story:build      # static build to .histoire/dist (gitignored)
+bun run story:preview    # preview the built playground
+```
+
+**Note:** histoire runs nuxt with `dev: true`, so dev-only modules (`nuxt-studio`, devtools) and content watchers are disabled under it via the `isHistoire` check in `nuxt.config.ts` — otherwise the process never exits after `story:build`. The `[nuxt-schema-org] SSR disabled` warning during story builds comes from histoire's internal sandbox and is expected.
+
 ## SEO & Meta
 
 - SEO handled by `@nuxtjs/seo` module

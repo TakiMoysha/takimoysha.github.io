@@ -1,6 +1,7 @@
 # Blog & Documentation
 
 - **archive**: it's like blog and notes;
+- **tech savvy**: articles about actual crates, packages and notes about it;
 - **series** (review): like book about theme (or light/dark with colorschemas);
 - **projects**: my projects. TODO: Используется Layout WIKI.
 
@@ -58,6 +59,8 @@ SaaS's:
 - [Reference / clean and structured / github.com](https://nbrosse.github.io)
 - [Reference / curious / fathy.fr](https://fathy.fr)
 - [Reference / interesting desktop view / jimfawcett.github.io](https://jimfawcett.github.io/RustCmdLine.html)
+- [Reference / interest design / chat.z.ai](https://chat.z.ai/s/c14e52c2-68d0-4875-bc78-010fd76b965f)
+- [Reference / Step-By-Step slides / akesson.io](https://akesson.io/a-visual-guide-to-rust-async/)
 
 - [Reference / Just Cool Site / stripe.dev](https://stripe.dev/blog)
 - [Reference / Nuxt / Header / github.com](https://roe.dev/blog/nuxt-server-components/)
