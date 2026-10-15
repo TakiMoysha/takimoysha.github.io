@@ -89,7 +89,9 @@ export default defineNuxtConfig({
     include: [],
   },
   components: {
-    dirs: [{ path: './app/components/', pathPrefix: false }],
+    // пути в components.dirs разрешаются от srcDir (= app/),
+    // поэтому './app/components' указывал бы в несуществующий app/app/components
+    dirs: [{ path: '~/components', pathPrefix: false }],
   },
   vite: {
     // css: { lightningcss: {} }, // for unocss
