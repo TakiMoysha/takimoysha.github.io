@@ -77,6 +77,10 @@ useHead({
             }
           </code>
         </div>
+
+        <div class="mt-6 flex justify-center">
+          <BadgeButton src="/badge-mr.robot.gif" alt="MR. Robot" title="fsociety" />
+        </div>
       </div>
     </div>
   </BaseLayout>

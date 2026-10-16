@@ -7,5 +7,9 @@ import MyFingerprint from "~/components/draft/MyFingerprint.vue";
   <div>
     <BlankLayout />
     <MyFingerprint />
+
+    <div class="mt-6 mb-10 flex justify-center">
+      <BadgeButton src="/badge-mr.robot.gif" alt="MR. Robot" title="fsociety" />
+    </div>
   </div>
 </template>

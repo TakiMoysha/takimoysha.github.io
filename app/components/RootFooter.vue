@@ -11,9 +11,13 @@ const site = useAppConfig().SITE_CONFIG;
   <footer class="border-t border-base-300 bg-base-100 py-6">
     <div class="mx-auto px-4">
       <div class="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
-        <p class="text-base-content/70 text-sm">
-          © {{ currentYear }} powered by {{ site.author }}
-        </p>
+        <div class="flex items-center gap-3">
+          <BadgeButton src="/badge-mr.robot.gif" alt="MR. Robot" title="fsociety" />
+
+          <p class="text-base-content/70 text-sm">
+            © {{ currentYear }} powered by {{ site.author }}
+          </p>
+        </div>
 
         <div class="flex items-center gap-4">
           <NuxtLink v-for="social in SOCIALS" :key="social.href" :to="social.href" :title="social.linkTitle"
