@@ -164,6 +164,41 @@ const post = await useContent();
 
 ---
 
+## Layouts (Nuxt `<NuxtLayout>`)
+
+The project uses Nuxt's native layout system. `app/app.vue` wraps `<NuxtPage />` in
+`<NuxtLayout>`, so layouts are selected per page via `definePageMeta`.
+
+`app/layouts/` contains **only real layouts** (slot-based wrappers). Layout names are
+kebab-cased by Nuxt: `BaseLayout.vue` → `base-layout`.
+
+- `BaseLayout.vue` (`base-layout`) — root shell: header + main + footer.
+- `MarkdownLayout.vue` (`markdown-layout`) — wraps `BaseLayout` with prose styling.
+- `SeriesLayout.vue` (`series-layout`) — wraps `BaseLayout` with a book layout.
+- `EmbeddedLayout.vue` (`embedded-layout`) — wraps `BaseLayout` with a sidebar.
+- `BlankLayout.vue` (`blank-layout`) — standalone demo shell (own header, `<slot />`).
+
+**Select a layout on a page:**
+
+```typescript
+definePageMeta({ layout: 'base-layout' });
+```
+
+**Pass props to a layout:**
+
+```typescript
+definePageMeta({
+  layout: { name: 'blank-layout', props: { title: 'Styles' } },
+});
+```
+
+Self-contained UI (e.g. `app/components/AppError.vue`, formerly `ErrorLayout.vue`) is a
+regular **component**, not a layout — import and use it directly on a page. `app/error.vue`
+is a separate tree from `app.vue`, so it must wrap itself in `<NuxtLayout name="base-layout">`
+explicitly to get the header/footer.
+
+---
+
 ## Internationalization (i18n)
 
 Supported locales:

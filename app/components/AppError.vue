@@ -1,8 +1,4 @@
 <script setup lang="ts">
-import BaseLayout from '@/layouts/BaseLayout.vue';
-
-const site = useSiteConfig();
-
 type ErrorCode = '404' | '500' | 'work-in-progress';
 
 interface Props {
@@ -54,36 +50,34 @@ useHead({
 </script>
 
 <template>
-  <BaseLayout>
-    <div class="flex items-center justify-center p-4 mx-auto">
-      <div class="glitch-container relative p-4">
-        <h1 class="shake-box glitch text-shadow-md text-center text-6xl font-bold font-digital" :data-text="error.text">
-          {{ error.text }}
-        </h1>
-        <p class="text-shadow-md mb-8 text-center text-xl font-digital text-neutral-content md:text-2xl">
-          {{ error.description }}
-        </p>
+  <div class="flex items-center justify-center p-4 mx-auto">
+    <div class="glitch-container relative p-4">
+      <h1 class="shake-box glitch text-shadow-md text-center text-6xl font-bold font-digital" :data-text="error.text">
+        {{ error.text }}
+      </h1>
+      <p class="text-shadow-md mb-8 text-center text-xl font-digital text-neutral-content md:text-2xl">
+        {{ error.description }}
+      </p>
 
-        <div class="relative overflow-hidden rounded-lg border border-gray-800 bg-gray-900 p-4">
-          <div class="absolute inset-0 bg-linear-to-r from-transparent via-white/5 to-transparent" />
-          <code class="relative z-10 block overflow-x-auto font-digital text-sm text-green-400">
-            <span class="text-purple-400">if</span> (<span class="text-blue-400">!</span><span
-              class="text-white">router</span>.<span class="text-yellow-400">get</span><span class="text-green-200">('{{
-                currentPath }}'</span>)) {<br />
-            &nbsp;&nbsp;<span class="text-red-400">console</span>.<span class="text-yellow-400">error</span>(<span
-              class="text-green-200">'{{ error.text }}'</span>);<br />
-            &nbsp;&nbsp;<span class="text-purple-400">throw new </span><span class="text-blue-400">Error</span>(<span
-              class="text-green-200">'The page you are looking for does not exist'</span>);<br />
-            }
-          </code>
-        </div>
+      <div class="relative overflow-hidden rounded-lg border border-gray-800 bg-gray-900 p-4">
+        <div class="absolute inset-0 bg-linear-to-r from-transparent via-white/5 to-transparent" />
+        <code class="relative z-10 block overflow-x-auto font-digital text-sm text-green-400">
+          <span class="text-purple-400">if</span> (<span class="text-blue-400">!</span><span
+            class="text-white">router</span>.<span class="text-yellow-400">get</span><span class="text-green-200">('{{
+              currentPath }}'</span>)) {<br />
+          &nbsp;&nbsp;<span class="text-red-400">console</span>.<span class="text-yellow-400">error</span>(<span
+            class="text-green-200">'{{ error.text }}'</span>);<br />
+          &nbsp;&nbsp;<span class="text-purple-400">throw new </span><span class="text-blue-400">Error</span>(<span
+            class="text-green-200">'The page you are looking for does not exist'</span>);<br />
+          }
+        </code>
+      </div>
 
-        <div class="mt-6 flex justify-center">
-          <BadgeButton src="/badge-mr.robot.gif" alt="MR. Robot" title="fsociety" />
-        </div>
+      <div class="mt-6 flex justify-center">
+        <BadgeButton src="/badge-mr.robot.gif" alt="MR. Robot" title="fsociety" />
       </div>
     </div>
-  </BaseLayout>
+  </div>
 </template>
 
 <style scoped>

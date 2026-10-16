@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import ErrorLayout from '@/layouts/ErrorLayout.vue';
+definePageMeta({
+  layout: 'base-layout',
+});
 </script>
 
 <template>
-  <ErrorLayout code="work-in-progress" />
+  <AppError code="work-in-progress" />
 </template>
